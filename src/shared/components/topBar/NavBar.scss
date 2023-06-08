@@ -1,0 +1,107 @@
+@use "../../../shared/assets/scss/forward" as *;
+
+nav.main-nav {
+  width: 100%;
+  background-color: $white;
+  border: 1px solid $Primary;
+  // border-top: 0;
+
+  div.main-menu {
+    display: flex;
+    direction: rtl;
+  }
+
+  ul.menu {
+    display: flex;
+    margin: 0;
+    z-index: 2;
+
+    li.menu-item{
+      position: relative;
+      // width: fit-content;
+      font-size: 14px;
+      padding: 12px;
+      text-align: center;
+      color: $FirstBlack;
+      cursor: pointer;
+      transition: background-color 200ms ease-in;
+
+      &:not(.menu-item-home):hover{
+        background-color: $Primary;
+        a.parent-link{
+          color: $white;
+          transition: color 200ms ease-in;
+        }
+
+        svg {
+          color: $white;
+          transition: color 200ms ease-in;
+        }
+      }
+
+      &:not(:first-child){
+        border-right: 1px solid $Primary;
+      }
+
+      ul.sub-menu {
+        display: none;
+        position: absolute;
+        width: 200px;
+        background-color: $white;
+        z-index: 200;
+
+        li.menu-item {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          height: 40px;
+          padding: 8px 12px;
+          border: none;
+          box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+          transition: background-color 100ms ease-in;
+
+          &:hover {
+            background-color: $Primary;
+          }
+
+          svg {
+            color: unset;
+          }
+        }
+
+        li.menu-item:hover > a{
+          color: $white;
+          transition: color 200ms ease-in;
+        }
+
+        li.menu-item:hover > svg {
+          color: $white;
+          transition: color 200ms ease-in;
+        }
+      }
+
+      ul.menu-sub-content{
+        top: 48px;
+        right: 0;
+      }
+
+      ul.from-sub-menu{
+        top: 0;
+        right: 100%;
+        left: auto;
+      }
+    }
+
+    li.menu-item-home{
+      padding: 10px 12px;
+      a svg{
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    li.menu-item-has-children:hover > .sub-menu{
+      display: block;
+    }
+  }
+}

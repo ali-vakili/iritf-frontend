@@ -1,0 +1,111 @@
+@use "colors" as *;
+
+@font-face {
+  font-family: "IRANSans";
+  font-weight: bold;
+  src: url("../fonts/IranSans_WEB-eot/IRANSansWeb\(FaNum\)_Bold.eot")
+      format("eot"),
+    url("../fonts/IranSans_WEB-ttf/IRANSansWeb\(FaNum\)_Bold.ttf")
+      format("truetypefont"),
+    url("../fonts/IranSans_WEB-woff/IRANSansWeb\(FaNum\)_Bold.woff")
+      format("woff"),
+    url("../fonts/IranSans_WEB-woff2/IRANSansWeb\(FaNum\)_Bold.woff2")
+      format("woff2");
+}
+
+@font-face {
+  font-family: "IRANSans";
+  font-weight: 500;
+  src: url("../fonts/IranSans_WEB-eot/IRANSansWeb\(FaNum\)_Medium.eot")
+      format("eot"),
+    url("../fonts/IranSans_WEB-ttf/IRANSansWeb\(FaNum\)_Medium.ttf")
+      format("truetypefont"),
+    url("../fonts/IranSans_WEB-woff/IRANSansWeb\(FaNum\)_Medium.woff")
+      format("woff"),
+    url("../fonts/IranSans_WEB-woff2/IRANSansWeb\(FaNum\)_Medium.woff2")
+      format("woff2");
+}
+
+@font-face {
+  font-family: "IRANSans";
+  font-weight: 300;
+  src: url("../fonts/IranSans_WEB-eot/IRANSansWeb\(FaNum\)_Light.eot")
+      format("eot"),
+    url("../fonts/IranSans_WEB-ttf/IRANSansWeb\(FaNum\)_Light.ttf")
+      format("truetypefont"),
+    url("../fonts/IranSans_WEB-woff/IRANSansWeb\(FaNum\)_Light.woff")
+      format("woff"),
+    url("../fonts/IranSans_WEB-woff2/IRANSansWeb\(FaNum\)_Light.woff2")
+      format("woff2");
+}
+
+*, *::before, *::after{
+  box-sizing: border-box !important;
+  margin: 0;
+  padding: 0;
+}
+  
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: "IRANSans" !important;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  // color: #FAFAFA !important;
+  background-color: #FAFAFA;
+}
+
+a{
+  font-family:"IRANSans";
+  text-decoration: none !important;
+  color: $FirstBlack;
+  user-select: none;
+}
+
+input{
+  border: none !important;
+  outline: none !important;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+// ::-moz-selection{
+//   color: $NinethBlack;
+//   background-color: $Primary;
+// }
+
+// ::selection{
+//   color: $NinethBlack;
+//   background-color: $Primary;
+// }
+
+// ::-webkit-scrollbar{
+//   width: 8px;
+// }
+// ::-webkit-scrollbar-track{
+//   background-color: $black;
+//   border-radius: 2px;
+// }
+// ::-webkit-scrollbar-thumb{
+//   background-color: #32333B;
+//   border-radius: 2px;
+// }

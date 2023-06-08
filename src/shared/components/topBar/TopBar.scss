@@ -1,0 +1,86 @@
+@use "../../../shared/assets/scss/forward" as *;
+
+header {
+  height: 100%;
+  padding: 12px 0 24px 0;
+
+  @include media("<920px"){
+    &{
+      padding-top: 0;
+    }
+  }
+
+  div.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid $BorderColor;
+    border-radius: 4px;
+    margin: 16px 0 8px 0;
+
+    @include media("<920px"){
+      &{
+        display: none;
+      }
+    }
+      
+    div.search{
+      width: 200px;
+
+      input.search-field {
+        font-family: "IRANSans";
+        font-weight: 500;
+        font-size: 14px;
+        max-width: 140px;
+        direction: rtl;
+        padding: 8px 12px;
+        margin: 0 !important;
+        border-right: 1px solid $NinethBlack !important;
+        transition: all 400ms ease-out;
+
+        &::placeholder{
+          color: $SixthBlack;
+        }
+
+        &:focus {
+          max-width: 160px;
+          outline: none;
+          border: none;
+        }
+
+        &:hover {
+          &::placeholder{
+            color: $ThirdBlack;
+          }
+        }
+      }
+
+      span.search-icon {
+        background-color: $Primary !important;
+        border-radius: 4px 0 0 4px !important;
+        color: white !important;
+        cursor: pointer;
+        padding: 4px 8px !important;
+        transition: background-color 200ms ease-in-out;
+
+        @include media(">tablet"){
+          &:hover{
+            background-color: $PrimarySecond !important;
+          }
+        }
+
+        &:focus{
+          background-color: $PrimarySecond !important;
+        }
+      }
+    }
+  }
+
+  .custom-dropdown-menu {
+    display: none; /* Hide the nested menu by default */
+  }
+  
+  .custom-dropdown-menu.show {
+    display: block; /* Show the nested menu on hover */
+  }
+}
