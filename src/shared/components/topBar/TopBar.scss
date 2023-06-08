@@ -4,7 +4,7 @@ header {
   height: 100%;
   padding: 12px 0 24px 0;
 
-  @include media("<920px"){
+  @include media("<=920px"){
     &{
       padding-top: 0;
     }
@@ -17,12 +17,6 @@ header {
     border: 1px solid $BorderColor;
     border-radius: 4px;
     margin: 16px 0 8px 0;
-
-    @include media("<920px"){
-      &{
-        display: none;
-      }
-    }
       
     div.search{
       width: 200px;

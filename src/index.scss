@@ -15,7 +15,7 @@ div.container-iritf{
       padding: 0 12px;
     }
 
-    @include media("<920px"){
+    @include media("<=920px"){
       &{
         padding: 0;
       }
