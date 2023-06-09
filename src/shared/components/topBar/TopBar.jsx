@@ -5,6 +5,7 @@ import banner from "../../../shared/assets/image/banner-image.png"
 import DateTime from './DateTime';
 import SocialMedia from '../socialMedia/SocialMedia';
 import NavBar from "./NavBar"
+import HamburgerMenu from './HamburgerMenu';
 import { useMediaQuery } from 'react-responsive';
 
 import "./TopBar.scss"
@@ -19,6 +20,7 @@ const TopBar = () => {
 
   return (
     <header>
+      {isSmallScreen && <HamburgerMenu /> }
       {!isSmallScreen && (
         <div id='TopBar' className='top-bar'>
           <div className='search'>

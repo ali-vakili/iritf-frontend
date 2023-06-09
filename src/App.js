@@ -5,7 +5,7 @@ import './App.scss';
 const App = () => {
   return (
     <div className="container-iritf">
-      <div className="content-iritf">
+      <div className="content-wrapper-iritf">
         <TopBar />  
       </div>
     </div>

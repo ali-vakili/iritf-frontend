@@ -55,6 +55,11 @@ body{
   scroll-behavior: smooth;
   // color: #FAFAFA !important;
   background-color: #FAFAFA;
+
+  &.hamburger-menu-opend{
+    overflow: hidden;
+    width: 100%;
+  }
 }
 
 a{

@@ -5,6 +5,13 @@ div.social-links {
 
   span.social-link{
     padding: 0 8px;
-  }
 
+    &:hover svg {
+      color: $black;
+    }
+
+    svg {
+      transition: all 200ms ease-in;
+    }
+  }
 }
