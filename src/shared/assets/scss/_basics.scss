@@ -93,24 +93,24 @@ ul {
   border: 0;
 }
 
-// ::-moz-selection{
-//   color: $NinethBlack;
-//   background-color: $Primary;
-// }
+::-moz-selection{
+  color: $NinethBlack;
+  background-color: $PrimarySecond;
+}
 
-// ::selection{
-//   color: $NinethBlack;
-//   background-color: $Primary;
-// }
+::selection{
+  color: $NinethBlack;
+  background-color: $PrimarySecond;
+}
 
-// ::-webkit-scrollbar{
-//   width: 8px;
-// }
-// ::-webkit-scrollbar-track{
-//   background-color: $black;
-//   border-radius: 2px;
-// }
-// ::-webkit-scrollbar-thumb{
-//   background-color: #32333B;
-//   border-radius: 2px;
-// }
+::-webkit-scrollbar{
+  width: 8px;
+}
+::-webkit-scrollbar-track{
+  background-color: $NinethBlack;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: $PrimarySecond;
+  border-radius: 2px;
+}

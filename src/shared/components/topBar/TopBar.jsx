@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { InputGroup } from 'react-bootstrap';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import banner from "../../../shared/assets/image/banner-image.png"
+import banner from "../../../shared/assets/images/banner-image.png"
 import DateTime from './DateTime';
 import SocialMedia from '../socialMedia/SocialMedia';
 import NavBar from "./NavBar"
@@ -38,7 +38,7 @@ const TopBar = () => {
               />
             </InputGroup>
           </div>
-          <SocialMedia />
+          <SocialMedia iconSize={"medium"}/>
           <DateTime />
         </div>
       )}
