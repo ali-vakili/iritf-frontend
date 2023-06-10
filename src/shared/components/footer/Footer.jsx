@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer id='footer-iritf' className='footer'>
       <div className='footer-content'>
-        <div className='conections footer-item col-md-3'>
+        <div className='conections footer-item col-lg-3 col-md-4'>
           <h5>ما را دنبال کنید</h5>
           <hr />
           <div className='conections-social-links'>
@@ -20,7 +20,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className='membership footer-item col-md-3'>
+        <div className='membership footer-item col-lg-3 col-md-4'>
           <h5>عضویت در خبرنامه</h5>
           <hr />
           <p className='membership-text'>جهت دریافت آخرین اخبار و رویدادهای تنیس بصورت روزانه کافی است آدرس ایمیل خود را در باکس زیر وارد کنید و در خبرنامه ما عضو شوید.</p>

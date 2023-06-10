@@ -20,11 +20,17 @@ footer.footer {
       flex-direction: column;
       flex-wrap: wrap;
       margin: 0 40px;
-      margin-bottom: 40px;
+      margin-bottom: 40px !important;
+
+      @include media("<=phone"){
+        &{
+          margin: 0 12px;
+        }
+      }
     }
 
     h5{
-      padding: 0 12px;
+      margin: 0;
       align-self: flex-end;
     }
 
@@ -42,7 +48,7 @@ footer.footer {
 
     div.membership-form{
       display: flex;
-      justify-content: space-between;
+      gap: 6px;
       direction: rtl;
       width: 100%;
       margin-top: 12px;
@@ -50,17 +56,23 @@ footer.footer {
       @include media("<=tablet"){
         &{
           justify-content: flex-start;
-          gap: 12px;
         }
       }
 
       input.email-field{
         direction: rtl;
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 8px;
         border: 1px solid $FifthBlack !important;
         background-color: $TenthBlack;
-        border-radius: 8px;
         outline: none;
-        padding: 12px 16px;
+
+        @include media("<=tablet"){
+          &{
+            width:auto;
+          }
+        }
   
         &::placeholder{
           color: $SixthBlack;
@@ -89,6 +101,12 @@ footer.footer {
     width: 100%;
     margin-top: 20px;
     padding: 0 40px;
+
+    @include media("<=phone"){
+      &{
+        padding: 0 12px;
+      }
+    }
 
     div.rights-content{
       border-top: 1px solid $SixthBlack;
