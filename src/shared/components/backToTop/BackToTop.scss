@@ -1,0 +1,16 @@
+@use "../../../shared/assets/scss/forward" as *;
+
+
+button.back-to-top{
+  background-color: $PrimarySecond;
+  transition: background-color 400ms ease, opacity 400ms ease !important;
+  z-index: 200;
+
+  &:hover{
+    background-color: $Primary;
+  }
+
+  &:focus{
+    background-color: $Primary;
+  }
+}

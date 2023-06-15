@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import SocialMedia from '../socialMedia/SocialMedia'
 import Aparat from '../../../shared/assets/svgs/aparat-icon.svg'
+import Button from '@mui/material/Button';
 
 import "./Footer.scss"
 
@@ -36,7 +37,7 @@ const Footer = () => {
               onChange={(event) => setEmail(event.target.value)}
               required
             />
-            <button className='membership-btn btn'>عضویت</button>
+            <Button className='membership-btn btn'>عضویت</Button>
           </div>
 
         </div>

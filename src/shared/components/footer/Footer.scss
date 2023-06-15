@@ -7,6 +7,7 @@ footer.footer {
   padding-bottom: 12px;
   background-color: $white;
   border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
   
   div.footer-content{
     display: flex;
@@ -48,7 +49,7 @@ footer.footer {
 
     div.membership-form{
       display: flex;
-      gap: 6px;
+      gap: 8px;
       direction: rtl;
       width: 100%;
       margin-top: 12px;
@@ -81,18 +82,21 @@ footer.footer {
     }
     
     button.membership-btn{
-      background-color: $Primary;
+      background-color: $PrimarySecond;
       border-radius: 8px;
+      min-width: fit-content !important;
+      padding: 8px 12px !important;
       color: $white;
+      font: inherit;
 
       @include media(">tablet"){
         &:hover{
-          background-color: $PrimarySecond;
+          background-color: $Primary;
         }
       }
 
       &:focus{
-        background-color: $PrimarySecond;
+        background-color: $Primary;
       }
     }
   }

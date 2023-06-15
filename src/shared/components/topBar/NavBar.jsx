@@ -11,7 +11,7 @@ const NavBar = () => {
     <div className='main-menu'>
       <ul className='menu'>
         <li className='menu-item menu-item-home'>
-          <a href="#" title='Home'><HomeIcon style={{"color" : "#008F70"}}/></a>
+          <a href="/" title='Home'><HomeIcon style={{"color" : "#008F70"}}/></a>
         </li>
 
         <li className='menu-item menu-item-has-children'>
