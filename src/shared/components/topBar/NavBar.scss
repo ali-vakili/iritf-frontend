@@ -19,12 +19,18 @@ nav.main-nav {
     li.menu-item{
       position: relative;
       // width: fit-content;
+      display: flex;
+      align-items: center;
+      height: 100%;
       font-size: 14px;
-      padding: 12px;
       text-align: center;
       color: $FirstBlack;
       cursor: pointer;
       transition: background-color 200ms ease-in;
+
+      a{
+        padding: 12px;
+      }
 
       &:not(.menu-item-home):hover{
         background-color: $Primary;
@@ -51,14 +57,18 @@ nav.main-nav {
         z-index: 200;
 
         li.menu-item {
-          display: flex;
-          align-items: flex-start;
-          justify-content: space-between;
-          height: 40px;
-          padding: 8px 12px;
+          height: fit-content;
           border: none;
           box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
           transition: background-color 100ms ease-in;
+
+          a {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+            padding: 8px 12px;
+          }
 
           &:hover {
             background-color: $Primary;
@@ -93,7 +103,10 @@ nav.main-nav {
     }
 
     li.menu-item-home{
-      padding: 10px 12px;
+
+      a{
+        padding: 10px 12px;
+      }
       a svg{
         width: 28px;
         height: 28px;
