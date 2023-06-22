@@ -25,7 +25,7 @@ const TopBar = () => {
         <div id='TopBar' className='top-bar'>
           <div className='search'>
             <InputGroup>
-              <InputGroup.Text id="" className="bg-white border-0 search-icon">
+              <InputGroup.Text className="bg-white border-0 search-icon">
                 <SearchRoundedIcon />
               </InputGroup.Text>
               <input

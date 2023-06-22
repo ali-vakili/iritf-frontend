@@ -6,7 +6,6 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import "./SocialMedia.scss"
 
 const SocialMedia = ({iconSize, children}) => {
-  console.log(children)
   return (
     <div className="social-links">
       <span className='social-link'><a href="http://instagram.com/ir.itf" title='Instagram' target='_blank'><InstagramIcon fontSize={iconSize}/></a></span> 

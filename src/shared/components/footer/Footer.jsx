@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import SocialMedia from '../socialMedia/SocialMedia'
 import Aparat from '../../../shared/assets/svgs/aparat-icon.svg'
-import Button from '@mui/material/Button';
+import Button from '@mui/material/Button'
 
 import "./Footer.scss"
 
@@ -16,7 +16,7 @@ const Footer = () => {
           <hr />
           <div className='conections-social-links'>
             <SocialMedia iconSize={"large"}>
-              <span className='social-link'><a href="https://www.aparat.com/ir.itf" title='Aparat' target='_blank'><img src={Aparat} alt="aparat"/></a></span>
+              <span className='social-link'><a href="https://www.aparat.com/ir.itf" title='Aparat' target='_blank' rel="noreferrer"><img src={Aparat} alt="aparat"/></a></span>
             </SocialMedia>
           </div>
         </div>
@@ -37,7 +37,7 @@ const Footer = () => {
               onChange={(event) => setEmail(event.target.value)}
               required
             />
-            <Button className='membership-btn btn'>عضویت</Button>
+            <Button className='membership-btn'>عضویت</Button>
           </div>
 
         </div>

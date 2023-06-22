@@ -4,7 +4,6 @@ nav.main-nav {
   width: 100%;
   background-color: $white;
   border: 1px solid $Primary;
-  // border-top: 0;
 
   div.main-menu {
     display: flex;
@@ -18,7 +17,6 @@ nav.main-nav {
 
     li.menu-item{
       position: relative;
-      // width: fit-content;
       display: flex;
       align-items: center;
       height: 100%;
@@ -130,6 +128,11 @@ nav.main-nav {
 
     li.menu-item-has-children:hover > .sub-menu{
       display: block;
+
+      svg {
+        color: $white;
+        transition: color 0ms ease-in;
+      }
     }
   }
 }

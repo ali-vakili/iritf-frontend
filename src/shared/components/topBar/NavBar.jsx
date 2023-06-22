@@ -37,20 +37,32 @@ const NavBar = () => {
                       <span><KeyboardArrowLeftIcon /></span>
                     </a>
                     <ul className='sub-menu from-sub-menu menu-sub-content'>
-                    <li className='menu-item'><a href="#">برنامه مسابقات</a></li>
-                    <li className='menu-item'><a href="#">لیست نفرات حاضر در مسابقات</a></li>
-                    <li className='menu-item menu-item-has-children'>
-                      <a href="#">
-                        دستورالعمل ها
-                        <span><KeyboardArrowLeftIcon /></span>
-                      </a>
-                      <ul className='sub-menu from-sub-menu menu-sub-content'>
-                        <li className='menu-item'><a href="#"> آیین نامه ها</a>
-                        </li>
-                        <li className='menu-item'><a href="#">Wild Card</a>
-                        </li>
-                      </ul>
-                    </li>
+                      <li className='menu-item'>
+                        <a href="#">برنامه مسابقات</a>
+                      </li>
+                      <li className='menu-item'>
+                        <a href="#">
+                          لیست نفرات حاضر در مسابقات
+                        </a>
+                      </li>
+                      <li className='menu-item menu-item-has-children'>
+                        <a href="#">
+                          دستورالعمل ها
+                          <span><KeyboardArrowLeftIcon /></span>
+                        </a>
+                        <ul className='sub-menu from-sub-menu menu-sub-content'>
+                          <li className='menu-item'>
+                            <a href="#">
+                              آیین نامه ها
+                            </a>
+                          </li>
+                          <li className='menu-item'>
+                            <a href="#">
+                              Wild Card
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
                     </ul>
                   </li>
                   <li className='menu-item menu-item-has-children'>
@@ -79,7 +91,9 @@ const NavBar = () => {
                       <span><KeyboardArrowLeftIcon /></span>
                     </a>
                     <ul className='sub-menu from-sub-menu menu-sub-content'>
-                      <li className='menu-item'><a href="#">اهم نکات آیین نامه انضباطی فدراسیون تنیس</a></li>
+                      <li className='menu-item'>
+                        <a href="#">اهم نکات آیین نامه انضباطی فدراسیون تنیس</a>
+                      </li>
                     </ul>
                   </li>
                   <li className='menu-item'><a href="#">کمیته فرهنگی</a></li>
@@ -124,6 +138,138 @@ const NavBar = () => {
               <ArrowDropDownIcon />
             </span>
           </a>
+          <ul className='sub-menu menu-sub-content'>
+            <li className='menu-item menu-item-has-children'>
+              <a href="#">
+                رنکینگ آقایان
+                <span>
+                  <KeyboardArrowLeftIcon />
+                </span>
+              </a>
+              <ul className='sub-menu from-sub-menu menu-sub-content'>
+                <li className='menu-item menu-item-has-children'>
+                  <a href="#">
+                    بزرگسالان
+                    <span>
+                      <KeyboardArrowLeftIcon />
+                    </span>
+                  </a>
+                  <ul className='sub-menu from-sub-menu menu-sub-content'>
+                    <li className='menu-item'>
+                      <a href="#">
+                        انفرادی آقایان
+                      </a>
+                    </li>
+                    <li className='menu-item'>
+                      <a href="#">
+                        دونفره آقایان
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li className='menu-item menu-item-has-children'>
+                  <a href="#">
+                    رده های سنی پسران
+                    <span>
+                      <KeyboardArrowLeftIcon />
+                    </span>
+                  </a>
+                  <ul className='sub-menu from-sub-menu menu-sub-content'>
+                    <li className='menu-item'>
+                      <a href="#">
+                        ۱۸ سال پسران
+                      </a>
+                    </li>
+                    <li className='menu-item'>
+                      <a href="#">
+                        ۱۶ سال پسران
+                      </a>
+                    </li>
+                    <li className='menu-item'>
+                      <a href="#">
+                        ۱۴ سال پسران
+                      </a>
+                    </li>
+                    <li className='menu-item'>
+                      <a href="#">
+                        ۱۲ سال پسران
+                      </a>
+                    </li>
+                    <li className='menu-item'>
+                      <a href="#">
+                        ۱۰ سال پسران 
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li className='menu-item menu-item-has-children'>
+              <a href="#">
+                رنکینگ بانوان
+                <span>
+                  <KeyboardArrowLeftIcon />
+                </span>
+              </a>
+              <ul className='sub-menu from-sub-menu menu-sub-content'>
+                <li className='menu-item menu-item-has-children'>
+                  <a href="#">
+                    بزرگسالان
+                    <span>
+                      <KeyboardArrowLeftIcon />
+                    </span>
+                  </a>
+                  <ul className='sub-menu from-sub-menu menu-sub-content'>
+                    <li className='menu-item'>
+                      <a href="#">
+                        انفرادی بانوان
+                      </a>
+                    </li>
+                    <li className='menu-item'>
+                      <a href="#">
+                        دونفره بانوان
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li className='menu-item menu-item-has-children'>
+                  <a href="#">
+                    رده های سنی دختران
+                    <span>
+                      <KeyboardArrowLeftIcon />
+                    </span>
+                  </a>
+                  <ul className='sub-menu from-sub-menu menu-sub-content'>
+                    <li className='menu-item'>
+                      <a href="#">
+                        ۱۸ سال دختران
+                      </a>
+                    </li>
+                    <li className='menu-item'>
+                      <a href="#">
+                        ۱۶ سال دختران
+                      </a>
+                    </li>
+                    <li className='menu-item'>
+                      <a href="#">
+                        ۱۴ سال دختران
+                      </a>
+                    </li>
+                    <li className='menu-item'>
+                      <a href="#">
+                        ۱۲ سال دختران
+                      </a>
+                    </li>
+                    <li className='menu-item'>
+                      <a href="#">
+                        ۱۰ سال دختران 
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </li>
 
         <li className='menu-item menu-item-has-children'>
@@ -137,7 +283,6 @@ const NavBar = () => {
             <li className='menu-item'><a href="#"> کمیته مسابقات</a></li>
             <li className='menu-item'><a href="#"> کمیته آموزش</a></li>
             <li className='menu-item'><a href="#"> کمیته داوران</a></li>
-            <KeyboardArrowLeftIcon />
           </ul>
         </li>
 

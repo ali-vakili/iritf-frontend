@@ -1,0 +1,33 @@
+@use "../../shared/assets/scss/forward" as *;
+
+div.under-maintenance {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  border-radius: 4px;
+  padding: 32px 24px;
+
+  @include media("<=992px"){
+    &{
+      padding: 32px 16px !important;
+    }
+  }
+}
+
+
+button.under-maintenance {
+  background-color: $PrimarySecond;
+  border-radius: 8px;
+  min-width: fit-content !important;
+  padding: 8px 12px !important;
+  margin-top: 16px;
+  box-shadow: none !important;
+  color: $white;
+  font: inherit;
+
+  &:hover{
+    background-color: $Primary;
+  }
+
+  &:focus{
+    background-color: $Primary;
+  }  
+}

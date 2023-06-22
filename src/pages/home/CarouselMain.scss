@@ -1,16 +1,61 @@
-div.content-container-iritf{
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-  border-radius: 4px;
-  padding: 32px 24px;
-}
+@use "../../shared/assets/scss/forward" as *;
+
 
 div.carousel-container {
-  height: 400px; 
+  max-height: 376px; 
   overflow: hidden;
 
+  // @include media("<=Sdesktop"){
+  //   &{
+  //     height: 360px; 
+  //   }
+  // }
+
+  // @include media("<=992px", ">tablet"){
+  //   &{
+  //     height: 480px; 
+  //   }
+  // }
+
+  // @include media("<=Stablet"){
+  //   &{
+  //     height: 300px; 
+  //   }
+  // }
+
+  // @include media("<=Lphone"){
+  //   &{
+  //     height: 260px; 
+  //   }
+  // }
+
   div.carousel-item{
-    height: 400px;
+    max-height: 376px;
     overflow: hidden;
+
+    // @include media("<=Sdesktop"){
+    //   &{
+    //     height: 360px; 
+    //   }
+    // }
+
+    // @include media("<=992px", ">tablet"){
+    //   &{
+    //     height: 480px; 
+    //   }
+    // }
+
+    // @include media("<=Stablet"){
+    //   &{
+    //     height: 300px; 
+    //   }
+    // }
+
+    // @include media("<=Lphone"){
+    //   &{
+    //     height: 260px; 
+    //   }
+    // }
     
     img.carousel-image {
       object-fit: fill;
@@ -20,11 +65,29 @@ div.carousel-container {
 
     h4.image-caption{
       line-height: 1.5;
+
+      @include media("<=tablet"){
+        &{
+          font-size: 18px !important;
+        }
+      }
+
+      @include media("<=Lphone"){
+        &{
+          font-size: 16px !important;
+        }
+      }
     }
   }
 
   a {
     width: 10% !important;
+
+    @include media("<=Stablet"){
+      &{
+        width: 15% !important;
+      }
+    }
   }
 
   .caption-background {
@@ -32,5 +95,11 @@ div.carousel-container {
     padding: 20px 16px !important;
     color: white;
     border-radius: 4px;
+
+    @include media("<=Stablet"){
+      &{
+        padding: 16px 12px !important;
+      }
+    }
   }
 }

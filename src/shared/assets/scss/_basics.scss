@@ -50,13 +50,14 @@ html{
 }
 
 body{
+  position: relative;
   font-family: "IRANSans" !important;
   min-height: 100vh;
   scroll-behavior: smooth;
   // color: #FAFAFA !important;
   background-color: #FAFAFA;
 
-  &.hamburger-menu-opend{
+  &.hamburger-menu-opened{
     overflow: hidden;
     width: 100%;
   }

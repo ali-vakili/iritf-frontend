@@ -52,6 +52,7 @@ div.hamburger-menu{
 div.overlay{
   display: block;
   position: fixed;
+  overflow: auto;
   top: 0;
   left: 0;
   width: 100%;
@@ -76,9 +77,11 @@ div.overlay{
     right: 0;
     left: auto;
     width: 80%;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     z-index: 1000;
     background-color: $TenthBlack;
+    overflow: auto;
     transition: all 400ms ease-in-out;
 
     &.open {
@@ -87,6 +90,134 @@ div.overlay{
 
     &.close {
       transform: translateX(0%);
+    }
+
+    div.menu-content {
+      // direction: rtl;
+      height: 100%;
+
+      div.mobile-menu {
+        display: flex;
+        flex-direction: column;
+        padding: 0 60px;
+        padding-top: 100px;
+        padding-bottom: 32px;
+
+        @include media("<=tablet"){
+          padding: 0 44px;
+          padding-top: 100px;
+          padding-bottom: 32px;
+        }
+
+        div.search-mobile{
+          width: 100%;
+          margin-bottom: 32px;
+          box-shadow: rgba(27, 31, 35, 0.02) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+          
+          div.input-group {
+            flex-wrap: nowrap;
+          }
+
+          input.search-field {
+            // flex-grow: 1;
+            width: 100%;
+            font-family: "IRANSans";
+            font-weight: 500;
+            font-size: 14px;
+            direction: rtl;
+            border-radius: 0 4px 4px 0;
+            padding: 8px 12px;
+            margin: 0 !important;
+            transition: all 400ms ease-out;
+    
+            &::placeholder{
+              color: $SixthBlack;
+            }
+    
+            &:focus {
+              outline: none;
+              border: none;
+            }
+    
+            &:hover {
+              &::placeholder{
+                color: $ThirdBlack;
+              }
+            }
+          }
+    
+          span.search-icon {
+            background-color: $Primary !important;
+            border-radius: 4px 0 0 4px !important;
+            color: white !important;
+            cursor: pointer;
+            padding: 4px 8px !important;
+            transition: background-color 200ms ease-in-out;
+    
+            @include media(">tablet"){
+              &:hover{
+                background-color: $PrimarySecond !important;
+              }
+            }
+    
+            &:focus{
+              background-color: $PrimarySecond !important;
+            }
+          }
+        }
+        nav.MuiList-root{
+          direction: rtl;
+
+          div.MuiListItemIcon-root {
+            min-width: 36px;
+          }
+          
+          div.MuiListItemText-root{
+            display: flex;
+            align-items: flex-end;
+
+            span.MuiTypography-root {
+              color: $FirstBlackOne;
+              font-family: inherit;
+
+              @include media("<=Stablet"){
+                font-size: 14px;
+              }
+            }
+          }
+
+          div.mobile-sub-menu {
+            max-height: 44px;
+            margin-top: 2px;
+            border-bottom: 1px solid $NinethBlack;
+
+            span.MuiTypography-root {
+              font-size: 14px;
+
+              @include media("<=phone"){
+                font-size: 12px;
+              }
+            }
+          }
+
+          .expanded {
+            color: $white;
+            background-color: $Primary;
+
+            span.MuiTypography-root {
+              color: $white !important;
+            }
+          }
+
+        }
+      }
+
+      div.menu-social-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px 0;
+      }
     }
   }
 }
