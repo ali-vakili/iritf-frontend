@@ -20,24 +20,195 @@ import './HamburgerMenu.scss';
 const HamburgerMenu = () => {
   const [searchValue, setSearchValue] = useState('');
   const [isOpened, setIsOpened] = useState(false);
-  const [open, setOpen] = useState([]);
-
+  const [expands, setExpands] = useState([]);
 
   const hamburgerMenu = useRef();
 
   const theme = useTheme();
   const isMdBreakpoint = useMediaQuery(theme.breakpoints.up('sm'));
+
+
+  const sideNavsRoutes = [
+    {
+      id: "1",
+      title: "اخبار",
+      path: "/news",
+      hasSubItems: true,
+      children: [
+        { id: "1.1", title: "اخبار فدراسیون تنیس", path: "#" },
+        { id: "1.2", title: "اخبار استان ها", path: "#" },
+        { id: "1.3", title: "اخبار خارجی", path: "#" },
+        { id: "1.4", title: "ویدئوها", path: "#" },
+        { id: "1.5", title: "کمیته ها", path: "#", 
+          children: [
+            { id: "1.5.1", title: "کمیته مسابقات", 
+              children: [
+                { id: "1.5.1.1", title: "برنامه مسابقات", path: "#" },
+                { id: "1.5.1.2", title: "لیست نفرات حاضر در مسابقات", path: "#" },
+              ],
+              path: "#" },
+            { id: "1.5.2", title: "کمیته آموزش", 
+              children: [
+                { id: "1.5.2.1", title: "تقویم کمیته آموزش", path: "#" },
+              ],
+              path: "#" },
+            { id: "1.5.3", title: "کمیته داوران", 
+              children: [
+                { id: "1.5.3.1", title: "تقویم عملیاتی کمیته داوران", path: "#" },
+              ],
+              path: "#" },
+            { id: "1.5.4", title: "کمیته انضباطی", 
+              children: [
+                { id: "1.5.4.1", title: "اهم نکات آیین نامه انضباطی فدراسیون تنیس", path: "#" },
+              ],
+              path: "#" },
+            { id: "1.5.5", title: "کمیته فرهنگی", path: "#" },
+            { id: "1.5.6", title: "کمیته پزشکی", path: "#" },
+            { id: "1.5.7", title: "کمیته همگانی", path: "#" },
+            { id: "1.5.8", title: "کمیته تنیس با ویلچر", path: "#" },
+            { id: "1.5.9", title: "کمیته استعدادیابی", path: "#" },
+          ]
+        },
+      ],
+
+    },
+
+    {
+      id: "2",
+      title: "اخبار مسابقات",
+      path: "/matches",
+      hasSubItems: true,
+      children: [
+        { id: "2.1", title: "دیویس کاپ", path: "#" },
+        { id: "2.2", title: "بیلی جین کینگ کاپ", path: "#" },
+        { id: "2.3", title: "جام حذفی آقایان", path: "#" },
+        { id: "2.4", title: "جام حذفی بانوان", path: "#" },
+        { id: "2.6", title: "مسابقات هزار امتیازی", path: "#" },
+        { id: "2.7", title: "لیگ تنیس ایران", path: "#" },
+        { id: "2.8", title: "پدل", path: "#" },
+        { id: "2.9", title: "ITF JUNIORS", path: "#" },
+        { id: "2.10", title: "لیست نفرات حاضر در مسابقات", path: "#" },
+        { id: "2.11", title: "برنامه مسابقات", path: "#" },
+      ],
+    },
+
+    { id: "3", title: "استان", path: "/#", children: [] },
+
+    { id: "4", title: "رنکینگ", path: "/#", hasSubItems: true,
+      children: [
+        { id: "4.1", title: "رنکینگ آقایان", path: "#", 
+          children: [
+            { id: "4.1.1", title: "بزرگسالان", path: "#", 
+              children: [
+                { id: "4.1.1.1", title: "انفرادی آقایان", path: "#" },
+                { id: "4.1.1.2", title: "دونفره آقایان", path: "#" },
+              ] 
+            },
+            { id: "4.1.2", title: "رده های سنی پسران", path: "#", 
+              children: [
+                { id: "4.1.2.1", title: "۱۸ سال پسران", path: "#" },
+                { id: "4.1.2.2", title: "۱۶ سال پسران", path: "#" },
+                { id: "4.1.2.3", title: "۱۴ سال پسران", path: "#" },
+                { id: "4.1.2.4", title: "۱۲ سال پسران", path: "#" },
+                { id: "4.1.2.5", title: "۱۰ سال پسران", path: "#" },
+              ] 
+            },
+          ] 
+        },
+        { id: "4.2", title: "رنکینگ بانوان", path: "#", 
+          children: [
+            { id: "4.2.1", title: "بزرگسالان", path: "#", 
+              children: [
+                { id: "4.2.1.1", title: "انفرادی بانوان", path: "#" },
+                { id: "4.2.1.2", title: "دو نفره بانوان", path: "#" },
+              ] 
+            },
+            { id: "4.2.2", title: "رده های سنی دختران", path: "#", 
+              children: [
+                { id: "4.2.2.1", title: "۱۸ سال دختران", path: "#" },
+                { id: "4.2.2.2", title: "۱۶ سال دختران", path: "#" },
+                { id: "4.2.2.3", title: "۱۴ سال دختران", path: "#" },
+                { id: "4.2.2.4", title: "۱۲ سال دختران", path: "#" },
+                { id: "4.2.2.6", title: "۱۰ سال دختران", path: "#" },
+              ]
+            },
+          ] 
+        },
+      ] 
+    },
+
+    { id: "5", title: "تقویم", path: "/#", hasSubItems: true,
+      children: [
+        { id: "5.1", title: "کمیته مسابقات", path: "#" },
+        { id: "5.2", title: "کمیته آموزش", path: "#" },
+        { id: "5.3", title: "کمیته داوران", path: "#" },
+      ] 
+    },
+
+    { id: "6", title: "فرم ها", path: "/#", hasSubItems: true,
+      children: [
+        { id: "6.1", title: "فرم اطلاعات فردی مربیان", path: "#" },
+        { id: "6.2", title: "فرم اطلاعات فردی داوران", path: "#" },
+        { id: "6.3", title: "قرارداد مسابقات", path: "#" },
+        { id: "6.4", title: "فکت شیت مسابقات", path: "#" },
+        { id: "6.5", title: "کمیته انضباطی", path: "#", 
+          children: [
+            { id: "6.5.1", title: "درخواست بدوی کمیته انضباطی", path: "#" },
+            { id: "6.5.2", title: "درخواست بدوی کمیته انضباطی", path: "#" },
+            { id: "6.5.3", title: "اهم نکات آیین نامه انضباطی فدراسیون تنیس", path: "#" },
+          ] 
+        },
+        { id: "6.6", title: "منشور اخلاقی باشگاه داران ورزشی", path: "#" },
+      ] 
+    },
+
+    { id: "7", title: "تماس با ما", path: "/#", children: [] },
+
+    { id: "8", title: "درباره ما", path: "/#", children: [] },
+
+    { id: "9", title: "سامانه ملی تنیس", path: "/#", children: [] },
+    
+  ];
   
+
+  const createChildList = (children, hasSubItems) => {
+    return (
+      <>
+        {children.map((child) => (
+          <>
+            <ListItemButton sx={hasSubItems ? { pr: isMdBreakpoint ? 3 : 2 } : { pr: isMdBreakpoint ? 4 : 3 }}
+            className={`${classNames({ expanded: expands.length > 0 && expands.some((nav) => nav.id === child.id ) })} ${child.children !== undefined && child.children.length > 0 && "mobile-sub-menu-has-children"} border-bottom`} onClick={() => handleExpand(child.id)} key={child.id}>
+              <ListItemText primary={child.title} />
+              {child.children !== undefined && child.children.length > 0 && (expands.some((nav) => nav.id === child.id ) ? <ExpandLess /> : <ExpandMore />)}
+            </ListItemButton>
+            {child.children !== undefined && child.children.length > 0 && (
+              <Collapse in={expands.some((nav) => nav.id === child.id)} unmountOnExit>
+                {createChildList(child.children)}
+              </Collapse>
+            )}
+          </>
+        ))}
+      </>
+    )
+  }
 
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value);
   };
 
-  const handleClick = (index) => {
-    setOpen((prevOpen) => {
-      const newOpen = [...prevOpen];
-      newOpen[index] = !newOpen[index];
-      return newOpen;
+  const handleExpand = (index) => {
+    setExpands((prevExpands) => {
+      const prevExpandsList = [...prevExpands];
+      const expandItem = prevExpandsList.find((expand) => expand.id === index);
+
+      if (expandItem) {
+        const expandItems = prevExpandsList.filter((item) => item.id !== index);
+        return expandItems;
+      } else {
+        const newExpandItem = { id: index };
+        prevExpandsList.push(newExpandItem);
+        return prevExpandsList;
+      }
     });
   };
 
@@ -96,273 +267,19 @@ const HamburgerMenu = () => {
                   </ListItemIcon>
                   <ListItemText primary="خانه" />
                 </ListItemButton>
-                <ListItemButton className={`${classNames({ expanded: open[0] })} border-bottom`} onClick={() => handleClick(0)}>
-                  <ListItemText primary="اخبار" />
-                    {open[0] ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse sx={{ marginBottom: 3 }} in={open[0]} timeout="auto" unmountOnExit>
-                  <List component="div" disablePadding>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                      <ListItemText primary="اخبار فدراسیون تنیس" />
+                {sideNavsRoutes.map((item) => (
+                  <>
+                    <ListItemButton className={`${classNames({ expanded: expands.length > 0 && expands.some((nav) => nav.id === item.id ) })} border-bottom` } key={item.id} onClick={() => handleExpand(item.id)}>
+                      <ListItemText primary={item.title} />
+                      { item.children.length > 0 && (expands.some((nav) => nav.id === item.id ) ? <ExpandLess /> : <ExpandMore />)}
                     </ListItemButton>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                      <ListItemText primary="اخبار استان ها" />
-                    </ListItemButton>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                      <ListItemText primary="اخبار خارجی" />
-                    </ListItemButton>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                      <ListItemText primary="ویدئوها" />
-                    </ListItemButton>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className={`${classNames({ expanded: open[2] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(2)} >
-                      <ListItemText primary="کمیته ها" />
-                      {open[2] ? <ExpandLess /> : <ExpandMore />}
-                    </ListItemButton>
-                    <Collapse in={open[2]} timeout="auto" unmountOnExit>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className={`${classNames({ expanded: open[3] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(3)}>
-                        <ListItemText primary="کمیته مسابقات" />
-                        {open[3] ? <ExpandLess /> : <ExpandMore />}
-                      </ListItemButton>
-                      <Collapse in={open[3]} timeout="auto" unmountOnExit>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="برنامه مسابقات" />
-                        </ListItemButton>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="لیست نفرات حاضر در مسابقات" />
-                        </ListItemButton>
+                    { item.children.length > 0 && (
+                      <Collapse sx={{ marginBottom: 3 }} in={expands.some((nav) => nav.id === item.id)} timeout="auto" unmountOnExit>
+                        {createChildList(item.children, item.hasSubItems)}
                       </Collapse>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className={`${classNames({ expanded: open[4] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(4)}>
-                        <ListItemText primary="کمیته آموزش" />
-                        {open[4] ? <ExpandLess /> : <ExpandMore />}
-                      </ListItemButton>
-                      <Collapse in={open[4]} timeout="auto" unmountOnExit>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="تقویم کمیته آموزش" />
-                        </ListItemButton>
-                      </Collapse>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className={`${classNames({ expanded: open[5] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(5)}>
-                        <ListItemText primary="کمیته داوران" />
-                        {open[5] ? <ExpandLess /> : <ExpandMore />}
-                      </ListItemButton>
-                      <Collapse in={open[5]} timeout="auto" unmountOnExit>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="تقویم عملیاتی کمیته داوران" />
-                        </ListItemButton>
-                      </Collapse>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className={`${classNames({ expanded: open[6] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(6)}>
-                        <ListItemText primary="کمیته انضباطی" />
-                        {open[6] ? <ExpandLess /> : <ExpandMore />}
-                      </ListItemButton>
-                      <Collapse in={open[6]} timeout="auto" unmountOnExit>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="اهم نکات آیین نامه انضباطی فدراسیون تنیس" />
-                        </ListItemButton>
-                      </Collapse>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="کمیته فرهنگی" />
-                      </ListItemButton>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="کمیته پزشکی" />
-                      </ListItemButton>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="کمیته همگانی" />
-                      </ListItemButton>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="کمیته تنیس با ویلچر" />
-                      </ListItemButton>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="کمیته استعدادیابی" />
-                      </ListItemButton>
-                    </Collapse>
-                  </List>
-                </Collapse>
-                <ListItemButton className={`${classNames({ expanded: open[7] })} border-bottom`} onClick={() => handleClick(7)}>
-                  <ListItemText primary="اخبار مسابقات" />
-                  {open[7] ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse sx={{ marginBottom: 3 }} in={open[7]} timeout="auto" unmountOnExit>
-                  <List component="div" disablePadding>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                      <ListItemText primary="دیویس کاپ" />
-                    </ListItemButton>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                      <ListItemText primary="بیلی جین کینگ کاپ" />
-                    </ListItemButton>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                      <ListItemText primary="جام حذفی آقایان" />
-                    </ListItemButton>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                      <ListItemText primary="جام حذفی بانوان" />
-                    </ListItemButton>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                      <ListItemText primary="مسابقات هزار امتیازی" />
-                    </ListItemButton>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                      <ListItemText primary="لیگ تنیس ایران" />
-                    </ListItemButton>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                      <ListItemText primary="پدل" />
-                    </ListItemButton>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                      <ListItemText primary="ITF JUNIORS" />
-                    </ListItemButton>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                      <ListItemText primary="لیست نفرات حاضر در مسابقات" />
-                    </ListItemButton>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                      <ListItemText primary="برنامه مسابقات" />
-                    </ListItemButton>
-                  </List>
-                </Collapse>
-                <ListItemButton className='border-bottom'>
-                  <ListItemText primary="استان" />
-                </ListItemButton>
-                <ListItemButton className={`${classNames({ expanded: open[8] })} border-bottom`} onClick={() => handleClick(8)}>
-                  <ListItemText primary="رنکینگ" />
-                  {open[8] ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse sx={{ marginBottom: 3 }} in={open[8]} timeout="auto" unmountOnExit>
-                  <List component="div" disablePadding>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className={`${classNames({ expanded: open[9] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(9)}>
-                      <ListItemText primary="رنکینگ آقایان" />
-                      {open[9] ? <ExpandLess /> : <ExpandMore />}
-                    </ListItemButton>
-                    <Collapse in={open[9]} timeout="auto" unmountOnExit>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className={`${classNames({ expanded: open[10] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(10)}>
-                        <ListItemText primary="بزرگسالان" />
-                        {open[10] ? <ExpandLess /> : <ExpandMore />}
-                      </ListItemButton>
-                      <Collapse in={open[10]} timeout="auto" unmountOnExit>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="انفرادی آقایان" />
-                        </ListItemButton>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="دونفره آقایان" />
-                        </ListItemButton>
-                      </Collapse>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className={`${classNames({ expanded: open[11] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(11)}>
-                        <ListItemText primary="رده های سنی پسران" />
-                        {open[11] ? <ExpandLess /> : <ExpandMore />}
-                      </ListItemButton>
-                      <Collapse in={open[11]} timeout="auto" unmountOnExit>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="۱۸ سال پسران" />
-                        </ListItemButton>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="۱۶ سال پسران" />
-                        </ListItemButton>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="۱۴ سال پسران" />
-                        </ListItemButton>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="۱۲ سال پسران" />
-                        </ListItemButton>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="۱۰ سال پسران" />
-                        </ListItemButton>
-                      </Collapse>
-                    </Collapse>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className={`${classNames({ expanded: open[12] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(12)}>
-                      <ListItemText primary="رنکینگ بانوان" />
-                      {open[12] ? <ExpandLess /> : <ExpandMore />}
-                    </ListItemButton>
-                    <Collapse in={open[12]} timeout="auto" unmountOnExit>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className={`${classNames({ expanded: open[13] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(13)}>
-                        <ListItemText primary="بزرگسالان" />
-                        {open[13] ? <ExpandLess /> : <ExpandMore />}
-                      </ListItemButton>
-                      <Collapse in={open[13]} timeout="auto" unmountOnExit>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="انفرادی بانوان" />
-                        </ListItemButton>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="دو نفره بانوان" />
-                        </ListItemButton>
-                      </Collapse>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className={`${classNames({ expanded: open[14] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(14)}>
-                        <ListItemText primary="رده های سنی دختران" />
-                        {open[14] ? <ExpandLess /> : <ExpandMore />}
-                      </ListItemButton>
-                      <Collapse in={open[14]} timeout="auto" unmountOnExit>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="۱۸ سال دختران" />
-                        </ListItemButton>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="۱۶ سال دختران" />
-                        </ListItemButton>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="۱۴ سال دختران" />
-                        </ListItemButton>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="۱۲ سال دختران" />
-                        </ListItemButton>
-                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                          <ListItemText primary="۱۰ سال دختران" />
-                        </ListItemButton>
-                      </Collapse>
-                    </Collapse>
-                  </List>
-                </Collapse>
-                <ListItemButton className={`${classNames({ expanded: open[14] })} border-bottom`} onClick={() => handleClick(14)}>
-                  <ListItemText primary="تقویم" />
-                  {open[14] ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse sx={{ marginBottom: 3 }} in={open[14]} timeout="auto" unmountOnExit>
-                  <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                    <ListItemText primary="کمیته مسابقات" />
-                  </ListItemButton>
-                  <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                    <ListItemText primary="کمیته آموزش" />
-                  </ListItemButton>
-                  <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                    <ListItemText primary="کمیته داوران" />
-                  </ListItemButton>
-                </Collapse>
-                <ListItemButton className={`${classNames({ expanded: open[15] })} border-bottom`} onClick={() => handleClick(15)}>
-                  <ListItemText primary="فرم ها" />
-                  {open[14] ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse sx={{ marginBottom: 3 }} in={open[15]} timeout="auto" unmountOnExit>
-                  <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                    <ListItemText primary="فرم اطلاعات فردی مربیان" />
-                  </ListItemButton>
-                  <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                    <ListItemText primary="فرم اطلاعات فردی مربیان" />
-                  </ListItemButton>
-                  <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                    <ListItemText primary="قرارداد مسابقات" />
-                  </ListItemButton>
-                  <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                    <ListItemText primary="فکت شیت مسابقات" />
-                  </ListItemButton>
-                  <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className={`${classNames({ expanded: open[16] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(16)}>
-                    <ListItemText primary="کمیته انضباطی" />
-                    {open[16] ? <ExpandLess /> : <ExpandMore />}
-                  </ListItemButton>
-                  <Collapse in={open[16]} timeout="auto" unmountOnExit>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                      <ListItemText primary="درخواست بدوی کمیته انضباطی" />
-                    </ListItemButton>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                      <ListItemText primary="فرم درخواست تجدیدنظر کمیته انضباطی" />
-                    </ListItemButton>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                      <ListItemText primary="اهم نکات آیین نامه انضباطی فدراسیون تنیس" />
-                    </ListItemButton>
-                  </Collapse>
-                  <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
-                    <ListItemText primary="منشور اخلاقی باشگاه داران ورزشی" />
-                  </ListItemButton>
-                </Collapse>
-                <ListItemButton className='border-bottom'>
-                  <ListItemText primary="تماس با ما" />
-                </ListItemButton>
-                <ListItemButton className='border-bottom'>
-                  <ListItemText primary="درباره ما" />
-                </ListItemButton>
-                <ListItemButton>
-                  <ListItemText primary="سامانه ملی تنیس" />
-                </ListItemButton>
+                    )}
+                  </>
+                ))}
               </List>
             </div>
             <div className='menu-social-links'>
