@@ -332,7 +332,7 @@ const HamburgerMenu = () => {
                   <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className='mobile-sub-menu'>
                     <ListItemText primary="فکت شیت مسابقات" />
                   </ListItemButton>
-                  <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className={`${classNames({ expanded: open[16] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(16)}>
+                  <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className={`${classNames({ expanded: open[16] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(16)}>
                     <ListItemText primary="کمیته انضباطی" />
                     {open[16] ? <ExpandLess /> : <ExpandMore />}
                   </ListItemButton>
