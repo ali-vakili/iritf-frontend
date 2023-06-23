@@ -20,11 +20,14 @@ import './HamburgerMenu.scss';
 const HamburgerMenu = () => {
   const [searchValue, setSearchValue] = useState('');
   const [isOpened, setIsOpened] = useState(false);
-  const [open, setOpen] = React.useState([]);
+  const [open, setOpen] = useState([]);
+
+
+  const hamburgerMenu = useRef();
+
   const theme = useTheme();
   const isMdBreakpoint = useMediaQuery(theme.breakpoints.up('sm'));
   
-  const hamburgerMenu = useRef();
 
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value);
@@ -95,9 +98,7 @@ const HamburgerMenu = () => {
                 </ListItemButton>
                 <ListItemButton className={`${classNames({ expanded: open[0] })} border-bottom`} onClick={() => handleClick(0)}>
                   <ListItemText primary="اخبار" />
-                  <div style={{ "width" : "32px"}}>
                     {open[0] ? <ExpandLess /> : <ExpandMore />}
-                  </div>
                 </ListItemButton>
                 <Collapse sx={{ marginBottom: 3 }} in={open[0]} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
@@ -167,7 +168,7 @@ const HamburgerMenu = () => {
                         <ListItemText primary="کمیته همگانی" />
                       </ListItemButton>
                       <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="کمیته همگانی" />
+                        <ListItemText primary="کمیته تنیس با ویلچر" />
                       </ListItemButton>
                       <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
                         <ListItemText primary="کمیته استعدادیابی" />
@@ -221,84 +222,86 @@ const HamburgerMenu = () => {
                   {open[8] ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
                 <Collapse sx={{ marginBottom: 3 }} in={open[8]} timeout="auto" unmountOnExit>
-                  <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className={`${classNames({ expanded: open[9] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(9)}>
-                    <ListItemText primary="رنکینگ آقایان" />
-                    {open[9] ? <ExpandLess /> : <ExpandMore />}
-                  </ListItemButton>
-                  <Collapse in={open[9]} timeout="auto" unmountOnExit>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className={`${classNames({ expanded: open[10] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(10)}>
-                      <ListItemText primary="بزرگسالان" />
-                      {open[10] ? <ExpandLess /> : <ExpandMore />}
+                  <List component="div" disablePadding>
+                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className={`${classNames({ expanded: open[9] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(9)}>
+                      <ListItemText primary="رنکینگ آقایان" />
+                      {open[9] ? <ExpandLess /> : <ExpandMore />}
                     </ListItemButton>
-                    <Collapse in={open[10]} timeout="auto" unmountOnExit>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="انفرادی آقایان" />
+                    <Collapse in={open[9]} timeout="auto" unmountOnExit>
+                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className={`${classNames({ expanded: open[10] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(10)}>
+                        <ListItemText primary="بزرگسالان" />
+                        {open[10] ? <ExpandLess /> : <ExpandMore />}
                       </ListItemButton>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="دونفره آقایان" />
+                      <Collapse in={open[10]} timeout="auto" unmountOnExit>
+                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
+                          <ListItemText primary="انفرادی آقایان" />
+                        </ListItemButton>
+                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
+                          <ListItemText primary="دونفره آقایان" />
+                        </ListItemButton>
+                      </Collapse>
+                      <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className={`${classNames({ expanded: open[11] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(11)}>
+                        <ListItemText primary="رده های سنی پسران" />
+                        {open[11] ? <ExpandLess /> : <ExpandMore />}
                       </ListItemButton>
+                      <Collapse in={open[11]} timeout="auto" unmountOnExit>
+                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
+                          <ListItemText primary="۱۸ سال پسران" />
+                        </ListItemButton>
+                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
+                          <ListItemText primary="۱۶ سال پسران" />
+                        </ListItemButton>
+                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
+                          <ListItemText primary="۱۴ سال پسران" />
+                        </ListItemButton>
+                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
+                          <ListItemText primary="۱۲ سال پسران" />
+                        </ListItemButton>
+                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
+                          <ListItemText primary="۱۰ سال پسران" />
+                        </ListItemButton>
+                      </Collapse>
                     </Collapse>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className={`${classNames({ expanded: open[11] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(11)}>
-                      <ListItemText primary="رده های سنی پسران" />
-                      {open[11] ? <ExpandLess /> : <ExpandMore />}
+                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className={`${classNames({ expanded: open[12] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(12)}>
+                      <ListItemText primary="رنکینگ بانوان" />
+                      {open[12] ? <ExpandLess /> : <ExpandMore />}
                     </ListItemButton>
-                    <Collapse in={open[11]} timeout="auto" unmountOnExit>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="۱۸ سال پسران" />
+                    <Collapse in={open[12]} timeout="auto" unmountOnExit>
+                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className={`${classNames({ expanded: open[13] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(13)}>
+                        <ListItemText primary="بزرگسالان" />
+                        {open[13] ? <ExpandLess /> : <ExpandMore />}
                       </ListItemButton>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="۱۶ سال پسران" />
+                      <Collapse in={open[13]} timeout="auto" unmountOnExit>
+                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
+                          <ListItemText primary="انفرادی بانوان" />
+                        </ListItemButton>
+                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
+                          <ListItemText primary="دو نفره بانوان" />
+                        </ListItemButton>
+                      </Collapse>
+                      <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className={`${classNames({ expanded: open[14] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(14)}>
+                        <ListItemText primary="رده های سنی دختران" />
+                        {open[14] ? <ExpandLess /> : <ExpandMore />}
                       </ListItemButton>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="۱۴ سال پسران" />
-                      </ListItemButton>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="۱۲ سال پسران" />
-                      </ListItemButton>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="۱۰ سال پسران" />
-                      </ListItemButton>
+                      <Collapse in={open[14]} timeout="auto" unmountOnExit>
+                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
+                          <ListItemText primary="۱۸ سال دختران" />
+                        </ListItemButton>
+                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
+                          <ListItemText primary="۱۶ سال دختران" />
+                        </ListItemButton>
+                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
+                          <ListItemText primary="۱۴ سال دختران" />
+                        </ListItemButton>
+                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
+                          <ListItemText primary="۱۲ سال دختران" />
+                        </ListItemButton>
+                        <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
+                          <ListItemText primary="۱۰ سال دختران" />
+                        </ListItemButton>
+                      </Collapse>
                     </Collapse>
-                  </Collapse>
-                  <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className={`${classNames({ expanded: open[12] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(12)}>
-                    <ListItemText primary="رنکینگ بانوان" />
-                    {open[12] ? <ExpandLess /> : <ExpandMore />}
-                  </ListItemButton>
-                  <Collapse in={open[12]} timeout="auto" unmountOnExit>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className={`${classNames({ expanded: open[13] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(13)}>
-                      <ListItemText primary="بزرگسالان" />
-                      {open[13] ? <ExpandLess /> : <ExpandMore />}
-                    </ListItemButton>
-                    <Collapse in={open[13]} timeout="auto" unmountOnExit>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="انفرادی بانوان" />
-                      </ListItemButton>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="دو نفره بانوان" />
-                      </ListItemButton>
-                    </Collapse>
-                    <ListItemButton sx={{ pr: isMdBreakpoint ? 3 : 2 }} className={`${classNames({ expanded: open[14] })} mobile-sub-menu mobile-sub-menu-has-children`} onClick={() => handleClick(14)}>
-                      <ListItemText primary="رده های سنی دختران" />
-                      {open[14] ? <ExpandLess /> : <ExpandMore />}
-                    </ListItemButton>
-                    <Collapse in={open[14]} timeout="auto" unmountOnExit>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="۱۸ سال دختران" />
-                      </ListItemButton>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="۱۶ سال دختران" />
-                      </ListItemButton>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="۱۴ سال دختران" />
-                      </ListItemButton>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="۱۲ سال دختران" />
-                      </ListItemButton>
-                      <ListItemButton sx={{ pr: isMdBreakpoint ? 4 : 3 }} className='mobile-sub-menu'>
-                        <ListItemText primary="۱۰ سال دختران" />
-                      </ListItemButton>
-                    </Collapse>
-                  </Collapse>
+                  </List>
                 </Collapse>
                 <ListItemButton className={`${classNames({ expanded: open[14] })} border-bottom`} onClick={() => handleClick(14)}>
                   <ListItemText primary="تقویم" />
