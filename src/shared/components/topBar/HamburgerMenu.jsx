@@ -177,7 +177,8 @@ const HamburgerMenu = () => {
         {children.map((child) => (
           <>
             <ListItemButton sx={hasSubItems ? { pr: isMdBreakpoint ? 3 : 2 } : { pr: isMdBreakpoint ? 4 : 3 }}
-            className={`${classNames({ expanded: expands.length > 0 && expands.some((nav) => nav.id === child.id ) })} ${child.children !== undefined && child.children.length > 0 && "mobile-sub-menu-has-children"} border-bottom`} onClick={() => handleExpand(child.id)} key={child.id}>
+              className={`${classNames(child.children !== undefined && child.children.length > 0 && { expanded: expands.length > 0 && expands.some((nav) => nav.id === child.id ) })} ${child.children !== undefined && child.children.length > 0 && "mobile-sub-menu-has-children"} mobile-sub-menu border-bottom`}
+              onClick={() => handleExpand(child.id)} key={child.id}>
               <ListItemText primary={child.title} />
               {child.children !== undefined && child.children.length > 0 && (expands.some((nav) => nav.id === child.id ) ? <ExpandLess /> : <ExpandMore />)}
             </ListItemButton>
@@ -269,7 +270,7 @@ const HamburgerMenu = () => {
                 </ListItemButton>
                 {sideNavsRoutes.map((item) => (
                   <>
-                    <ListItemButton className={`${classNames({ expanded: expands.length > 0 && expands.some((nav) => nav.id === item.id ) })} border-bottom` } key={item.id} onClick={() => handleExpand(item.id)}>
+                    <ListItemButton className={`${classNames(item.children.length > 0 && { expanded: expands.length > 0 && expands.some((nav) => nav.id === item.id ) })} border-bottom` } key={item.id} onClick= {() => item.children.length > 0 && handleExpand(item.id)}>
                       <ListItemText primary={item.title} />
                       { item.children.length > 0 && (expands.some((nav) => nav.id === item.id ) ? <ExpandLess /> : <ExpandMore />)}
                     </ListItemButton>
