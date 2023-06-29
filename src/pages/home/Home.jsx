@@ -5,6 +5,7 @@ import SectionTitle from '../../shared/components/sectionTitle/SectionTitle';
 import NewsHome from './NewsHome';
 import RanksHome from './RanksHome';
 import ImageReportsHome from './ImageReportsHome';
+import SideBar from '../../shared/components/sideBar/SideBar';
 
 
 import "./Home.scss"
@@ -49,10 +50,7 @@ const Home = () => {
           </section>
         </Col>
         <Col lg={4} className="left-side-content p-0">
-          <aside id='sideBar' className='ps-lg-3'>
-            
-            Side Bar
-          </aside>
+          <SideBar />
         </Col>
       </Row>
     </Container>

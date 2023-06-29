@@ -19,8 +19,8 @@ div.content-container-iritf{
 
 div.left-side-content{
   position: sticky;
-  top: 10px;
-  height: 40px;
+  top: 24px;
+  height: fit-content;
 
   @include media("<=992px"){
     &{
@@ -88,109 +88,112 @@ button.primary-color-btn {
 }
 
 
+div.ranking-iritf {
 
-// div.MuiTabs-flexContainer { 
-//   background-color: $TenthBlack !important;
-// }
-
-div.MuiTabScrollButton-horizontal{
-  color: $Primary;
-
-  svg{
-    color: $SecondBlack;
-  }
-}
-
-div.MuiBox-root{
-  direction:ltr;
-  padding-bottom: 0;
-  @include media("<=tablet"){
-    &{
-      padding-right: 0 !important;
-      padding-left: 0 !important;
+  // div.MuiTabs-flexContainer { 
+  //   background-color: $TenthBlack !important;
+  // }
+  
+  div.MuiTabScrollButton-horizontal{
+    color: $Primary;
+  
+    svg{
+      color: $SecondBlack;
     }
   }
-}
-
-div.MuiTabs-flexContainer {
-
-  @include media(">660px"){
-    &{
-      justify-content: flex-end;
-    }
-  }
-}
-
-p.MuiTypography-root {
-  direction: rtl;
-}
-
-button.rank-tab {
-  font: inherit !important;
-  font-size: 16px !important;
-
-  @include media("<=tablet"){
-    &{
-      font-size: 14px !important;
-    }
-  }
-
-  &.Mui-selected {
-    color: $Primary !important;
-  }
-}
-
-span.MuiTabs-indicator{
-  background-color: $Primary !important;
-}
-
-div.ranks-list {
-
-  & a:not(:last-child){
-    div.ranks {
-      border-bottom: 1px solid $EighthBlack;
-    }
-  }
-
-  div.ranks {
-    display: flex;
-    align-items: center;
-    max-height: 88px;
-    padding-bottom: 8px;
-    margin-bottom: 12px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    direction: rtl;
-    font-family: inherit;
-
-    img {
-      max-height: 68px;
-    }
-
-    div.ranks-info {
-      padding-right: 16px;
-
-      p{
-        font-size: 14px;
-        line-height: 1.33;
-        margin: 0;
-        direction: rtl;
+  
+  div.MuiBox-root{
+    direction:ltr;
+    padding-bottom: 0;
+    @include media("<=tablet"){
+      &{
+        padding-right: 0 !important;
+        padding-left: 0 !important;
       }
     }
   }
-  div.top-rank {
-    margin-bottom: 24px;
-
-    img {
-      border-radius: 4px;
+  
+  div.MuiTabs-flexContainer {
+  
+    @include media(">660px"){
+      &{
+        justify-content: flex-end;
+      }
     }
-    
-    h5 {
-      margin: 16px 0;
-      color: $FirstBlackOne;
+  }
+  
+  p.MuiTypography-root {
+    direction: rtl;
+  }
+  
+  button.rank-tab {
+    font: inherit !important;
+    font-size: 16px !important;
+  
+    @include media("<=tablet"){
+      &{
+        font-size: 14px !important;
+      }
+    }
+  
+    &.Mui-selected {
+      color: $Primary !important;
+    }
+  }
+  
+  span.MuiTabs-indicator{
+    background-color: $Primary !important;
+  }
+  
+  div.ranks-list {
+  
+    & a:not(:last-child){
+      div.ranks {
+        border-bottom: 1px solid $EighthBlack;
+      }
+    }
+  
+    div.ranks {
+      display: flex;
+      align-items: center;
+      max-height: 88px;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      direction: rtl;
+      font-family: inherit;
+  
+      img {
+        max-height: 68px;
+      }
+  
+      div.ranks-info {
+        padding-right: 16px;
+  
+        p{
+          font-size: 14px;
+          line-height: 1.33;
+          margin: 0;
+          direction: rtl;
+        }
+      }
+    }
+    div.top-rank {
+      margin-bottom: 24px;
+  
+      img {
+        border-radius: 4px;
+      }
+      
+      h5 {
+        margin: 16px 0;
+        color: $FirstBlackOne;
+      }
     }
   }
 }
+
 
 div.image-reports-slider {
   margin-top: 16px;

@@ -35,7 +35,7 @@ const a11yProps = index => {
 
 
 const RanksHome = () => {
-  const [value, setValue] = React.useState(3);
+  const [value, setValue] = useState(3);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
