@@ -109,10 +109,30 @@ div.overlay{
           padding-bottom: 32px;
         }
 
+        .expand-list-item {
+          width: 44px;
+          height: 44px;
+          border: 1px solid $EighthBlack;
+          border-radius: 4px;
+
+          @include media("<=Stablet"){
+            width: 36px;
+            height: 36px;
+          }
+        }
+
+        .sub-expand-list-item {
+          width: 36px;
+          height: 36px;
+          border: 1px solid $EighthBlack;
+          border-radius: 4px;
+        }
+
         div.search-mobile{
           width: 100%;
           margin-bottom: 32px;
           box-shadow: rgba(27, 31, 35, 0.02) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+
           
           div.input-group {
             flex-wrap: nowrap;

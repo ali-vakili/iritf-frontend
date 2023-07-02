@@ -4,9 +4,7 @@ import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
-import { Row, Col } from 'react-bootstrap'
-import Button from '@mui/material/Button'
-
+import { Row } from 'react-bootstrap'
 import VezaratLogo from "../../assets/images/لوگوی-وزارت-ورزش-وجوانان.jpg"
 import Olympic from "../../assets/images/National_Olympic_logo.png"
 import ITF from "../../assets/images/ITF-logo.png"
@@ -106,21 +104,21 @@ const SideBar = () => {
         <div className='widgets'>
 
           <div className='widget'>
-            <a href="http://news.msy.gov.ir" target='_blank'>
+            <a href="http://news.msy.gov.ir" target='_blank' rel="noreferrer">
               <img src={VezaratLogo} alt="Vezarat-Logo" />
             </a>
           </div>
 
           <div className='widget olympic-widget'>
             <figure>
-              <a href="http://www.olympic.ir" target='_blank'>
+              <a href="http://www.olympic.ir" target='_blank' rel="noreferrer">
                 <img src={Olympic} alt="Olympic-Logo" />
               </a>
             </figure>
           </div>
 
           <div className='widget'>
-            <a href="https://www.itftennis.com" target='_blank'>
+            <a href="https://www.itftennis.com" target='_blank' rel="noreferrer">
               <img src={ITF} alt="ITF-Logo" />
             </a>
           </div>

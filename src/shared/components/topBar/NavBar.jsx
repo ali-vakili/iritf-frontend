@@ -1,329 +1,103 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom"
 import HomeIcon from '@mui/icons-material/Home';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import classNames from 'classnames';
+import axios from 'axios';
 
 import './NavBar.scss'
 
 const NavBar = () => {
+  const [categories, setCategories] = useState([]);
+
+  const paths = {
+    "خانه" : "home",
+    "اخبار" : "news",
+    "اخبار مسابقات" : "matches",
+    "استان ها" : "provinces",
+    "رنکینگ" : "ranks",
+    "تقویم" : "calendars",
+    "فرم ها" : "forms",
+    "باشگاه ها" : "clubs",
+    "تماس با ما" : "contact",
+    "سامانه ملی تنیس" : "https://www.itfipin.ir/Home/LogIn",
+  }
+
+  async function getCategories() {
+    const getResult = await axios
+      .get('/admin/category/parents', {
+        withCredentials: true,
+      })
+      .then((res) => res.data)
+      .catch((err) => err.response);
+
+    if (getResult.statusCode === 200) {
+      setCategories(getResult.data.parents);
+      console.log(categories);
+    }
+  }
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  const createChildList = (children, topPatentPath) => {
+    return(
+      <>
+        {children.map((child) => (
+          <ul className='sub-menu from-sub-menu menu-sub-content'>
+            <li className={classNames('menu-item', {
+              'menu-item-has-children': child.children.length > 0
+            })}>
+              <Link to={`/${topPatentPath}/${child._id}`}>
+                {child.name}
+              {child.children.length > 0 && <span><KeyboardArrowLeftIcon /></span>}
+              </Link>
+              {child.children.length > 0 && createChildList(child.children)}
+            </li>
+          </ul>
+        ))}
+      </>
+    )
+  }
+
   return (
   <nav id='main-navbar' className='main-nav'>
     <div className='main-menu'>
       <ul className='menu'>
-        <li className='menu-item menu-item-home'>
-          <a href="/" title='Home'><HomeIcon style={{"color" : "#008F70"}}/></a>
-        </li>
-
-        <li className='menu-item menu-item-has-children'>
-          <a className="parent-link" href="#">
-            اخبار
-            <span><ArrowDropDownIcon /></span>
-          </a>
-
-          <ul className='sub-menu menu-sub-content'>
-            <li className='menu-item'><a href="#">اخبار فدراسیون تنیس</a></li>
-            <li className='menu-item'><a href="#">اخبار استان ها</a></li>
-            <li className='menu-item'><a href="#">اخبار خارجی</a></li>
-            <li className='menu-item'><a href="#">ویدئوها</a></li>
-            <li className='menu-item menu-item-has-children'>
-              <a href="#">
-                کمیته ها
-                <span><KeyboardArrowLeftIcon /></span>
-              </a>
-                <ul className='sub-menu from-sub-menu menu-sub-content'>
-                  <li className='menu-item menu-item-has-children'>
-                    <a href="#">
-                      کمیته مسابقات
-                      <span><KeyboardArrowLeftIcon /></span>
-                    </a>
-                    <ul className='sub-menu from-sub-menu menu-sub-content'>
-                      <li className='menu-item'>
-                        <a href="#">برنامه مسابقات</a>
+        {categories.length > 0 && categories.map((category) => (
+          <>
+            {category.name === "خانه" &&  (
+              <li className='menu-item menu-item-home'>
+                <Link to="/" title='Home'><HomeIcon style={{"color" : "#008F70"}}/></Link>
+              </li>
+            )} 
+            {category.name !== "خانه" &&  (
+              <li className={`menu-item ${category.children.length > 0 && "menu-item-has-children"}`}>
+                <Link className="parent-link" to={`/${paths[category.name]}`}>
+                  {category.name}
+                  {category.children.length > 0 && <span><ArrowDropDownIcon /></span>}
+                </Link>
+                {category.children.length > 0 && (
+                  <ul className='sub-menu menu-sub-content'>
+                    {category.children.map((child) => (
+                      <li className={classNames('menu-item', {
+                        'menu-item-has-children': child.children.length > 0
+                      })}>
+                        <Link to={`${paths[category.name]}/${child._id}`}>
+                          {child.name}
+                          {child.children.length > 0 && <span><KeyboardArrowLeftIcon /></span>}
+                        </Link>
+                        {child.children.length > 0 && createChildList(child.children, paths[category.name])}
                       </li>
-                      <li className='menu-item'>
-                        <a href="#">
-                          لیست نفرات حاضر در مسابقات
-                        </a>
-                      </li>
-                      <li className='menu-item menu-item-has-children'>
-                        <a href="#">
-                          دستورالعمل ها
-                          <span><KeyboardArrowLeftIcon /></span>
-                        </a>
-                        <ul className='sub-menu from-sub-menu menu-sub-content'>
-                          <li className='menu-item'>
-                            <a href="#">
-                              آیین نامه ها
-                            </a>
-                          </li>
-                          <li className='menu-item'>
-                            <a href="#">
-                              Wild Card
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className='menu-item menu-item-has-children'>
-                    <a href="#">
-                      کمیته آموزش 
-                      <span><KeyboardArrowLeftIcon /></span>
-                    </a>
-                    <ul className='sub-menu from-sub-menu menu-sub-content'>
-                      <li className='menu-item menu-item-has-children'><a href="#">تقویم کمیته آموزش</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className='menu-item menu-item-has-children'>
-                    <a href="#">
-                      کمیته داوران
-                      <span><KeyboardArrowLeftIcon /></span>
-                    </a>
-                    <ul className='sub-menu from-sub-menu menu-sub-content'>
-                      <li className='menu-item'><a href="#">تقویم عملیاتی کمیته داوران</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className='menu-item menu-item-has-children'>
-                    <a href="#">
-                      کمیته انضباطی
-                      <span><KeyboardArrowLeftIcon /></span>
-                    </a>
-                    <ul className='sub-menu from-sub-menu menu-sub-content'>
-                      <li className='menu-item'>
-                        <a href="#">اهم نکات آیین نامه انضباطی فدراسیون تنیس</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className='menu-item'><a href="#">کمیته فرهنگی</a></li>
-                  <li className='menu-item'><a href="#">کمیته پزشکی</a></li>
-                  <li className='menu-item'><a href="#">کمیته همگانی</a></li>
-                  <li className='menu-item'><a href="#">کمیته تنیس با ویلچر</a></li>
-                  <li className='menu-item'><a href="#">کمیته استعدادیابی</a></li>
-                </ul>
-            </li>
-          </ul>
-        </li>
-
-        <li className='menu-item menu-item-has-children'>
-          <a className="parent-link" href="#">
-            اخبار مسابقات
-            <span>
-              <ArrowDropDownIcon />
-            </span>
-          </a>
-          <ul className='sub-menu menu-sub-content'>
-            <li className='menu-item'><a href="#">دیویس کاپ</a></li>
-            <li className='menu-item'><a href="#">بیلی جین کینگ کاپ</a></li>
-            <li className='menu-item'><a href="#">جام حذفی آقایان</a></li>
-            <li className='menu-item'><a href="#">جام حذفی بانوان</a></li>
-            <li className='menu-item'><a href="#">مسابقات هزار امتیازی</a></li>
-            <li className='menu-item'><a href="#">لیگ تنیس ایران</a></li>
-            <li className='menu-item'><a href="#">پدل</a></li>
-            <li className='menu-item'><a href="#">ITF JUNIORS</a></li>
-            <li className='menu-item'><a href="#">لیست نفرات حاضر در مسابقات</a></li>
-            <li className='menu-item'><a href="#">برنامه مسابقات</a></li>
-          </ul>
-        </li>
-
-        <li className='menu-item'>
-          <a className="parent-link" href="#">استان ها</a>
-        </li>
-
-        <li className='menu-item menu-item-has-children'>
-          <a className="parent-link" href="#">
-            رنکینگ
-            <span>
-              <ArrowDropDownIcon />
-            </span>
-          </a>
-          <ul className='sub-menu menu-sub-content'>
-            <li className='menu-item menu-item-has-children'>
-              <a href="#">
-                رنکینگ آقایان
-                <span>
-                  <KeyboardArrowLeftIcon />
-                </span>
-              </a>
-              <ul className='sub-menu from-sub-menu menu-sub-content'>
-                <li className='menu-item menu-item-has-children'>
-                  <a href="#">
-                    بزرگسالان
-                    <span>
-                      <KeyboardArrowLeftIcon />
-                    </span>
-                  </a>
-                  <ul className='sub-menu from-sub-menu menu-sub-content'>
-                    <li className='menu-item'>
-                      <a href="#">
-                        انفرادی آقایان
-                      </a>
-                    </li>
-                    <li className='menu-item'>
-                      <a href="#">
-                        دونفره آقایان
-                      </a>
-                    </li>
+                    ))}
                   </ul>
-                </li>
-                <li className='menu-item menu-item-has-children'>
-                  <a href="#">
-                    رده های سنی پسران
-                    <span>
-                      <KeyboardArrowLeftIcon />
-                    </span>
-                  </a>
-                  <ul className='sub-menu from-sub-menu menu-sub-content'>
-                    <li className='menu-item'>
-                      <a href="#">
-                        ۱۸ سال پسران
-                      </a>
-                    </li>
-                    <li className='menu-item'>
-                      <a href="#">
-                        ۱۶ سال پسران
-                      </a>
-                    </li>
-                    <li className='menu-item'>
-                      <a href="#">
-                        ۱۴ سال پسران
-                      </a>
-                    </li>
-                    <li className='menu-item'>
-                      <a href="#">
-                        ۱۲ سال پسران
-                      </a>
-                    </li>
-                    <li className='menu-item'>
-                      <a href="#">
-                        ۱۰ سال پسران 
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li className='menu-item menu-item-has-children'>
-              <a href="#">
-                رنکینگ بانوان
-                <span>
-                  <KeyboardArrowLeftIcon />
-                </span>
-              </a>
-              <ul className='sub-menu from-sub-menu menu-sub-content'>
-                <li className='menu-item menu-item-has-children'>
-                  <a href="#">
-                    بزرگسالان
-                    <span>
-                      <KeyboardArrowLeftIcon />
-                    </span>
-                  </a>
-                  <ul className='sub-menu from-sub-menu menu-sub-content'>
-                    <li className='menu-item'>
-                      <a href="#">
-                        انفرادی بانوان
-                      </a>
-                    </li>
-                    <li className='menu-item'>
-                      <a href="#">
-                        دونفره بانوان
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className='menu-item menu-item-has-children'>
-                  <a href="#">
-                    رده های سنی دختران
-                    <span>
-                      <KeyboardArrowLeftIcon />
-                    </span>
-                  </a>
-                  <ul className='sub-menu from-sub-menu menu-sub-content'>
-                    <li className='menu-item'>
-                      <a href="#">
-                        ۱۸ سال دختران
-                      </a>
-                    </li>
-                    <li className='menu-item'>
-                      <a href="#">
-                        ۱۶ سال دختران
-                      </a>
-                    </li>
-                    <li className='menu-item'>
-                      <a href="#">
-                        ۱۴ سال دختران
-                      </a>
-                    </li>
-                    <li className='menu-item'>
-                      <a href="#">
-                        ۱۲ سال دختران
-                      </a>
-                    </li>
-                    <li className='menu-item'>
-                      <a href="#">
-                        ۱۰ سال دختران 
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-
-        <li className='menu-item menu-item-has-children'>
-          <a className="parent-link" href="#">
-            تقویم
-            <span>
-              <ArrowDropDownIcon />
-            </span>
-          </a>
-          <ul className='sub-menu menu-sub-content'>
-            <li className='menu-item'><a href="#"> کمیته مسابقات</a></li>
-            <li className='menu-item'><a href="#"> کمیته آموزش</a></li>
-            <li className='menu-item'><a href="#"> کمیته داوران</a></li>
-          </ul>
-        </li>
-
-        <li className='menu-item menu-item-has-children'>
-          <a className="parent-link" href="#">
-            فرم ها
-            <span>
-              <ArrowDropDownIcon />
-            </span>
-          </a>
-          <ul className='sub-menu menu-sub-content'>
-            <li className='menu-item'><a href="#">فرم اطلاعات فردی مربیان</a></li>
-            <li className='menu-item'><a href="#">فرم اطلاعات فردی داوران</a></li>
-            <li className='menu-item'><a href="#">قرارداد مسابقات</a></li>
-            <li className='menu-item'><a href="#">فکت شیت مسابقات</a></li>
-            <li className='menu-item menu-item-has-children'>
-              <a href="#">
-                کمیته انضباطی
-                <span><KeyboardArrowLeftIcon /></span>
-              </a>
-              <ul className='sub-menu from-sub-menu menu-sub-content'>
-                <li className='menu-item'><a href="#">درخواست بدوی کمیته انضباطی</a></li>
-                <li className='menu-item'><a href="#">فرم درخواست تجدیدنظر کمیته انضباطی</a></li>
-                <li className='menu-item'><a href="#">اهم نکات آیین نامه انضباطی فدراسیون تنیس</a></li>
-              </ul>
-            </li>
-            <li className='menu-item'><a href="#">منشور اخلاقی باشگاه داران ورزشی</a></li>
-          </ul>
-        </li>
-
-        <li className='menu-item'>
-          <a className="parent-link" href="#">تماس با ما</a>
-        </li>
-
-        <li className='menu-item'>
-          <a className="parent-link" href="#">درباره ما</a>
-        </li>
-        
-        <li className='menu-item'>
-          <a className="parent-link" href="https://www.itfipin.ir/Home/LogIn" target='_blank'>سامانه ملی تنیس</a>
-        </li>
+                )}
+              </li>
+            )}
+          </>
+        ))}
       </ul>
     </div>
   </nav>

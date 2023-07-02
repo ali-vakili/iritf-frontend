@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Col, Container, Row } from "react-bootstrap";
 import CarouselMain from './CarouselMain';
 import SectionTitle from '../../shared/components/sectionTitle/SectionTitle';

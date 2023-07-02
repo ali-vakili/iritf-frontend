@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Link } from "react-router-dom"
+import axios from 'axios';
 import { InputGroup } from 'react-bootstrap';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import HomeIcon from '@mui/icons-material/Home';
@@ -21,169 +23,64 @@ const HamburgerMenu = () => {
   const [searchValue, setSearchValue] = useState('');
   const [isOpened, setIsOpened] = useState(false);
   const [expands, setExpands] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const hamburgerMenu = useRef();
 
   const theme = useTheme();
   const isMdBreakpoint = useMediaQuery(theme.breakpoints.up('sm'));
 
+  const paths = {
+    "خانه" : "home",
+    "اخبار" : "news",
+    "اخبار مسابقات" : "matches",
+    "استان ها" : "provinces",
+    "رنکینگ" : "ranks",
+    "تقویم" : "calendars",
+    "فرم ها" : "forms",
+    "باشگاه ها" : "clubs",
+    "تماس با ما" : "contact",
+    "سامانه ملی تنیس" : "https://www.itfipin.ir/Home/LogIn",
+  }
 
-  const sideNavsRoutes = [
-    {
-      id: "1",
-      title: "اخبار",
-      path: "/news",
-      hasSubItems: true,
-      children: [
-        { id: "1.1", title: "اخبار فدراسیون تنیس", path: "#" },
-        { id: "1.2", title: "اخبار استان ها", path: "#" },
-        { id: "1.3", title: "اخبار خارجی", path: "#" },
-        { id: "1.4", title: "ویدئوها", path: "#" },
-        { id: "1.5", title: "کمیته ها", path: "#", 
-          children: [
-            { id: "1.5.1", title: "کمیته مسابقات", 
-              children: [
-                { id: "1.5.1.1", title: "برنامه مسابقات", path: "#" },
-                { id: "1.5.1.2", title: "لیست نفرات حاضر در مسابقات", path: "#" },
-              ],
-              path: "#" },
-            { id: "1.5.2", title: "کمیته آموزش", 
-              children: [
-                { id: "1.5.2.1", title: "تقویم کمیته آموزش", path: "#" },
-              ],
-              path: "#" },
-            { id: "1.5.3", title: "کمیته داوران", 
-              children: [
-                { id: "1.5.3.1", title: "تقویم عملیاتی کمیته داوران", path: "#" },
-              ],
-              path: "#" },
-            { id: "1.5.4", title: "کمیته انضباطی", 
-              children: [
-                { id: "1.5.4.1", title: "اهم نکات آیین نامه انضباطی فدراسیون تنیس", path: "#" },
-              ],
-              path: "#" },
-            { id: "1.5.5", title: "کمیته فرهنگی", path: "#" },
-            { id: "1.5.6", title: "کمیته پزشکی", path: "#" },
-            { id: "1.5.7", title: "کمیته همگانی", path: "#" },
-            { id: "1.5.8", title: "کمیته تنیس با ویلچر", path: "#" },
-            { id: "1.5.9", title: "کمیته استعدادیابی", path: "#" },
-          ]
-        },
-      ],
+  async function getCategories() {
+    const getResult = await axios
+      .get('/admin/category/parents', {
+        withCredentials: true,
+      })
+      .then((res) => res.data)
+      .catch((err) => err.response);
 
-    },
+    if (getResult.statusCode === 200) {
+      setCategories(getResult.data.parents);
+      console.log(categories);
+    }
+  }
 
-    {
-      id: "2",
-      title: "اخبار مسابقات",
-      path: "/matches",
-      hasSubItems: true,
-      children: [
-        { id: "2.1", title: "دیویس کاپ", path: "#" },
-        { id: "2.2", title: "بیلی جین کینگ کاپ", path: "#" },
-        { id: "2.3", title: "جام حذفی آقایان", path: "#" },
-        { id: "2.4", title: "جام حذفی بانوان", path: "#" },
-        { id: "2.6", title: "مسابقات هزار امتیازی", path: "#" },
-        { id: "2.7", title: "لیگ تنیس ایران", path: "#" },
-        { id: "2.8", title: "پدل", path: "#" },
-        { id: "2.9", title: "ITF JUNIORS", path: "#" },
-        { id: "2.10", title: "لیست نفرات حاضر در مسابقات", path: "#" },
-        { id: "2.11", title: "برنامه مسابقات", path: "#" },
-      ],
-    },
-
-    { id: "3", title: "استان", path: "/#", children: [] },
-
-    { id: "4", title: "رنکینگ", path: "/#", hasSubItems: true,
-      children: [
-        { id: "4.1", title: "رنکینگ آقایان", path: "#", 
-          children: [
-            { id: "4.1.1", title: "بزرگسالان", path: "#", 
-              children: [
-                { id: "4.1.1.1", title: "انفرادی آقایان", path: "#" },
-                { id: "4.1.1.2", title: "دونفره آقایان", path: "#" },
-              ] 
-            },
-            { id: "4.1.2", title: "رده های سنی پسران", path: "#", 
-              children: [
-                { id: "4.1.2.1", title: "۱۸ سال پسران", path: "#" },
-                { id: "4.1.2.2", title: "۱۶ سال پسران", path: "#" },
-                { id: "4.1.2.3", title: "۱۴ سال پسران", path: "#" },
-                { id: "4.1.2.4", title: "۱۲ سال پسران", path: "#" },
-                { id: "4.1.2.5", title: "۱۰ سال پسران", path: "#" },
-              ] 
-            },
-          ] 
-        },
-        { id: "4.2", title: "رنکینگ بانوان", path: "#", 
-          children: [
-            { id: "4.2.1", title: "بزرگسالان", path: "#", 
-              children: [
-                { id: "4.2.1.1", title: "انفرادی بانوان", path: "#" },
-                { id: "4.2.1.2", title: "دو نفره بانوان", path: "#" },
-              ] 
-            },
-            { id: "4.2.2", title: "رده های سنی دختران", path: "#", 
-              children: [
-                { id: "4.2.2.1", title: "۱۸ سال دختران", path: "#" },
-                { id: "4.2.2.2", title: "۱۶ سال دختران", path: "#" },
-                { id: "4.2.2.3", title: "۱۴ سال دختران", path: "#" },
-                { id: "4.2.2.4", title: "۱۲ سال دختران", path: "#" },
-                { id: "4.2.2.6", title: "۱۰ سال دختران", path: "#" },
-              ]
-            },
-          ] 
-        },
-      ] 
-    },
-
-    { id: "5", title: "تقویم", path: "/#", hasSubItems: true,
-      children: [
-        { id: "5.1", title: "کمیته مسابقات", path: "#" },
-        { id: "5.2", title: "کمیته آموزش", path: "#" },
-        { id: "5.3", title: "کمیته داوران", path: "#" },
-      ] 
-    },
-
-    { id: "6", title: "فرم ها", path: "/#", hasSubItems: true,
-      children: [
-        { id: "6.1", title: "فرم اطلاعات فردی مربیان", path: "#" },
-        { id: "6.2", title: "فرم اطلاعات فردی داوران", path: "#" },
-        { id: "6.3", title: "قرارداد مسابقات", path: "#" },
-        { id: "6.4", title: "فکت شیت مسابقات", path: "#" },
-        { id: "6.5", title: "کمیته انضباطی", path: "#", 
-          children: [
-            { id: "6.5.1", title: "درخواست بدوی کمیته انضباطی", path: "#" },
-            { id: "6.5.2", title: "درخواست بدوی کمیته انضباطی", path: "#" },
-            { id: "6.5.3", title: "اهم نکات آیین نامه انضباطی فدراسیون تنیس", path: "#" },
-          ] 
-        },
-        { id: "6.6", title: "منشور اخلاقی باشگاه داران ورزشی", path: "#" },
-      ] 
-    },
-
-    { id: "7", title: "تماس با ما", path: "/#", children: [] },
-
-    { id: "8", title: "درباره ما", path: "/#", children: [] },
-
-    { id: "9", title: "سامانه ملی تنیس", path: "/#", children: [] },
-    
-  ];
+  useEffect(() => {
+    getCategories();
+  }, []);
   
 
-  const createChildList = (children, hasSubItems) => {
+  const createChildList = (children, topParentPath ,hasSubItems) => {
     return (
       <>
         {children.map((child) => (
           <>
             <ListItemButton sx={hasSubItems ? { pr: isMdBreakpoint ? 3 : 2 } : { pr: isMdBreakpoint ? 4 : 3 }}
-              className={`${classNames(child.children !== undefined && child.children.length > 0 && { expanded: expands.length > 0 && expands.some((nav) => nav.id === child.id ) })} ${child.children !== undefined && child.children.length > 0 && "mobile-sub-menu-has-children"} mobile-sub-menu border-bottom`}
-              onClick={() => handleExpand(child.id)} key={child.id}>
-              <ListItemText primary={child.title} />
-              {child.children !== undefined && child.children.length > 0 && (expands.some((nav) => nav.id === child.id ) ? <ExpandLess /> : <ExpandMore />)}
+              className={`${classNames(child.children !== undefined && child.children.length > 0 && { expanded: expands.length > 0 && expands.some((nav) => nav.id === child._id ) })} ${child.children !== undefined && child.children.length > 0 && "mobile-sub-menu-has-children"} mobile-sub-menu border-bottom`}
+              >
+              <Link to={`/${topParentPath}/${child._id}`} className='w-100' onClick={closeAndOpenHamburgerMenu}>
+                <ListItemText primary={child.name} />
+              </Link>
+              {child.children !== undefined && child.children.length > 0 && (
+                <div className='sub-expand-list-item d-flex align-items-center justify-content-center' onClick={() => handleExpand(child._id)} key={child._id}>
+                  {expands.some((nav) => nav.id === child._id ) ? <ExpandLess /> : <ExpandMore />}
+                </div>
+              )}
             </ListItemButton>
             {child.children !== undefined && child.children.length > 0 && (
-              <Collapse in={expands.some((nav) => nav.id === child.id)} unmountOnExit>
+              <Collapse in={expands.some((nav) => nav.id === child._id)} unmountOnExit>
                 {createChildList(child.children)}
               </Collapse>
             )}
@@ -262,21 +159,34 @@ const HamburgerMenu = () => {
                 sx={{ width: '100%', }}
                 component="nav"
               >
-                <ListItemButton className='border-bottom'>
-                  <ListItemIcon>
-                    <HomeIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="خانه" />
-                </ListItemButton>
-                {sideNavsRoutes.map((item) => (
+                {categories.map((category) => (
                   <>
-                    <ListItemButton className={`${classNames(item.children.length > 0 && { expanded: expands.length > 0 && expands.some((nav) => nav.id === item.id ) })} border-bottom` } key={item.id} onClick= {() => item.children.length > 0 && handleExpand(item.id)}>
-                      <ListItemText primary={item.title} />
-                      { item.children.length > 0 && (expands.some((nav) => nav.id === item.id ) ? <ExpandLess /> : <ExpandMore />)}
-                    </ListItemButton>
-                    { item.children.length > 0 && (
-                      <Collapse sx={{ marginBottom: 3 }} in={expands.some((nav) => nav.id === item.id)} timeout="auto" unmountOnExit>
-                        {createChildList(item.children, item.hasSubItems)}
+                    {category.name === "خانه" &&  (
+                      <Link to={"/"}>
+                        <ListItemButton className='border-bottom'>
+                          <ListItemIcon>
+                            <HomeIcon />
+                          </ListItemIcon>
+                            <ListItemText primary="خانه" />
+                        </ListItemButton>
+                      </Link>
+                    )}
+                    {category.name !== "خانه" &&  (
+                      <ListItemButton className={`${classNames(category.children.length > 0 && { expanded: expands.length > 0 && expands.some((nav) => nav.id === category._id ) })} border-bottom` } key={category.id}>
+                        <Link to={`/${paths[category.name]}`} className='w-100' onClick={closeAndOpenHamburgerMenu}>
+                          <ListItemText primary={category.name} />
+                        </Link>
+                        { category.children.length > 0 && (
+                          <div className='expand-list-item d-flex align-items-center justify-content-center' onClick= {() => category.children.length > 0 && handleExpand(category._id)}>
+                            {expands.some((nav) => nav.id === category._id ) ? 
+                            <ExpandLess /> : <ExpandMore />}
+                          </div>
+                        )}
+                      </ListItemButton>
+                    )}
+                    {category.children.length > 0 && (
+                      <Collapse sx={{ marginBottom: 3 }} in={expands.some((nav) => nav.id === category._id)} timeout="auto" unmountOnExit>
+                        {createChildList(category.children, paths[category.name] ,category.children.length > 0)}
                       </Collapse>
                     )}
                   </>

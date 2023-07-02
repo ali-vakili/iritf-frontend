@@ -2,6 +2,11 @@
 
 aside#sideBar {
 
+  button.side-bar-tab {
+    padding: 8px;
+    min-width: 80px !important;
+  }
+
   div.MuiTabScrollButton-horizontal{
     color: $Primary;
   
