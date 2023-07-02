@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import moment from 'moment-jalaali';
+import moment from "jalali-moment";
 
 import "./DateTime.scss"
 

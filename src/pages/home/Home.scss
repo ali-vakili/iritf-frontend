@@ -52,6 +52,8 @@ div.news-list {
 
     img {
       max-height: 68px;
+      width: 120px;
+      object-fit: fill;
     }
 
     div.news-info {
