@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import { Row, Col } from 'react-bootstrap'
 import Button from '@mui/material/Button'
+import DefaultImage from "../../shared/assets/images/default-image.jpeg"
 
 const TabPanel = props => {
   const { children, value, index } = props;
@@ -34,7 +35,7 @@ const a11yProps = index => {
 }
 
 
-const RanksHome = () => {
+const RanksHome = ({ data }) => {
   const [value, setValue] = useState(3);
 
   const handleChange = (event, newValue) => {
@@ -63,63 +64,165 @@ const RanksHome = () => {
           <div className='ranks-list'>
             <Row>
               <Col md={6}>
-                <Link to={"/under-maintenance"}>
-                  <div className='top-rank'>
-                    <img
-                      src="https://img.freepik.com/free-photo/grunge-paint-background_1409-1337.jpg"
-                      style={{ width: '100%' }}
-                      alt='image'
-                    />
-                    <h5>رنکینگ انفرادی بزرگسالان آقایان</h5>
-                    <Button variant="contained" className='primary-color-btn'>ادامه خبر</Button>
-                  </div>
-                </Link>
+                {data && data.ranks.map((rank, index) => (
+                  <>
+                    {index < 1 && rank.category.name === "رنکینگ آقایان" &&  (
+                      <Link to={`/ranks/${rank._id}`}>
+                        <div className='top-rank'>
+                          <img
+                            src={rank.imagesURL ? rank.imagesURL[0] : rank.imageURL ? rank.imageURL : DefaultImage}
+                            style={{ width: '100%' }}
+                            alt={rank.title}
+                          />
+                          <h5>{rank.title}</h5>
+                          <Button variant="contained" className='primary-color-btn'>ادامه خبر</Button>
+                        </div>
+                      </Link>
+                    )}
+                  </>
+                ))}
               </Col>
               <Col md={6}>
-                <Link to={"/under-maintenance"}>
-                  <div className="ranks">
-                    <img src="https://img.freepik.com/free-photo/grunge-paint-background_1409-1337.jpg" alt="news"/>
-                    <div className='ranks-info'>
-                      <p>تنیسور روس: سطح رقابت‌های فیوچرز تهران بالا بود/ بازیکنان ایرانی در مسیر پیشرفت قرار دارند</p>
-                    </div>
-                  </div>
-                </Link>
-                <Link to={"/under-maintenance"}>
-                  <div className="ranks">
-                    <img src="https://img.freepik.com/free-photo/grunge-paint-background_1409-1337.jpg" alt="news"/>
-                    <div className='ranks-info'>
-                      <p>تنیسور روس: سطح رقابت‌های فیوچرز تهران بالا بود/ بازیکنان ایرانی در مسیر پیشرفت قرار دارند</p>
-                    </div>
-                  </div>
-                </Link>
-                <Link to={"/under-maintenance"}>
-                  <div className="ranks">
-                    <img src="https://img.freepik.com/free-photo/grunge-paint-background_1409-1337.jpg" alt="news"/>
-                    <div className='ranks-info'>
-                      <p>تنیسور روس: سطح رقابت‌های فیوچرز تهران بالا بود/ بازیکنان ایرانی در مسیر پیشرفت قرار دارند</p>
-                    </div>
-                  </div>
-                </Link>
-                <Link to={"/under-maintenance"}>
-                  <div className="ranks">
-                    <img src="https://img.freepik.com/free-photo/grunge-paint-background_1409-1337.jpg" alt="news"/>
-                    <div className='ranks-info'>
-                      <p>تنیسور روس: سطح رقابت‌های فیوچرز تهران بالا بود/ بازیکنان ایرانی در مسیر پیشرفت قرار دارند</p>
-                    </div>
-                  </div>
-                </Link>
+                {data && data.ranks.map((rank, index) => (
+                  <>
+                    {index < 5 && index >= 1 && rank.category.name === "رنکینگ آقایان" &&  (
+                      <Link to={`/ranks/${rank._id}`}>
+                        <div className="ranks">
+                          <img src={rank.imagesURL ? rank.imagesURL[0] : rank.imageURL ? rank.imageURL : DefaultImage} alt={rank.title}/>
+                          <div className='ranks-info'>
+                            <p>{rank.title}</p>
+                          </div>
+                        </div>
+                      </Link>
+                    )}
+                  </>
+                ))}
               </Col>
             </Row>
           </div>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          قسمت 2
+          <div className='ranks-list'>
+            <Row>
+              <Col md={6}>
+                {data && data.ranks.map((rank, index) => (
+                  <>
+                    {index < 1 && rank.category.name === "رنکینگ بانوان" &&  (
+                      <Link to={`/ranks/${rank._id}`}>
+                        <div className='top-rank'>
+                          <img
+                            src={rank.imagesURL ? rank.imagesURL[0] : rank.imageURL ? rank.imageURL : DefaultImage}
+                            style={{ width: '100%' }}
+                            alt={rank.title}
+                          />
+                          <h5>{rank.title}</h5>
+                          <Button variant="contained" className='primary-color-btn'>ادامه خبر</Button>
+                        </div>
+                      </Link>
+                    )}
+                  </>
+                ))}
+              </Col>
+              <Col md={6}>
+                {data && data.ranks.map((rank, index) => (
+                  <>
+                    {index < 5 && index >= 1 && rank.category.name === "رنکینگ بانوان" &&  (
+                      <Link to={`/ranks/${rank._id}`}>
+                        <div className="ranks">
+                          <img src={rank.imagesURL ? rank.imagesURL[0] : rank.imageURL ? rank.imageURL : DefaultImage} alt={rank.title}/>
+                          <div className='ranks-info'>
+                            <p>{rank.title}</p>
+                          </div>
+                        </div>
+                      </Link>
+                    )}
+                  </>
+                ))}
+              </Col>
+            </Row>
+          </div>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          قسمت 3
+          <div className='ranks-list'>
+            <Row>
+              <Col md={6}>
+                {data && data.ranks.map((rank, index) => (
+                  <>
+                    {index < 1 && rank.category.name === "رده های سنی پسران" &&  (
+                      <Link to={`/ranks/${rank._id}`}>
+                        <div className='top-rank'>
+                          <img
+                            src={rank.imagesURL ? rank.imagesURL[0] : rank.imageURL ? rank.imageURL : DefaultImage}
+                            style={{ width: '100%' }}
+                            alt={rank.title}
+                          />
+                          <h5>{rank.title}</h5>
+                          <Button variant="contained" className='primary-color-btn'>ادامه خبر</Button>
+                        </div>
+                      </Link>
+                    )}
+                  </>
+                ))}
+              </Col>
+              <Col md={6}>
+                {data && data.ranks.map((rank, index) => (
+                  <>
+                    {index < 5 && index >= 1 && rank.category.name === "رده های سنی پسران" &&  (
+                      <Link to={`/ranks/${rank._id}`}>
+                        <div className="ranks">
+                          <img src={rank.imagesURL ? rank.imagesURL[0] : rank.imageURL ? rank.imageURL : DefaultImage} alt={rank.title}/>
+                          <div className='ranks-info'>
+                            <p>{rank.title}</p>
+                          </div>
+                        </div>
+                      </Link>
+                    )}
+                  </>
+                ))}
+              </Col>
+            </Row>
+          </div>
         </TabPanel>
         <TabPanel value={value} index={0}>
-          قسمت 4
+          <div className='ranks-list'>
+            <Row>
+              <Col md={6}>
+                {data && data.ranks.map((rank, index) => (
+                  <>
+                    {index < 1 && rank.category.name === "رده های سنی دختران" &&  (
+                      <Link to={`/ranks/${rank._id}`}>
+                        <div className='top-rank'>
+                          <img
+                            src={rank.imagesURL ? rank.imagesURL[0] : rank.imageURL ? rank.imageURL : DefaultImage}
+                            style={{ width: '100%' }}
+                            alt={rank.title}
+                          />
+                          <h5>{rank.title}</h5>
+                          <Button variant="contained" className='primary-color-btn'>ادامه خبر</Button>
+                        </div>
+                      </Link>
+                    )}
+                  </>
+                ))}
+              </Col>
+              <Col md={6}>
+                {data && data.ranks.map((rank, index) => (
+                  <>
+                    {index < 5 && index >= 1 && rank.category.name === "رده های سنی دختران" &&  (
+                      <Link to={`/ranks/${rank._id}`}>
+                        <div className="ranks">
+                          <img src={rank.imagesURL ? rank.imagesURL[0] : rank.imageURL ? rank.imageURL : DefaultImage} alt={rank.title}/>
+                          <div className='ranks-info'>
+                            <p>{rank.title}</p>
+                          </div>
+                        </div>
+                      </Link>
+                    )}
+                  </>
+                ))}
+              </Col>
+            </Row>
+          </div>
         </TabPanel>
       </Box>
     </div>

@@ -11,7 +11,6 @@ const NewsHome = ({ data }) => {
   const firstNews = restNews && restNews[0];
   const firstFourNews = restNews && restNews.slice(1, 5);
   const SecondFourNews = restNews && restNews.slice(5, 9);
-  console.log(restNews)
 
   return (
     <div className='my-3'>

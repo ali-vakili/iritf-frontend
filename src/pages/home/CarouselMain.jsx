@@ -7,7 +7,6 @@ import "./CarouselMain.scss"
 
 const CarouselMain = ({ data }) => {
   const firstFourNews = data && data.news.slice(0, 4);
-  console.log(firstFourNews)
 
   return (
     <div className="carousel-container">
