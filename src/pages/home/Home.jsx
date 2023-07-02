@@ -6,6 +6,7 @@ import SectionTitle from '../../shared/components/sectionTitle/SectionTitle';
 import NewsHome from './NewsHome';
 import RanksHome from './RanksHome';
 import ImageReportsHome from './ImageReportsHome';
+import VideoHome from './VideoHome';
 import SideBar from '../../shared/components/sideBar/SideBar';
 
 
@@ -71,6 +72,7 @@ const Home = () => {
             <Row>
               <Col>
                 <SectionTitle title="ویدیو ها" />
+                <VideoHome data={videos}/>
               </Col>
             </Row>
           </section>

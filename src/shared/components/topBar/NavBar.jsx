@@ -34,7 +34,6 @@ const NavBar = () => {
 
     if (getResult.statusCode === 200) {
       setCategories(getResult.data.parents);
-      console.log(categories);
     }
   }
 
