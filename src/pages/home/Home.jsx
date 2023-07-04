@@ -78,7 +78,7 @@ const Home = () => {
           </section>
         </Col>
         <Col lg={4} className="left-side-content p-0">
-          <SideBar />
+          <SideBar data={news} ranks={ranks}/>
         </Col>
       </Row>
     </Container>

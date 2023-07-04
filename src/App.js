@@ -15,7 +15,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home/>}></Route>
           <Route path='/under-maintenance' element={<Maintenance />}></Route>
-          {/* <Route path='/*' element={<Navigate to="/under-maintenance"/>}></Route> */}
+          <Route path='/*' element={<Navigate to="/under-maintenance"/>}></Route>
         </Routes>
         <Footer />
         <BackToTopButton />

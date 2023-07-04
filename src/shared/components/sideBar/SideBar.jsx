@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import moment from "jalali-moment";
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import Typography from '@mui/material/Typography'
@@ -8,6 +9,7 @@ import { Row } from 'react-bootstrap'
 import VezaratLogo from "../../assets/images/لوگوی-وزارت-ورزش-وجوانان.jpg"
 import Olympic from "../../assets/images/National_Olympic_logo.png"
 import ITF from "../../assets/images/ITF-logo.png"
+import DefaultImage from "../../../shared/assets/images/default-image.jpeg"
 
 import "./SideBar.scss"
 
@@ -38,13 +40,22 @@ const a11yProps = index => {
   };
 }
 
-const SideBar = () => {
+
+const SideBar = ({ data, ranks }) => {
   const [value, setValue] = useState(3);
+  const [randomNews, setRandomNews] = useState(null);
+  const [randomRank, setRandomRank] = useState(null);
 
   const handleChange = (event, newValue) => {
-  setValue(newValue);
+    setValue(newValue);
   };
+  
+  useEffect(() => {
+    setRandomNews(data ? data.news[Math.floor(Math.random() * data.news.length)] : null)
+    setRandomRank(ranks ? ranks.ranks[Math.floor(Math.random() * ranks.ranks.length)] : null)
 
+  }, [data, ranks])
+  
   return (
     <aside id='sideBar' className='ps-lg-3'>
       <Row id='sideBarTabs' className='side-bar-iritf mb-4 gx-0'>
@@ -56,7 +67,6 @@ const SideBar = () => {
               aria-label="side-bar tabs" 
               variant="scrollable"
               scrollButtons
-              // allowScrollButtonsMobile
               >
               <Tab className='side-bar-tab' label="دیدگاه ها" {...a11yProps(3)} />
               <Tab className='side-bar-tab' label="برچسب" {...a11yProps(2)} />
@@ -66,31 +76,50 @@ const SideBar = () => {
           </Box>
           <TabPanel value={value} index={3}>
             <div className="side-bar-lists">
-
-              <Link to={"/under-maintenance"}>
-                <div className='side-bar-list'>
-                  <img src="https://img.freepik.com/free-photo/grunge-paint-background_1409-1337.jpg" alt="news"/>
-                  <div className='side-bar-info'>
-                    <p className='side-bar-text'>حضور ماندگار فرزامی در بین ۸ تنیسور برتر مسابقات تور جهانی</p>
-                    <span className='side-bar-list-time'>1402/03/29</span>
-                  </div>
-                </div>
-              </Link>
-
-              <Link to={"/under-maintenance"}>
-                <div className='side-bar-list'>
-                  <img src="https://img.freepik.com/free-photo/grunge-paint-background_1409-1337.jpg" alt="news"/>
-                  <div className='side-bar-info'>
-                    <p className='side-bar-text'>تور جهانی جوانان جی ۱۰۰ تهران ۲۰۲۳ باشگاه استقلال</p>
-                    <span className='side-bar-list-time'>1402/04/8</span>
-                  </div>
-                </div>
-              </Link>
-
+              {data && data.news.map((news, index) => (
+                <>
+                  {index < 3 && (
+                    <Link to={`/news/${news._id}`}>
+                      <div className='side-bar-list'>
+                        <img src={news.imagesURL ? news.imagesURL[0] : news.imageURL ? news.imageURL : DefaultImage} alt={news.title}/>
+                        <div className='side-bar-info'>
+                          <p className='side-bar-text'>{news.title}</p>
+                          <span className='side-bar-list-time'>{moment(news.createdAt).locale("fa").format("jYYYY/jMM/jDD")}</span>
+                        </div>
+                      </div>
+                    </Link>
+                  )}
+                </>
+              )) }
             </div>
           </TabPanel>
           <TabPanel value={value} index={2}>
-            قسمت 2
+            <div className="side-bar-lists">
+              <>
+                {randomNews && (
+                  <Link to={`/news/${randomNews._id}`}>
+                    <div className='side-bar-list'>
+                      <img src={randomNews.imagesURL ? randomNews.imagesURL[0] : randomNews.imageURL ? randomNews.imageURL : DefaultImage} alt={randomNews.title}/>
+                      <div className='side-bar-info'>
+                        <p className='side-bar-text'>{randomNews.title}</p>
+                        <span className='side-bar-list-time'>{moment(randomNews.createdAt).locale("fa").format("jYYYY/jMM/jDD")}</span>
+                      </div>
+                    </div>
+                  </Link>
+                )}
+                {randomRank && (
+                  <Link to={`/news/${randomRank._id}`}>
+                    <div className='side-bar-list'>
+                      <img src={randomRank.imagesURL ? randomRank.imagesURL[0] : randomRank.imageURL ? randomRank.imageURL : DefaultImage} alt={randomRank.title}/>
+                      <div className='side-bar-info'>
+                        <p className='side-bar-text'>{randomRank.title}</p>
+                        <span className='side-bar-list-time'>{moment(randomRank.createdAt).locale("fa").format("jYYYY/jMM/jDD")}</span>
+                      </div>
+                    </div>
+                  </Link>
+                )}
+              </>
+            </div>
           </TabPanel>
           <TabPanel value={value} index={1}>
             قسمت 3
