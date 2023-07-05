@@ -17,10 +17,11 @@ const NavBar = () => {
     "اخبار مسابقات" : "matches",
     "استان ها" : "provinces",
     "رنکینگ" : "ranks",
-    "تقویم" : "calendars",
+    "تقویم ها" : "calendars",
     "فرم ها" : "forms",
     "باشگاه ها" : "clubs",
-    "تماس با ما" : "contact",
+    "تماس با ما" : "contact-us",
+    "درباره ما" : "about-us",
     "سامانه ملی تنیس" : "https://www.itfipin.ir/Home/LogIn",
   }
 
@@ -45,11 +46,11 @@ const NavBar = () => {
     return(
       <>
         {children.map((child) => (
-          <ul className='sub-menu from-sub-menu menu-sub-content'>
+          <ul className='sub-menu from-sub-menu menu-sub-content' key={child._id}>
             <li className={classNames('menu-item', {
               'menu-item-has-children': child.children.length > 0
             })}>
-              <Link to={`/${topPatentPath}/${child._id}`}>
+              <Link to={`/${topPatentPath}/category/?section=${topPatentPath}&categoryId=${child._id}`}>
                 {child.name}
               {child.children.length > 0 && <span><KeyboardArrowLeftIcon /></span>}
               </Link>
@@ -68,12 +69,12 @@ const NavBar = () => {
         {categories.length > 0 && categories.map((category) => (
           <>
             {category.name === "خانه" &&  (
-              <li className='menu-item menu-item-home'>
+              <li className='menu-item menu-item-home' key={category._id}>
                 <Link to="/" title='Home'><HomeIcon style={{"color" : "#008F70"}}/></Link>
               </li>
             )} 
             {category.name !== "خانه" &&  (
-              <li className={`menu-item ${category.children.length > 0 && "menu-item-has-children"}`}>
+              <li className={`menu-item ${category.children.length > 0 && "menu-item-has-children"}`} key={category._id}>
                 <Link className="parent-link" to={`/${paths[category.name]}`}>
                   {category.name}
                   {category.children.length > 0 && <span><ArrowDropDownIcon /></span>}
@@ -83,8 +84,8 @@ const NavBar = () => {
                     {category.children.map((child) => (
                       <li className={classNames('menu-item', {
                         'menu-item-has-children': child.children.length > 0
-                      })}>
-                        <Link to={`${paths[category.name]}/${child._id}`}>
+                      })} key={child._id}>
+                        <Link to={`${paths[category.name]}/category/?section=${paths[category.name]}&categoryId=${child._id}`}>
                           {child.name}
                           {child.children.length > 0 && <span><KeyboardArrowLeftIcon /></span>}
                         </Link>

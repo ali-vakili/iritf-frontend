@@ -1,0 +1,28 @@
+@use "./shared/assets/scss/forward" as *;
+
+.direction-rtl-container {
+  direction: rtl;
+}
+
+.section-title {
+  direction: rtl;
+}
+
+.pagination {
+  direction: rtl;
+  margin-top: 20px;
+
+  @include media("<=992px"){
+    &{
+      justify-content: center;
+    }
+  }
+
+  .active {
+
+    a {
+      background-color: #008F70;
+      border-color: #008F70;
+    }
+  }
+}

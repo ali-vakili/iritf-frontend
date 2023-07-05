@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import moment from "jalali-moment";
 import Tabs from '@mui/material/Tabs'
@@ -10,6 +11,7 @@ import VezaratLogo from "../../assets/images/لوگوی-وزارت-ورزش-وج
 import Olympic from "../../assets/images/National_Olympic_logo.png"
 import ITF from "../../assets/images/ITF-logo.png"
 import DefaultImage from "../../../shared/assets/images/default-image.jpeg"
+import axios from 'axios';
 
 import "./SideBar.scss"
 
@@ -41,23 +43,49 @@ const a11yProps = index => {
 }
 
 
-const SideBar = ({ data, ranks }) => {
+const SideBar = () => {
   const [value, setValue] = useState(3);
   const [randomNews, setRandomNews] = useState(null);
   const [randomRank, setRandomRank] = useState(null);
+  const [news, setNews] = useState();
+  const [ranks, setRanks] = useState();
+
+  const getData = async () => {
+    const config = {
+      withCredentials: true,
+    };
+
+    axios.all([
+      axios.get('/admin/news/list', config),
+      axios.get('/admin/ranks/list', config),
+    ])
+    .then(
+      axios.spread((news, ranks) => {
+        setNews(news.data.data);
+        setRanks(ranks.data.data);
+      }),
+      );
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const location = useLocation();
+  const isMainPage = location.pathname === '/' ? 'ps-lg-3' : 'pe-lg-3';
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   
   useEffect(() => {
-    setRandomNews(data ? data.news[Math.floor(Math.random() * data.news.length)] : null)
+    setRandomNews(news ? news.news[Math.floor(Math.random() * news.news.length)] : null)
     setRandomRank(ranks ? ranks.ranks[Math.floor(Math.random() * ranks.ranks.length)] : null)
 
-  }, [data, ranks])
+  }, [news, ranks])
   
   return (
-    <aside id='sideBar' className='ps-lg-3'>
+    <aside id='sideBar' className={isMainPage}>
       <Row id='sideBarTabs' className='side-bar-iritf mb-4 gx-0'>
         <Box sx={{ maxWidth: { sm: "100%" } }}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: "#FAFAFA", direction:"rtl" }}>
@@ -76,10 +104,10 @@ const SideBar = ({ data, ranks }) => {
           </Box>
           <TabPanel value={value} index={3}>
             <div className="side-bar-lists">
-              {data && data.news.map((news, index) => (
+              {news && news.news.map((news, index) => (
                 <>
                   {index < 3 && (
-                    <Link to={`/news/${news._id}`}>
+                    <Link to={`/news/${news._id}`} key={news._id}>
                       <div className='side-bar-list'>
                         <img src={news.imagesURL ? news.imagesURL[0] : news.imageURL ? news.imageURL : DefaultImage} alt={news.title}/>
                         <div className='side-bar-info'>
@@ -97,7 +125,7 @@ const SideBar = ({ data, ranks }) => {
             <div className="side-bar-lists">
               <>
                 {randomNews && (
-                  <Link to={`/news/${randomNews._id}`}>
+                  <Link to={`/news/${randomNews._id}`} key={randomNews._id}>
                     <div className='side-bar-list'>
                       <img src={randomNews.imagesURL ? randomNews.imagesURL[0] : randomNews.imageURL ? randomNews.imageURL : DefaultImage} alt={randomNews.title}/>
                       <div className='side-bar-info'>
@@ -108,7 +136,7 @@ const SideBar = ({ data, ranks }) => {
                   </Link>
                 )}
                 {randomRank && (
-                  <Link to={`/news/${randomRank._id}`}>
+                  <Link to={`/news/${randomRank._id}`} key={randomRank._id}>
                     <div className='side-bar-list'>
                       <img src={randomRank.imagesURL ? randomRank.imagesURL[0] : randomRank.imageURL ? randomRank.imageURL : DefaultImage} alt={randomRank.title}/>
                       <div className='side-bar-info'>

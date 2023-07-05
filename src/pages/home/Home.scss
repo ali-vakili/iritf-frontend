@@ -1,10 +1,6 @@
 @use "../../shared/assets/scss/forward" as *;
 
 
-div#contentContainer{
-  direction: rtl;
-}
-
 div.content-container-iritf{
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
   border-radius: 4px;

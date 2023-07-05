@@ -1,0 +1,32 @@
+.css-4pdmu4-MuiBreadcrumbs-ol {
+  direction: rtl;
+  border-bottom: 1px solid #F0F0F0;
+  padding-bottom: 8px !important;
+  margin-bottom: 12px !important;
+
+  li {
+    direction: rtl;
+    
+    a {
+      font-family:"IRANSans";
+      cursor: pointer !important;
+      padding: 4px;
+    }
+
+    .MuiChip-root {
+      padding: 4px;
+    }
+
+    span {
+      font-family:"IRANSans";
+    }
+
+    svg {
+      margin: 0 !important;
+    }
+
+    span {
+      padding: 0 8px;
+    }
+  }
+}

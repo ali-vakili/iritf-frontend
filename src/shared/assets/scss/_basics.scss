@@ -39,6 +39,19 @@
       format("woff2");
 }
 
+@font-face {
+  font-family: "IRANSans";
+  font-weight: 400;
+  src: url("../fonts/IranSans_WEB-eot/IRANSansWeb.eot")
+      format("eot"),
+    url("../fonts/IranSans_WEB-ttf/IRANSansWeb.ttf")
+      format("truetypefont"),
+    url("../fonts/IranSans_WEB-woff/IRANSansWeb.woff")
+      format("woff"),
+    url("../fonts/IranSans_WEB-woff2/IRANSansWeb.woff2")
+      format("woff2");
+}
+
 *, *::before, *::after{
   box-sizing: border-box !important;
   margin: 0;
@@ -54,7 +67,6 @@ body{
   font-family: "IRANSans" !important;
   min-height: 100vh;
   scroll-behavior: smooth;
-  // color: #FAFAFA !important;
   background-color: #FAFAFA;
 
   &.hamburger-menu-opened{
