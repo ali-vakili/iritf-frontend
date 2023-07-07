@@ -1,0 +1,33 @@
+@use "../../shared/assets/scss/forward" as *;
+
+div.not-found {
+  border-radius: 4px;
+  padding: 32px 24px;
+  padding-top: 0;
+
+  @include media("<=992px"){
+    &{
+      padding: 32px 16px !important;
+    }
+  }
+}
+
+
+button.not-found {
+  background-color: $PrimarySecond;
+  border-radius: 8px;
+  min-width: fit-content !important;
+  padding: 8px 12px !important;
+  margin-top: 16px;
+  box-shadow: none !important;
+  color: $white;
+  font: inherit;
+
+  &:hover{
+    background-color: $Primary;
+  }
+
+  &:focus{
+    background-color: $Primary;
+  }  
+}

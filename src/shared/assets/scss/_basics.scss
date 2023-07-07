@@ -53,6 +53,7 @@
 }
 
 *, *::before, *::after{
+  font-family: var(--font_family) !important;
   box-sizing: border-box !important;
   margin: 0;
   padding: 0;
@@ -64,7 +65,7 @@ html{
 
 body{
   position: relative;
-  font-family: "IRANSans" !important;
+  font-family: var(--font_family) !important;
   min-height: 100vh;
   scroll-behavior: smooth;
   background-color: #FAFAFA;

@@ -1,0 +1,4 @@
+ul.slick-dots li button::before{
+    font-size: 60px;
+    color: #364d79 !important;
+}

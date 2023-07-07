@@ -1,6 +1,16 @@
 @use "./shared/assets/scss/basics";
 @use "./shared/assets/scss/forward" as *;
 
+:root {
+  --blue-100: #0081c9;
+  --blue-75: #5bc0f8;
+  --blue-25: #86e5ff;
+  --yellow-100: #ffc93c;
+  --open-color: #03cd23;
+  --close-color: #ff2d2d;
+  --font_family: "IRANSans" !important;
+}
+
 div.container-iritf{
   min-width: 320px;
   min-height: 100vh;

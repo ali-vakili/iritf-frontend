@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import HomeIcon from '@mui/icons-material/Home';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
@@ -10,11 +10,13 @@ import './NavBar.scss'
 
 const NavBar = () => {
   const [categories, setCategories] = useState([]);
+  const location = useLocation();
 
   const paths = {
     "خانه" : "home",
     "اخبار" : "news",
-    "اخبار مسابقات" : "matches",
+    "اخبار مسابقات" : "videos",
+    "مسابقات" : "matches",
     "استان ها" : "provinces",
     "رنکینگ" : "ranks",
     "تقویم ها" : "calendars",
@@ -50,7 +52,7 @@ const NavBar = () => {
             <li className={classNames('menu-item', {
               'menu-item-has-children': child.children.length > 0
             })}>
-              <Link to={`/${topPatentPath}/category/?section=${topPatentPath}&categoryId=${child._id}`}>
+              <Link to={`/${topPatentPath}/category/${child._id}`}>
                 {child.name}
               {child.children.length > 0 && <span><KeyboardArrowLeftIcon /></span>}
               </Link>
@@ -70,12 +72,12 @@ const NavBar = () => {
           <>
             {category.name === "خانه" &&  (
               <li className='menu-item menu-item-home' key={category._id}>
-                <Link to="/" title='Home'><HomeIcon style={{"color" : "#008F70"}}/></Link>
+                <Link to="/" title='Home'><HomeIcon style={(location.pathname === "/") ? { color: "#008F70"} :{}}/></Link>
               </li>
             )} 
             {category.name !== "خانه" &&  (
-              <li className={`menu-item ${category.children.length > 0 && "menu-item-has-children"}`} key={category._id}>
-                <Link className="parent-link" to={`/${paths[category.name]}`}>
+              <li className={`menu-item ${category.children.length > 0 && "menu-item-has-children"}`} key={category._id} style={(location.pathname === `/${paths[category.name]}`) ? { backgroundColor : "#008F70"} :{}}>
+                <Link className="parent-link" style={(location.pathname === `/${paths[category.name]}`) ? { color: "#FFF"} :{}} to={`/${paths[category.name]}`}>
                   {category.name}
                   {category.children.length > 0 && <span><ArrowDropDownIcon /></span>}
                 </Link>
@@ -85,7 +87,7 @@ const NavBar = () => {
                       <li className={classNames('menu-item', {
                         'menu-item-has-children': child.children.length > 0
                       })} key={child._id}>
-                        <Link to={`${paths[category.name]}/category/?section=${paths[category.name]}&categoryId=${child._id}`}>
+                        <Link to={`${paths[category.name]}/category/${child._id}`}>
                           {child.name}
                           {child.children.length > 0 && <span><KeyboardArrowLeftIcon /></span>}
                         </Link>

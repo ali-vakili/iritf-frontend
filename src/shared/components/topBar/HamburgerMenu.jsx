@@ -33,13 +33,15 @@ const HamburgerMenu = () => {
   const paths = {
     "خانه" : "home",
     "اخبار" : "news",
-    "اخبار مسابقات" : "matches",
+    "اخبار مسابقات" : "videos",
+    "مسابقات" : "matches",
     "استان ها" : "provinces",
     "رنکینگ" : "ranks",
-    "تقویم" : "calendars",
+    "تقویم ها" : "calendars",
     "فرم ها" : "forms",
     "باشگاه ها" : "clubs",
-    "تماس با ما" : "contact",
+    "تماس با ما" : "contact-us",
+    "درباره ما" : "about-us",
     "سامانه ملی تنیس" : "https://www.itfipin.ir/Home/LogIn",
   }
 
@@ -53,7 +55,6 @@ const HamburgerMenu = () => {
 
     if (getResult.statusCode === 200) {
       setCategories(getResult.data.parents);
-      console.log(categories);
     }
   }
 
@@ -70,7 +71,7 @@ const HamburgerMenu = () => {
             <ListItemButton sx={hasSubItems ? { pr: isMdBreakpoint ? 3 : 2 } : { pr: isMdBreakpoint ? 4 : 3 }}
               className={`${classNames(child.children !== undefined && child.children.length > 0 && { expanded: expands.length > 0 && expands.some((nav) => nav.id === child._id ) })} ${child.children !== undefined && child.children.length > 0 && "mobile-sub-menu-has-children"} mobile-sub-menu border-bottom`}
               >
-              <Link to={`/${topParentPath}/${child._id}`} className='w-100' onClick={closeAndOpenHamburgerMenu}>
+              <Link to={`/${topParentPath}/category/${child._id}`} className='w-100' onClick={closeAndOpenHamburgerMenu}>
                 <ListItemText primary={child.name} />
               </Link>
               {child.children !== undefined && child.children.length > 0 && (

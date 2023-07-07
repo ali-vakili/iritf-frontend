@@ -2,7 +2,6 @@ import React from "react"
 import { Link } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import { Card, Col, Row } from "react-bootstrap";
-import SideBar from "../../shared/components/sideBar/SideBar";
 import SectionTitle from "../../shared/components/sectionTitle/SectionTitle";
 import DefaultImage from "../../shared/assets/images/default-image.jpeg"
 import BreadcrumbsCustom, {StyledBreadcrumb} from "../../shared/components/breadcrumbs/Breadcrumbs ";
@@ -23,16 +22,16 @@ const RanksList = ({ currentItems }) => {
           </BreadcrumbsCustom>
           <SectionTitle title="رنکینگ" />
           { currentItems && currentItems.map((rank) => (
-            <Link to={`/ranks/category/?section=ranks&categoryId=${rank._id}`} key={rank._id}>
+            <Link to={`/ranks/${rank._id}`} key={rank._id}>
               <Card className="mt-3">
                 <Card.Body>
                   <Row>
                     <h5>{rank.title}</h5>
                     <Row>
-                      <div style={{"color":"#767676", "fontSize":"14px"}} className="mb-2">
-                        {moment(rank.createdAt).locale("fa").format("jYYYY/jMM/jDD")}
+                      <div style={{"color":"#767676", "fontSize":"14px"}} className="mb-2 date">
+                        <h6>{moment(rank.createdAt).locale("fa").format("jYYYY/jMM/jDD")}</h6>
                         <span className="mx-2">-</span>
-                        <span>{rank.category.name}</span>
+                        <h6><span>{rank.category.name}</span></h6>
                       </div>
                     </Row>
                     <Col md={6}>

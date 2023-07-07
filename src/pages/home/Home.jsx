@@ -8,6 +8,7 @@ import RanksHome from './RanksHome';
 import ImageReportsHome from './ImageReportsHome';
 import VideoHome from './VideoHome';
 import SideBar from '../../shared/components/sideBar/SideBar';
+import { setPageTittle } from '../../utils/SetTittle';
 
 import "./Home.scss"
 
@@ -17,13 +18,12 @@ const Home = () => {
   const [reports, setReports] = useState();
   const [videos, setVideos] = useState();
 
-  document.title = 'فدراسیون تنیس جمهوری اسلامی ایران – فدراسیون تنیس جمهوری اسلامی ایران';
-
+  
   const getData = async () => {
     const config = {
       withCredentials: true,
     };
-
+    
     axios.all([
       axios.get('/admin/news/list', config),
       axios.get('/admin/ranks/list', config),
@@ -41,6 +41,7 @@ const Home = () => {
   }
 
   useEffect(() => {
+    setPageTittle();
     getData();
   }, []);
 
@@ -66,7 +67,7 @@ const Home = () => {
         <section id='reportsSectionIritf' className='reports-section-iritf mt-4 my-2'>
           <Row>
             <Col>
-              <SectionTitle title="گزارش تصویری" />
+              <SectionTitle title="گزارش تصویری" link={"/reports"}/>
               <ImageReportsHome data={reports}/>
             </Col>
           </Row>
@@ -74,7 +75,7 @@ const Home = () => {
         <section id='videosSectionIritf' className='videos-section-iritf mt-4 my-2'>
           <Row>
             <Col>
-              <SectionTitle title="ویدیو ها" />
+              <SectionTitle title="ویدیو ها" link={"/videos"}/>
               <VideoHome data={videos}/>
             </Col>
           </Row>

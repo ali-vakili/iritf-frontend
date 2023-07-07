@@ -6,32 +6,62 @@ import SectionTitle from "../../shared/components/sectionTitle/SectionTitle";
 import DefaultImage from "../../shared/assets/images/default-image.jpeg"
 import BreadcrumbsCustom, {StyledBreadcrumb} from "../../shared/components/breadcrumbs/Breadcrumbs ";
 import moment from "jalali-moment";
+import { useParams } from 'react-router-dom';
 
 import "./NewsList.scss"
 
 const NewsList = ({ currentItems }) => {
+
+  const persianMonths = [
+    'فروردین',
+    'اردیبهشت',
+    'خرداد',
+    'تیر',
+    'مرداد',
+    'شهریور',
+    'مهر',
+    'آبان',
+    'آذر',
+    'دی',
+    'بهمن',
+    'اسفند',
+  ]
+
+  const { id } = useParams();
 
   return (
     <section className="news-section">
       <Row>
         <Col>
           <BreadcrumbsCustom >
-            <StyledBreadcrumb
-              label="اخبار"
-            />
+            {id ?(
+              <>
+                <StyledBreadcrumb
+                  label="اخبار"
+                  component={Link}
+                  to={"/news"}
+                />
+                <StyledBreadcrumb
+                  label={currentItems && currentItems[0].category.name}
+                />
+              </>
+            ) :
+              <StyledBreadcrumb
+                label="اخبار"
+              />
+            }
           </BreadcrumbsCustom>
           <SectionTitle title="اخبار" />
           { currentItems && currentItems.map((news) => (
-            <Link to={`/news/category/?section=news&categoryId=${news._id}`} key={news._id}>
+            <Link to={`/news/${news._id}`} key={news._id}>
               <Card className="mt-3">
                 <Card.Body>
                   <Row>
                     <h5>{news.title}</h5>
                     <Row>
-                      <div style={{"color":"#767676", "fontSize":"14px"}} className="mb-2">
-                        {moment(news.createdAt).locale("fa").format("jYYYY/jMM/jDD")}
-                        <span className="mx-2">-</span>
-                        <span>{news.category.name}</span>
+                      <div style={{"color":"#767676", "fontSize":"14px"}} className="mb-2 date">
+                        <h6>{moment(news.createdAt).locale('fa').format(`jD ${persianMonths[moment().jMonth()]}، jYYYY`)}</h6>
+                        <h6 className="mt-3"><span>{news.category.name}</span></h6>
                       </div>
                     </Row>
                     <Col md={6}>

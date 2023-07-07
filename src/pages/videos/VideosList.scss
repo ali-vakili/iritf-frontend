@@ -1,0 +1,78 @@
+@use "../../shared/assets/scss/forward" as *;
+
+.videos-section {
+
+  .video-container {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+
+  .video {
+    flex-grow: 1;
+    max-width: 100%;
+    height: fit-content;
+  }
+  
+  .card-body {
+    
+    .row{
+      direction: rtl;
+    }
+
+    .date{
+      width: fit-content;
+      
+      h6:first-child{
+        margin-bottom: 4px;
+        padding: 8px 12px;
+        font-weight: 500;
+        font-family: 16px;
+        background-color: $EighthBlack;
+        border-radius: 4px;
+        color: $SecondBlack;
+      }
+    }
+
+    .detail-date{
+      width: fit-content;
+      
+      h6{
+        display: inline-block;
+      }
+    }
+
+    .video {
+      max-width: 100%;
+      height: fit-content;
+    }
+    
+    .card-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-bottom: 20px;
+
+      p {
+        color: $SecondBlack;
+        font-weight: 400;
+        font-size: 14px;
+      }
+    }
+  
+    h5 {
+      margin-bottom: 20px;
+    }
+  
+    img {
+      height: 200px !important;
+      width: 100% !important;
+      object-fit: cover;
+    }
+  }
+}

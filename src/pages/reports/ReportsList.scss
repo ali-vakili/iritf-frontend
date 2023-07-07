@@ -1,0 +1,41 @@
+@use "../../shared/assets/scss/forward" as *;
+
+.reports-section {
+
+  .card-body {
+  
+    .row{
+      direction: rtl;
+    }
+
+    .date{
+      
+      h6{
+        display: inline-block;
+      }
+    }
+
+    .card-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-bottom: 20px;
+
+      p {
+        color: $SecondBlack;
+        font-weight: 400;
+        font-size: 14px;
+      }
+    }
+  
+    h5 {
+      margin-bottom: 20px;
+    }
+  
+    img {
+      height: 200px !important;
+      width: 100% !important;
+      object-fit: cover;
+    }
+  }
+}

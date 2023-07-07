@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import Slider from "react-slick";
 import DefaultImage from "../../shared/assets/images/default-image.jpeg"
+import { Link } from "react-router-dom";
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -24,14 +25,16 @@ const ImageReportsHome = ({ data }) => {
     <div className="image-reports-slider">
       <Slider ref={sliderRef} {...settings}>
         {data && data.reports.map((report) => (
-          <div className="image-report">
-            <img
-              src={report.imagesURL ? report.imagesURL[0] : report.imageURL ? report.imageURL : DefaultImage}
-              style={{ width: '100%' }}
-              alt='image'
-            />
-            <p>{report.title}</p>
-          </div>
+          <Link to={`/reports/${report._id}`}>
+            <div className="image-report">
+              <img
+                src={report.imagesURL ? report.imagesURL[0] : report.imageURL ? report.imageURL : DefaultImage}
+                style={{ width: '100%' }}
+                alt='image'
+              />
+              <p>{report.title}</p>
+            </div>
+          </Link>
         ))}
       </Slider>
     </div>

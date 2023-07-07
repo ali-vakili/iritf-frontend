@@ -92,13 +92,13 @@ aside#sideBar {
   
         p{
           font-size: 14px;
-          // line-height: 1.33;
           margin: 0;
           direction: rtl;
         }
 
         span.side-bar-list-time{
           font-size: 12px;
+          font-weight: 500;
           color: $FifthBlack;
           margin-top: 4px;
         }

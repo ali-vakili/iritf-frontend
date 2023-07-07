@@ -58,7 +58,7 @@ const DateTime = () => {
 
   return (
     <div className='iran-date-time'>
-      <p style={{"fontSize":"14px"}} className='m-0'>
+      <p style={{"fontSize":"14px", "fontWeight":"500"}} className='m-0'>
         {currentTime}
       </p>
     </div>

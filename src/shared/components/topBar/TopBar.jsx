@@ -7,6 +7,7 @@ import SocialMedia from '../socialMedia/SocialMedia';
 import NavBar from "./NavBar"
 import HamburgerMenu from './HamburgerMenu';
 import { useMediaQuery } from 'react-responsive';
+import { Link } from 'react-router-dom';
 
 import "./TopBar.scss"
 
@@ -26,7 +27,9 @@ const TopBar = () => {
           <div className='search'>
             <InputGroup>
               <InputGroup.Text className="bg-white border-0 search-icon">
-                <SearchRoundedIcon />
+                <Link to={`/search/${searchValue}`} style={{"color":"#FFF"}}>
+                  <SearchRoundedIcon/>
+                </Link>
               </InputGroup.Text>
               <input
                 placeholder="جستجو"

@@ -36,7 +36,7 @@ const NewsHome = ({ data }) => {
                   </h5>
                   <div className='card-action d-flex justify-content-between align-items-center'>
                     <Button variant="contained" className='primary-color-btn'>ادامه خبر</Button>
-                    <span style={{"color":"#767676"}}>{moment(firstNews.createdAt).locale("fa").format("jYYYY/jMM/jDD")}</span>
+                    <span style={{"color":"#767676", "fontWeight":"500"}}>{moment(firstNews.createdAt).locale("fa").format("jYYYY/jMM/jDD")}</span>
                   </div>
                 </Col>
               </Row>

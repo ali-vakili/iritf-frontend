@@ -36,9 +36,7 @@ export default function BreadcrumbsCustom({ label, path, children }) {
           label="خانه"
           icon={<HomeIcon fontSize="small" />}
         />
-        {children && (
-          children
-          )}
+        {children && children.props.children ? children.props.children.map((child) => (child)) : children}
       </Breadcrumbs>
     </div>
   );
