@@ -11,6 +11,7 @@ import ReportsList from "../../../pages/reports/ReportsList";
 import CommitteesList from "../../../pages/Committees/CommitteesList";
 import { Empty } from 'antd';
 import ClubsList from "../../../pages/clubs/ClubsList";
+import MatchesList from "../../../pages/matches/MatchesList";
 
 
 const PaginatedItems = ({ itemsPerPage, data, page }) => {
@@ -36,6 +37,7 @@ const PaginatedItems = ({ itemsPerPage, data, page }) => {
           {page === "reports" && <ReportsList currentItems={currentItems} />}
           {page === "committees" && <CommitteesList currentItems={currentItems} />}
           {page === "clubs" && <ClubsList currentItems={currentItems} />}
+          {page === "matches" && <MatchesList currentItems={currentItems} />}
           <Row>
             <Col>
               <ReactPaginate

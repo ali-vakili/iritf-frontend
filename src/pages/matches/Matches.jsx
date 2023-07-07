@@ -7,15 +7,15 @@ import { setPageTittle } from "../../utils/SetTittle";
 import { useParams } from 'react-router-dom';
 
 
-const Calendars = () => {
-  const [calendars, setCalendars] = useState();
+const Matches = () => {
+  const [matches, setMatches] = useState();
 
   const { id } = useParams();
 
   const getDataByCategory = async () => {
     const result = await axios
       .get(
-        `/admin/calendars/list-by-category/${id}`, {
+        `/admin/matches/list-by-category/${id}`, {
           withCredentials: true,
         }
       )
@@ -24,13 +24,14 @@ const Calendars = () => {
       )
       .catch((err) => err.response);
 
-    if (result.statusCode === 200) setCalendars(result.data.calendars)
+    if (result.statusCode === 200) setMatches(result.data.matches)
   }
+
 
   const getData = async () => {
     const result = await axios
       .get(
-        '/admin/calendars/list', {
+        '/admin/matches/list', {
           withCredentials: true,
         }
       )
@@ -39,11 +40,11 @@ const Calendars = () => {
       )
       .catch((err) => err.response);
 
-    if (result.statusCode === 200) setCalendars(result.data.calendars);
+    if (result.statusCode === 200) setMatches(result.data.matches);
   }
 
   useEffect(() => {
-    setPageTittle("تقویم ها")
+    setPageTittle("اخبار");
     id ? getDataByCategory() : getData();
   }, []);
 
@@ -51,7 +52,7 @@ const Calendars = () => {
     <>
       <Row className='m-0'>
         <Col lg={8} className="ps-lg-4 p-0">
-          {calendars && <PaginatedItems itemsPerPage={10} data={calendars} page="calendars"/>}
+          {matches && <PaginatedItems itemsPerPage={10} data={matches} page="matches"/>}
         </Col>
         <Col lg={4} className="left-side-content p-0">
           <SideBar/>
@@ -61,4 +62,4 @@ const Calendars = () => {
   )
 }
 
-export default Calendars;
+export default Matches;

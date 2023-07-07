@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import DetailShared from "../../shared/components/DetailShared/DetailShared";
 import Comments from "../../shared/components/Comments/Comments";
-import moment from "jalali-moment";
+import moment from "moment-jalali";
 
 import "./CalendarsList.scss"
 

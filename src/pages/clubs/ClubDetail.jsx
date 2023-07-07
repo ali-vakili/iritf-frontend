@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 import DetailShared from "../../shared/components/DetailShared/DetailShared";
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import Comments from "../../shared/components/Comments/Comments";
-import moment from "jalali-moment";
+import moment from "moment-jalali";
 
 import "./ClubsList.scss"
 
@@ -128,7 +128,7 @@ const ClubDetail = () => {
                           <Row className="flex-column align-items-center justify-content-center my-4">
                           <h6 style={{"width":"fit-content"}}>برای دانلود و مشاهده کامل اطلاعات باشگاه روی لینک زیر کلیک فرمایید</h6>
                           {club.fileURL && (
-                            <Link to={club.fileURL[0]} style={{"fontSize":"16px", "fontWeight":"500","width":"fit-content", "color":"#33A58D"}} className="mt-2">
+                            <Link to={club.fileURL} style={{"fontSize":"16px", "fontWeight":"500","width":"fit-content", "color":"#33A58D"}} className="mt-2">
                               دانلود اطلاعات باشگاه
                               <FileDownloadIcon fontSize="large" style={{"height":"64px", "width":"64px"}}/>
                             </Link>
@@ -161,4 +161,4 @@ const ClubDetail = () => {
   )
 }
 
-export default NewsDetail;
+export default ClubDetail;

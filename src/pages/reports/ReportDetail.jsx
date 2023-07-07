@@ -7,7 +7,7 @@ import { setPageTittle } from "../../utils/SetTittle";
 import { useParams } from 'react-router-dom';
 import DetailShared from "../../shared/components/DetailShared/DetailShared";
 import Comments from "../../shared/components/Comments/Comments";
-import moment from "jalali-moment";
+import moment from "moment-jalali";
 
 import "./ReportsList.scss"
 

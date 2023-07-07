@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Card, Row, Col } from 'react-bootstrap';
 import Button from '@mui/material/Button';
 import DefaultImage from "../../shared/assets/images/default-image.jpeg"
-import moment from "jalali-moment";
+import moment from "moment-jalali";
 
 
 const NewsHome = ({ data }) => {

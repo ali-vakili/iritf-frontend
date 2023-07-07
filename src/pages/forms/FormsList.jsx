@@ -4,7 +4,7 @@ import { Card, Col, Row } from "react-bootstrap";
 import Button from '@mui/material/Button';
 import SectionTitle from "../../shared/components/sectionTitle/SectionTitle";
 import BreadcrumbsCustom, {StyledBreadcrumb} from "../../shared/components/breadcrumbs/Breadcrumbs ";
-import moment from "jalali-moment";
+import moment from "moment-jalali";
 
 import "./FormsList.scss"
 

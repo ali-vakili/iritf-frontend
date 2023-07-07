@@ -23,6 +23,9 @@ import ReportDetail from './pages/reports/ReportDetail';
 import Committees from './pages/Committees/Committees';
 import CommitteeDetail from './pages/Committees/CommitteeDetail';
 import Clubs from './pages/clubs/Clubs';
+import ClubDetail from './pages/clubs/ClubDetail';
+import Matches from './pages/matches/Matches';
+import MatchDetail from './pages/matches/MatchDetail';
 import SearchResult from './shared/components/searchResult/SearchResult';
 import NotFound from './pages/notFound/NotFound';
 
@@ -45,7 +48,6 @@ const App = () => {
             <Route path='/news' element={<News key={key}/>}></Route>
             <Route path='/news/:id' element={<NewsDetail key={key}/>}></Route>
             <Route path='/news/category/:id' element={<News key={key}/>}></Route>
-            <Route path='/matches' element={<Home/>}></Route>
             <Route path='/ranks' element={<Ranks key={key}/>}></Route>
             <Route path='/ranks/:id' element={<RankDetail key={key}/>}></Route>
             <Route path='/ranks/category/:id' element={<Ranks key={key}/>}></Route>
@@ -67,6 +69,11 @@ const App = () => {
             <Route path='/committees/:id' element={<CommitteeDetail key={key}/>}></Route>
             <Route path='/committees/category/:id' element={<Committees key={key}/>}></Route>
             <Route path='/clubs' element={<Clubs key={key}/>}></Route>
+            <Route path='/clubs/:id' element={<ClubDetail key={key}/>}></Route>
+            <Route path='/clubs/category/:id' element={<Clubs key={key}/>}></Route>
+            <Route path='/matches' element={<Matches key={key}/>}></Route>
+            <Route path='/matches/:id' element={<MatchDetail key={key}/>}></Route>
+            <Route path='/matches/category/:id' element={<Matches key={key}/>}></Route>
             <Route path='/search/:id' element={<SearchResult key={key}/>}></Route>
             <Route path='/contact-us' element={<Contact/>}></Route>
             <Route path='/about-us' element={<About/>}></Route>

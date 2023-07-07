@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import SectionTitle from "../../shared/components/sectionTitle/SectionTitle";
 import DefaultImage from "../../shared/assets/images/default-image.jpeg"
 import BreadcrumbsCustom, {StyledBreadcrumb} from "../../shared/components/breadcrumbs/Breadcrumbs ";
-import moment from "jalali-moment";
+import moment from "moment-jalali";
 
 import "./ClubsList.scss"
 

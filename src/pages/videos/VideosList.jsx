@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Card, Col, Row } from "react-bootstrap";
 import SectionTitle from "../../shared/components/sectionTitle/SectionTitle";
 import BreadcrumbsCustom, {StyledBreadcrumb} from "../../shared/components/breadcrumbs/Breadcrumbs ";
-import moment from "jalali-moment";
+import moment from "moment-jalali";
 
 import "./VideosList.scss"
 
