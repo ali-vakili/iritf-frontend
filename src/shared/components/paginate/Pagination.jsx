@@ -22,7 +22,7 @@ const PaginatedItems = ({ itemsPerPage, data, page }) => {
     const newOffset = (event.selected * itemsPerPage) % data.length;
     setItemOffset(newOffset);
   };
-
+  
   return (
     <>
       {currentItems.length ? (

@@ -22,6 +22,14 @@
       }
     }
 
+    .detail-date{
+      width: fit-content;
+      
+      h6{
+        display: inline-block;
+      }
+    }
+
     .card-info {
       display: flex;
       flex-direction: column;

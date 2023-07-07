@@ -28,14 +28,8 @@
     .date{
       width: fit-content;
       
-      h6:first-child{
-        margin-bottom: 4px;
-        padding: 8px 12px;
-        font-weight: 500;
-        font-family: 16px;
-        background-color: $EighthBlack;
-        border-radius: 4px;
-        color: $SecondBlack;
+      h6{
+        display: inline-block;
       }
     }
 

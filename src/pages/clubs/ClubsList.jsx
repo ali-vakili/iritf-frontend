@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Card, Col, Row } from "react-bootstrap";
 import Button from '@mui/material/Button';
 import SectionTitle from "../../shared/components/sectionTitle/SectionTitle";
@@ -10,6 +10,7 @@ import moment from "jalali-moment";
 import "./ClubsList.scss"
 
 const ClubsList = ({ currentItems }) => {
+  const { id } = useParams();
 
   const persianMonths = [
     'فروردین',
@@ -31,9 +32,22 @@ const ClubsList = ({ currentItems }) => {
       <Row>
         <Col>
           <BreadcrumbsCustom >
-            <StyledBreadcrumb
-              label="باشگاه ها"
-            />
+            {id ?(
+              <>
+                <StyledBreadcrumb
+                  label="باشگاه ها"
+                  component={Link}
+                  to={"/clubs"}
+                />
+                <StyledBreadcrumb
+                  label={currentItems && currentItems[0].category.name}
+                />
+              </>
+            ) :
+              <StyledBreadcrumb
+                label="باشگاه ها"
+              />
+            }
           </BreadcrumbsCustom>
           <SectionTitle title="باشگاه ها" />
           { currentItems && currentItems.map((club) => (

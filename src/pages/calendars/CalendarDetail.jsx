@@ -5,6 +5,7 @@ import BreadcrumbsCustom, {StyledBreadcrumb} from "../../shared/components/bread
 import { Card, Col, Row } from "react-bootstrap";
 import { setPageTittle } from "../../utils/SetTittle";
 import { useParams } from 'react-router-dom';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import DetailShared from "../../shared/components/DetailShared/DetailShared";
 import Comments from "../../shared/components/Comments/Comments";
 import moment from "jalali-moment";
@@ -101,6 +102,15 @@ const CalendarDetail = () => {
                             {calendar.images && calendar.images.map((image) => (
                               <img className="my-4" src={image} alt={calendar.title} style={{"width":"100%", "height":"100%"}}/>
                             ))}
+                            <Row className="flex-column align-items-center justify-content-center my-4">
+                              <h6 style={{"width":"fit-content"}}>برای دانلود و مشاهده کامل فرم ها روی لینک زیر کلیک فرمایید</h6>
+                              {calendar.filesURL && calendar.filesURL.map((file, index) => (
+                                <Link to={file} style={{"fontSize":"16px", "fontWeight":"500", "width":"fit-content", "color":"#33A58D"}}>
+                                  فایل{index}
+                                  <FileDownloadIcon fontSize="large" style={{"height":"64px", "width":"64px"}}/>
+                                </Link>
+                              ))}
+                            </Row>
                           </Col>
                         </Row>
                         <Col sx={12} className='pe-md-4 card-info'>

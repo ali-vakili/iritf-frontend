@@ -14,6 +14,21 @@ const Clubs = () => {
 
   const { id } = useParams();
 
+  const getDataByCategory = async () => {
+    const result = await axios
+      .get(
+        `/admin/clubs/list-by-category/${id}`, {
+          withCredentials: true,
+        }
+      )
+      .then(
+        ((res) => res.data)
+      )
+      .catch((err) => err.response);
+
+    if (result.statusCode === 200) setClubs(result.data.clubs)
+  }
+
   const getData = async () => {
     setError('')
     const result = await axios
@@ -27,20 +42,14 @@ const Clubs = () => {
       )
       .catch((err) => err.response);
 
-    if (result.statusCode === 200) id ? setClubs(filterClubs(id ,result.data.clubs)) : setClubs(result.data.clubs);
+    if (result.statusCode === 200) setClubs(result.data.clubs);
     else (setError(result.data.message))
   }
 
-  const filterClubs = (id ,data) => {
-    const filteredClubs = data.filter((club) => {
-      return club.category._id === id
-    })
-    return filteredClubs;
-  }
 
   useEffect(() => {
     setPageTittle("باشگاه ها")
-    getData();
+    id ? getDataByCategory() : getData();
   }, []);
 
   return (

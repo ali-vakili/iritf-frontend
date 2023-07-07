@@ -25,7 +25,7 @@ const Reports = () => {
       )
       .catch((err) => err.response);
 
-    if (result.statusCode === 200) setReports(result.data.reports)
+    if (result.statusCode === 200) setReports(result.data.report)
   }
 
   const getData = async () => {
@@ -45,7 +45,7 @@ const Reports = () => {
 
   useEffect(() => {
     setPageTittle("گزارش تصویری")
-    id ? getDataByCategory() :getData();
+    id ? getDataByCategory() : getData();
   }, []);
 
   return (

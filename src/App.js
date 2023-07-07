@@ -62,6 +62,7 @@ const App = () => {
             <Route path='/forms/category/:id' element={<Forms key={key}/>}></Route>
             <Route path='/reports' element={<Reports key={key}/>}></Route>
             <Route path='/reports/:id' element={<ReportDetail key={key}/>}></Route>
+            <Route path='/reports/category/:id' element={<Reports key={key}/>}></Route>
             <Route path='/committees' element={<Committees key={key}/>}></Route>
             <Route path='/committees/:id' element={<CommitteeDetail key={key}/>}></Route>
             <Route path='/committees/category/:id' element={<Committees key={key}/>}></Route>

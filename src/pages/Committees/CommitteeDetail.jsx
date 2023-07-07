@@ -6,6 +6,7 @@ import BreadcrumbsCustom, {StyledBreadcrumb} from "../../shared/components/bread
 import { Carousel, Card, Col, Row } from "react-bootstrap";
 import { setPageTittle } from "../../utils/SetTittle";
 import { useParams } from 'react-router-dom';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import DetailShared from "../../shared/components/DetailShared/DetailShared";
 import Comments from "../../shared/components/Comments/Comments";
 import moment from "jalali-moment";
@@ -124,6 +125,17 @@ const CommitteeDetail = () => {
                           <p className='pt-3 mt-3'>
                             {committee.text}
                           </p>
+                          <Row className="flex-column align-items-center justify-content-center my-4">
+                            <Col>
+                              <h6 style={{"width":"fit-content"}}>برای دانلود و مشاهده کامل فرم ها روی لینک زیر کلیک فرمایید</h6>
+                              {committee.filesURL && committee.filesURL.map((file, index) => (
+                                <Link to={file} style={{"fontSize":"16px", "fontWeight":"500", "width":"fit-content", "color":"#33A58D"}}>
+                                  فایل{index + 1}
+                                  <FileDownloadIcon fontSize="large" style={{"height":"64px", "width":"64px"}}/>
+                                </Link>
+                              ))}
+                            </Col>
+                          </Row>
                           <div className="d-flex justify-content-start mt-3 w-100 share">
                             <h5 style={{"color":"#FFF"}}>به اشتراک بگذارید</h5>
                           </div>

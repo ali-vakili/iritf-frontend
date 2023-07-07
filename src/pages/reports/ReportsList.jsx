@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import { Card, Col, Row } from "react-bootstrap";
 import SectionTitle from "../../shared/components/sectionTitle/SectionTitle";
@@ -10,15 +10,29 @@ import moment from "jalali-moment";
 import "./ReportsList.scss"
 
 const ReportsList = ({ currentItems }) => {
+  const { id } = useParams();
 
   return (
     <section className="reports-section">
       <Row>
         <Col>
           <BreadcrumbsCustom >
-            <StyledBreadcrumb
-              label="گزارش تصویری"
-            />
+            {id ? (
+              <>
+                <StyledBreadcrumb
+                  label="گزارش تصویری"
+                  component={Link}
+                  to={"/reports"}
+                />
+                <StyledBreadcrumb
+                  label={currentItems && currentItems[0].category.name}
+                />
+              </>
+            ) :
+              <StyledBreadcrumb
+                label="گزارش تصویری"
+              />
+            }
           </BreadcrumbsCustom>
           <SectionTitle title="گزارش تصویری" />
           { currentItems && currentItems.map((report) => (

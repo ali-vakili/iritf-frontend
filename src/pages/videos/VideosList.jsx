@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Card, Col, Row } from "react-bootstrap";
 import SectionTitle from "../../shared/components/sectionTitle/SectionTitle";
 import BreadcrumbsCustom, {StyledBreadcrumb} from "../../shared/components/breadcrumbs/Breadcrumbs ";
@@ -8,15 +8,29 @@ import moment from "jalali-moment";
 import "./VideosList.scss"
 
 const VideosList = ({ currentItems }) => {
+  const { id } = useParams();
 
   return (
     <section className="videos-section">
       <Row>
         <Col>
           <BreadcrumbsCustom >
-            <StyledBreadcrumb
-              label="ویدیو ها"
-            />
+            {id ? (
+              <>
+                <StyledBreadcrumb
+                  label="ویدیو ها"
+                  component={Link}
+                  to={"/videos"}
+                />
+                <StyledBreadcrumb
+                  label={currentItems && currentItems[0].category.name}
+                />
+              </>
+            ) :
+              <StyledBreadcrumb
+                label="ویدیو ها"
+              />
+            }
           </BreadcrumbsCustom>
           <SectionTitle title="ویدیو ها" />
           { currentItems && currentItems.map((video) => (

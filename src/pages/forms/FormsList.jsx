@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Card, Col, Row } from "react-bootstrap";
 import Button from '@mui/material/Button';
 import SectionTitle from "../../shared/components/sectionTitle/SectionTitle";
@@ -9,6 +9,7 @@ import moment from "jalali-moment";
 import "./FormsList.scss"
 
 const FormsList = ({ currentItems }) => {
+  const { id } = useParams();
 
   const persianMonths = [
     'فروردین',
@@ -30,9 +31,22 @@ const FormsList = ({ currentItems }) => {
       <Row>
         <Col>
           <BreadcrumbsCustom >
-            <StyledBreadcrumb
-              label="فرم ها"
-            />
+            {id ?(
+              <>
+                <StyledBreadcrumb
+                  label="فرم ها"
+                  component={Link}
+                  to={"/forms"}
+                />
+                <StyledBreadcrumb
+                  label={currentItems && currentItems[0].category.name}
+                />
+              </>
+            ) :
+              <StyledBreadcrumb
+                label="فرم ها"
+              />
+            }
           </BreadcrumbsCustom>
           <SectionTitle title="فرم ها" />
           { currentItems && currentItems.map((form) => (

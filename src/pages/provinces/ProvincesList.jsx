@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Card, Col, Row } from "react-bootstrap";
 import SectionTitle from "../../shared/components/sectionTitle/SectionTitle";
 import DefaultImage from "../../shared/assets/images/default-image.jpeg"
@@ -9,6 +9,7 @@ import moment from "jalali-moment";
 import "./ProvincesList.scss"
 
 const ProvincesList = ({ currentItems }) => {
+  const { id } = useParams();
 
   const persianMonths = [
     'فروردین',
@@ -30,9 +31,22 @@ const ProvincesList = ({ currentItems }) => {
       <Row>
         <Col>
           <BreadcrumbsCustom >
-            <StyledBreadcrumb
-              label="استان ها"
-            />
+            {id ?(
+              <>
+                <StyledBreadcrumb
+                  label="استان ها"
+                  component={Link}
+                  to={"/provinces"}
+                />
+                <StyledBreadcrumb
+                  label={currentItems && currentItems[0].category.name}
+                />
+              </>
+            ) :
+              <StyledBreadcrumb
+                label="استان ها"
+              />
+            }
           </BreadcrumbsCustom>
           <SectionTitle title="استان ها" />
           { currentItems && currentItems.map((province) => (
