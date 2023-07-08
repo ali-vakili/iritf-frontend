@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import SocialMedia from '../socialMedia/SocialMedia'
 import Aparat from '../../../shared/assets/svgs/aparat-icon.svg'
 import Button from '@mui/material/Button'
-import Grid from '@mui/material/Grid';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import axios from 'axios';
@@ -15,17 +14,18 @@ const Footer = () => {
   const [success, setSuccess] = useState();
 
 
-  const sendEmail = async() => {
+  const sendEmail = async () => {
     setSuccess("");
     setError("");
     const createResult = await axios
-    .post('/admin/email-news/register', email, {
+    .post('/admin/email-news/register', {
+      email: email,
       withCredentials: true,
     })
     .then((res) => res.data)
     .catch((err) => err.response.data);
 
-    if (createResult.statusCode === 200) {
+    if (createResult.statusCode === 201) {
       setSuccess(true)
       setError(false)
       handleClick({ vertical: 'bottom', horizontal: 'right' })
@@ -48,7 +48,7 @@ const Footer = () => {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
 
-  const handleClick = (newState) => () => {
+  const handleClick = (newState) => {
     setState({ ...newState, open: true });
   };
 
@@ -90,20 +90,32 @@ const Footer = () => {
               required
             />
             {button}
-            <Snackbar
+            {success && (
+              <Snackbar
+                anchorOrigin={{ vertical, horizontal }}
+                autoHideDuration={6000}
+                open={open}
+                onClose={handleClose}
+                key={vertical + horizontal}
+              >
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                  ایمیل شما در خبرنامه ثبت نام شد
+                </Alert>
+              </Snackbar>
+            )}
+            {error && (
+              <Snackbar
               anchorOrigin={{ vertical, horizontal }}
               autoHideDuration={6000}
               open={open}
               onClose={handleClose}
               key={vertical + horizontal}
             >
-              {success && (<Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                ایمیل شما در خبرنامه ثبت نام شد
-              </Alert>)}
-              {error && (<Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+              <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
                 مشکلی پیش آمد ایمیل شما ثبت نشد
-              </Alert>)}
+              </Alert>
             </Snackbar>
+            )}
           </div>
 
         </div>
