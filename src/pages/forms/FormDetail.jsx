@@ -115,7 +115,7 @@ const FormDetail = () => {
                         </Row>
                         <Col sx={12} className='pe-md-4 card-info'>
                           <div className="d-flex justify-content-start mt-3 w-100 share">
-                            <h5 style={{"color":"#FFF"}}>به اشتراک بگذارید</h5>
+                            <h6 style={{"color":"#FFF"}}>به اشتراک بگذارید</h6>
                           </div>
                         </Col>
                       </Row>

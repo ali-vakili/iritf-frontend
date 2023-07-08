@@ -4,6 +4,8 @@ import axios from "axios";
 import { Link } from 'react-router-dom'
 import BreadcrumbsCustom, {StyledBreadcrumb} from "../../shared/components/breadcrumbs/Breadcrumbs ";
 import { Card, Col, Row, Modal, Form } from "react-bootstrap";
+import Toast from 'react-bootstrap/Toast';
+import ToastContainer from 'react-bootstrap/ToastContainer';
 import { setPageTittle } from "../../utils/SetTittle";
 import { useParams } from 'react-router-dom';
 import DetailShared from "../../shared/components/DetailShared/DetailShared";
@@ -24,7 +26,10 @@ const MatchDetail = () => {
   const [mobileNumber, setMobileNumber] = useState('');
   const [nationalId, setNationalId] = useState('');
   const [image, setImage] = useState(null);
+  const [position] = useState('bottom-start');
+  const [showToast, setShowToast] = useState(false);
 
+  const { id } = useParams();
 
   const handleRegister = async () => {
     const Data = new FormData();
@@ -34,8 +39,9 @@ const MatchDetail = () => {
     Data.append("nationalCode", nationalId);
     Data.append("image", image);
 
+
     const createResult = await axios
-      .post('/admin/matches/register', Data, {
+      .post(`/admin/matches/register/${id}`, Data, {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       })
@@ -45,7 +51,9 @@ const MatchDetail = () => {
     if (createResult.statusCode === 200) {
       console.log(createResult)
     } else {
+      // toggle();
       console.log(createResult)
+      handleCloseModal();
     }
   };
 
@@ -57,7 +65,17 @@ const MatchDetail = () => {
     setShowModal(true);
   };
 
-  const { id } = useParams();
+  const hideAndShowToast = () => setShowToast(!showToast);
+
+  const toggle = () => {
+
+    if (!showToast) {
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 6000);
+    }
+  }
 
   const persianMonths = [
     'فروردین',
@@ -168,7 +186,7 @@ const MatchDetail = () => {
                               </Row>
                               <Col sx={12} className='pe-md-4 card-info'>
                                 <div className="d-flex justify-content-start align-items-center mt-3 w-100 share">
-                                  <h5 className="m-0" style={{"color":"#FFF"}}>به اشتراک بگذارید</h5>
+                                  <h6 className="m-0" style={{"color":"#FFF"}}>به اشتراک بگذارید</h6>
                                   <div className='card-action d-flex justify-content-between align-items-center mx-3'>
                                     <Button onClick={handleOpenModal} variant="contained" style={{"padding":"12px"}}>ثبت نام در مسابقه</Button>
                                   </div>
@@ -181,9 +199,26 @@ const MatchDetail = () => {
                         <Comments />
                       </Col>
                     </Row>
+                      {/* <ToastContainer
+                        className="p-3"
+                        position={position}
+                        style={{ 
+                          "position": 'fixed',
+                          "bottom": '0',
+                          "zIndex": '9999',
+                        }}
+                      >
+                        <Toast show={showToast} onClose={hideAndShowToast} bg="success" animation={true}>
+                          <Toast.Header closeButton={true}>
+                            <strong className="me-auto">iritf</strong>
+                          </Toast.Header>
+                          <Toast.Body>ثبت در مسابقه با موفقیت انجام شد.</Toast.Body>
+                        </Toast>
+                      </ToastContainer> */}
+    
                     <Modal show={showModal} onHide={handleCloseModal} centered>
                       <Modal.Header closeButton className="flex-row-reverse">
-                        <Modal.Title>ثبت نام مسابقه</Modal.Title>
+                        <Modal.Title>ثبت نام در مسابقه</Modal.Title>
                       </Modal.Header>
                       <Modal.Body style={{"direction":"rtl"}}>
                         <Form>

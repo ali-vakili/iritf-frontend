@@ -28,11 +28,23 @@
 }
 
 .share {
-  h5 {
+  h6 {
     padding: 12px;
     background-color: $Primary;
     color: $white;
     margin: 0;
     border-radius: 4px;
   }
+}
+
+.toast {
+  direction: rtl;
+}
+
+.toast-header {
+  justify-content: space-between;
+}
+
+.toast-body {
+  color: $white;
 }
