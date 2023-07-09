@@ -83,6 +83,7 @@ const MatchesList = ({ currentItems }) => {
                           />
                         </Col>
                         <Col md={6} className='pe-md-4 card-info'>
+                          <p>{match.description}</p>
                           <div className='card-action d-flex justify-content-between align-items-center'>
                             <Button variant="contained" className='primary-color-btn'>مشاهده مسابقات</Button>
                           </div>
