@@ -66,7 +66,7 @@ const DetailShared = ({path}) => {
         <Col className='d-flex'>
           {data && data.map((eachData)=> (
             <Col md={4} className="image">
-              <Link to={`/${path}/${eachData._id}`}>
+              <Link to={`/${path}/${eachData._id}`} key={eachData._id}>
                 {path !== "videos" ? (
                   <div key={eachData._id}>
                     <img

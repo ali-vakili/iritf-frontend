@@ -11,6 +11,11 @@ header {
     }
   }
 
+  img.banner{
+    max-height: 280px;
+    vertical-align: top;
+  }
+
   div.top-bar {
     display: flex;
     align-items: center;

@@ -45,7 +45,7 @@ const TopBar = () => {
           <DateTime />
         </div>
       )}
-      <img src={banner} alt="فدراسیون تنیس جمهوری اسلامی ایران"  style={{"width" : "100%", "height":"auto"}}/>
+      <img className='banner' src={banner} alt="هیئت تنیس جمهوری اسلامی ایران" style={{"width" : "100%", "height":"auto"}}/>
       {!isSmallScreen && <NavBar /> }
     </header>
   );

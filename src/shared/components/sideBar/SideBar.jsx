@@ -150,10 +150,10 @@ const SideBar = () => {
             </div>
           </TabPanel>
           <TabPanel value={value} index={1}>
-            قسمت 3
+            
           </TabPanel>
           <TabPanel value={value} index={0}>
-            قسمت 4
+            
           </TabPanel>
         </Box>
       </Row>

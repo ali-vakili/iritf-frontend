@@ -121,7 +121,7 @@ const Footer = () => {
         </div>
         <div className='rights'>
           <div className='rights-content'>
-          <p className='rights-text'>تمام حقوق مادی و معنوی این وبسایت متعلق به فدراسیون تنیس جمهوری اسلامی ایران میباشد .</p>
+          <p className='rights-text'>تمام حقوق مادی و معنوی این وبسایت متعلق به هیئت تنیس جمهوری اسلامی ایران میباشد .</p>
           </div>
         </div>
       </div>

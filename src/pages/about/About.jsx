@@ -18,7 +18,7 @@ const About = () => {
           </BreadcrumbsCustom>
           <SectionTitle title={"درباره ما"} />
           <div className="d-flex justify-content-end mt-3">
-            <h6>فدراسیون تنیس جمهوری اسلامی ایران</h6>
+            <h6>هیئت تنیس جمهوری اسلامی ایران</h6>
           </div>
           <img src={AboutIritf} alt="about-iritf" className="w-100 mt-4"/>
           <div className="d-flex justify-content-end mt-5 w-100 share">

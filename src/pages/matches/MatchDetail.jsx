@@ -20,6 +20,8 @@ import "./MatchesList.scss"
 const MatchDetail = () => {
   const [match, setMatch] = useState();
   const [error, setError] = useState();
+  const [success, setSuccess] = useState();
+  const [requestError, setRequestError] = useState();
   const [showModal, setShowModal] = useState(false);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -32,13 +34,14 @@ const MatchDetail = () => {
   const { id } = useParams();
 
   const handleRegister = async () => {
+    setSuccess("");
+    setRequestError("");
     const Data = new FormData();
     Data.append("first_name", firstName);
     Data.append("last_name", lastName);
     Data.append("mobile", mobileNumber);
     Data.append("nationalCode", nationalId);
     Data.append("image", image);
-
 
     const createResult = await axios
       .post(`/admin/matches/register/${id}`, Data, {
@@ -49,11 +52,17 @@ const MatchDetail = () => {
       .catch((err) => err.response.data);
 
     if (createResult.statusCode === 200) {
-      console.log(createResult)
-    } else {
-      // toggle();
-      console.log(createResult)
+      setSuccess(createResult.data.message);
+      setRequestError(false);
+      toggle();
       handleCloseModal();
+      hideAndShowToast();
+    } else {
+      setSuccess(false);
+      setRequestError(createResult.message);
+      toggle();
+      handleCloseModal();
+      hideAndShowToast();
     }
   };
 
@@ -126,7 +135,7 @@ const MatchDetail = () => {
               <>
                 {!moment(match.createdAt, 'jYYYY/jMM/jDD').isBefore(currentDate, 'day') && (
                   <>
-                    <Row>
+                    <Row key={match._id}>
                       <Col>
                         <BreadcrumbsCustom >
                           {id ?(
@@ -175,11 +184,17 @@ const MatchDetail = () => {
                                     : { width: '100%', height: "100%" }
                                 }
                               />
+                              <Row>
+                                <div className="mt-3">
+                                  <span>درباره مسابقه:</span>
+                                  <p className="mt-2">{match.description}</p>
+                                </div>
+                              </Row>
                               <Row className="flex-column align-items-center justify-content-center my-4">
                                 <h6 style={{"width":"fit-content"}}>برای دانلود و مشاهده کامل مسابقه روی لینک زیر کلیک فرمایید</h6>
                                 {match.filesURL && match.filesURL.length > 0 && match.filesURL.map((file) => (
                                   <Link to={file} style={{"width":"fit-content", "color":"#33A58D"}} className="mt-2">
-                                    دانلود مسابقات
+                                    دانلود مسابقه
                                     <FileDownloadIcon fontSize="large" style={{"height":"64px", "width":"64px"}}/>
                                   </Link>
                                 ))}
@@ -199,7 +214,7 @@ const MatchDetail = () => {
                         <Comments />
                       </Col>
                     </Row>
-                      {/* <ToastContainer
+                      <ToastContainer
                         className="p-3"
                         position={position}
                         style={{ 
@@ -208,13 +223,23 @@ const MatchDetail = () => {
                           "zIndex": '9999',
                         }}
                       >
-                        <Toast show={showToast} onClose={hideAndShowToast} bg="success" animation={true}>
-                          <Toast.Header closeButton={true}>
-                            <strong className="me-auto">iritf</strong>
-                          </Toast.Header>
-                          <Toast.Body>ثبت در مسابقه با موفقیت انجام شد.</Toast.Body>
-                        </Toast>
-                      </ToastContainer> */}
+                        {success && (
+                          <Toast show={showToast} onClose={hideAndShowToast} bg="success" animation={true}>
+                            <Toast.Header closeButton={true}>
+                              <strong className="me-auto">iritf</strong>
+                            </Toast.Header>
+                            <Toast.Body>{success}</Toast.Body>
+                          </Toast>
+                        )}
+                        {requestError && (
+                          <Toast show={showToast} onClose={hideAndShowToast} bg="danger" animation={true}>
+                            <Toast.Header closeButton={true}>
+                              <strong className="me-auto">iritf</strong>
+                            </Toast.Header>
+                            <Toast.Body>{requestError}</Toast.Body>
+                          </Toast>
+                        )}
+                      </ToastContainer>
     
                     <Modal show={showModal} onHide={handleCloseModal} centered>
                       <Modal.Header closeButton className="flex-row-reverse">

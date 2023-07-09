@@ -13,6 +13,18 @@ const Comments = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [webSite, setWebSite] = useState();
+  const [success, setSuccess] = useState();
+
+
+  const sendCommend = () => {
+    if (name && email && webSite && textAreaValue) {
+      setSuccess(true);
+      handleClick({ vertical: 'bottom', horizontal: 'right' })
+    }
+    else {
+      handleClick({ vertical: 'bottom', horizontal: 'right' })
+    }
+  }
 
   const [state, setState] = useState({
     open: false,
@@ -26,7 +38,7 @@ const Comments = () => {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
 
-  const handleClick = (newState) => () => {
+  const handleClick = (newState) => {
     setState({ ...newState, open: true });
   };
 
@@ -39,7 +51,7 @@ const Comments = () => {
       <Grid container justifyContent="center">
         <Grid item xs={6} textAlign="right">
             <div div className='card-action d-flex justify-content-between align-items-center mt-5'>
-              <Button onClick={handleClick({ vertical: 'bottom', horizontal: 'right' })} variant="contained" className='primary-color-btn'>فرستادن دیدگاه</Button>
+              <Button onClick={sendCommend} variant="contained" className='primary-color-btn'>فرستادن دیدگاه</Button>
             </div>
         </Grid>
       </Grid>
@@ -96,7 +108,8 @@ const Comments = () => {
               </Col>
             </Row>
             {button}
-            <Snackbar
+            {success ? (
+              <Snackbar
               anchorOrigin={{ vertical, horizontal }}
               autoHideDuration={6000}
               open={open}
@@ -104,9 +117,22 @@ const Comments = () => {
               key={vertical + horizontal}
             >
               <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                نظر شما ثبت شد
+                نظر شما ثبت شد و بعد از تایید نمایش داده خواهد شد.
               </Alert>
             </Snackbar>
+            ):(
+            <Snackbar
+              anchorOrigin={{ vertical, horizontal }}
+              autoHideDuration={6000}
+              open={open}
+              onClose={handleClose}
+              key={vertical + horizontal}
+            >
+              <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                لطفا فیلد ها را کامل پر کنید.
+              </Alert>
+            </Snackbar>
+            )}
           </div>
         </div>
       </Col>
