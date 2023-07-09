@@ -145,7 +145,9 @@ const HamburgerMenu = () => {
               <div className='search-mobile'>
                 <InputGroup>
                   <InputGroup.Text className="bg-white border-0 search-icon">
-                    <SearchRoundedIcon />
+                    <Link to={`/search/${searchValue}`} style={{"color":"#FFF"}} onClick={closeAndOpenHamburgerMenu}>
+                      <SearchRoundedIcon />
+                    </Link>
                   </InputGroup.Text>
                   <input
                     placeholder="جستجو"
