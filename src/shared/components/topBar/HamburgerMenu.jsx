@@ -40,6 +40,7 @@ const HamburgerMenu = () => {
     "تقویم ها" : "calendars",
     "فرم ها" : "forms",
     "باشگاه ها" : "clubs",
+    "کمیته ها" : "committees",
     "تماس با ما" : "contact-us",
     "درباره ما" : "about-us",
     "سامانه ملی تنیس" : "https://www.itfipin.ir/Home/LogIn",
