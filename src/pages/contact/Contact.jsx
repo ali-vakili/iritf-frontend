@@ -19,7 +19,7 @@ const Contact = () => {
       <Row>
         <Col sx={12} className="d-flex flex-column align-items-center mt-4">
           <h4>اطلاعات تماس</h4>
-          <h6 className="mt-3">تبریز نصف راه خ ورزش مجموعه ورزشی شیخ محمد خیابانی</h6>
+          <h6 className="mt-3">تبریز نصف راه خیابان ورزش مجموعه ورزشی شیخ محمد خیابانی</h6>
           <div className="mt-3">
             <span><h6 className="d-inline px-2">09999345727</h6></span>
             <PhoneIcon />
