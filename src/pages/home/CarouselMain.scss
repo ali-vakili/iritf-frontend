@@ -41,6 +41,14 @@ div.carousel-container {
         width: 15% !important;
       }
     }
+
+    span {
+      background-color: $Primary !important;
+      width: 2.2rem;
+      height: 2.2rem;
+      padding: 8px;
+      border-radius: 4px;
+    }
   }
 
   .caption-background {
