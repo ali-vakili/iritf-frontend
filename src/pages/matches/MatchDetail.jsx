@@ -226,7 +226,7 @@ const MatchDetail = () => {
                         {success && (
                           <Toast show={showToast} onClose={hideAndShowToast} bg="success" animation={true}>
                             <Toast.Header closeButton={true}>
-                              <strong className="me-auto">iritf</strong>
+                              <strong className="me-auto">هیئت تنیس</strong>
                             </Toast.Header>
                             <Toast.Body>{success}</Toast.Body>
                           </Toast>
@@ -234,7 +234,7 @@ const MatchDetail = () => {
                         {requestError && (
                           <Toast show={showToast} onClose={hideAndShowToast} bg="danger" animation={true}>
                             <Toast.Header closeButton={true}>
-                              <strong className="me-auto">iritf</strong>
+                              <strong className="me-auto">هیئت تنیس</strong>
                             </Toast.Header>
                             <Toast.Body>{requestError}</Toast.Body>
                           </Toast>

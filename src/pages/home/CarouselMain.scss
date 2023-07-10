@@ -5,61 +5,14 @@ div.carousel-container {
   max-height: 376px; 
   overflow: hidden;
 
-  // @include media("<=Sdesktop"){
-  //   &{
-  //     height: 360px; 
-  //   }
-  // }
-
-  // @include media("<=992px", ">tablet"){
-  //   &{
-  //     height: 480px; 
-  //   }
-  // }
-
-  // @include media("<=Stablet"){
-  //   &{
-  //     height: 300px; 
-  //   }
-  // }
-
-  // @include media("<=Lphone"){
-  //   &{
-  //     height: 260px; 
-  //   }
-  // }
 
   div.carousel-item{
     max-height: 376px;
     overflow: hidden;
-
-    // @include media("<=Sdesktop"){
-    //   &{
-    //     height: 360px; 
-    //   }
-    // }
-
-    // @include media("<=992px", ">tablet"){
-    //   &{
-    //     height: 480px; 
-    //   }
-    // }
-
-    // @include media("<=Stablet"){
-    //   &{
-    //     height: 300px; 
-    //   }
-    // }
-
-    // @include media("<=Lphone"){
-    //   &{
-    //     height: 260px; 
-    //   }
-    // }
     
     img.carousel-image {
-      object-fit: fill;
-      height: 100%;
+      height: 350px;
+      object-fit: contain;
       user-select: none;
     }
 

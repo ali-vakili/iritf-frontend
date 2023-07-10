@@ -4,9 +4,11 @@ import { Col, Row } from "react-bootstrap";
 import BreadcrumbsCustom, {StyledBreadcrumb} from "../../shared/components/breadcrumbs/Breadcrumbs ";
 import SideBar from "../../shared/components/sideBar/SideBar";
 import AboutIritf from "./About.jpg"
+import { setPageTittle } from "../../utils/SetTittle";
 
 
 const About = () => {
+  setPageTittle("درباره")
   return ( 
     <section className="contact-us-section">
       <Row className='m-0'>
@@ -21,7 +23,7 @@ const About = () => {
             <h6>هیئت تنیس جمهوری اسلامی ایران</h6>
           </div>
           <img src={AboutIritf} alt="about-iritf" className="w-100 mt-4"/>
-          <div className="d-flex justify-content-end mt-5 w-100 share">
+          <div className="d-flex justify-content-end mt-5 w-100 share mb-4">
             <h6>به اشتراک بگذارید</h6>
           </div>
         </Col>

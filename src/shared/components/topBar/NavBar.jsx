@@ -73,11 +73,11 @@ const NavBar = () => {
           <>
             {category.name === "خانه" &&  (
               <li className='menu-item menu-item-home' key={category._id}>
-                <Link to="/" title='Home'><HomeIcon style={(location.pathname === "/") ? { color: "#008F70"} :{}}/></Link>
+                <Link to="/" title='Home'><HomeIcon style={(location.pathname === "/") ? { color: "#00adef"} :{}}/></Link>
               </li>
             )} 
             {category.name !== "خانه" &&  (
-              <li className={`menu-item ${category.children.length > 0 && "menu-item-has-children"}`} key={category._id} style={(location.pathname === `/${paths[category.name]}`) ? { backgroundColor : "#008F70"} :{}}>
+              <li className={`menu-item ${category.children.length > 0 && "menu-item-has-children"}`} key={category._id} style={(location.pathname === `/${paths[category.name]}`) ? { backgroundColor : "#00adef"} :{}}>
                 <Link className="parent-link" style={(location.pathname === `/${paths[category.name]}`) ? { color: "#FFF"} :{}} to={`/${paths[category.name]}`}>
                   {category.name}
                   {category.children.length > 0 && <span><ArrowDropDownIcon /></span>}

@@ -9,7 +9,7 @@ import "./Breadcrumb.scss"
 
 const StyledBreadcrumb = styled(Chip)(({ theme }) => {
   const backgroundColor = theme.palette.grey[100]
-  const hoveFocusColor = "#66BCA9"
+  const hoveFocusColor = "#33BDF2"
   return {
     backgroundColor,
     height: theme.spacing(3),

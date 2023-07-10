@@ -66,18 +66,22 @@ const RanksHome = ({ data }) => {
               <Col md={6}>
                 {data && data.ranks.map((rank, index) => (
                   <>
-                    {index < 1 && rank.category.name === "رنکینگ آقایان" &&  (
-                      <Link to={`/ranks/${rank._id}`}>
-                        <div className='top-rank'>
-                          <img
-                            src={rank.imagesURL ? rank.imagesURL[0] : rank.imageURL ? rank.imageURL : DefaultImage}
-                            style={{ width: '100%' }}
-                            alt={rank.title}
-                          />
-                          <h5>{rank.title}</h5>
-                          <Button variant="contained" className='primary-color-btn'>ادامه خبر</Button>
-                        </div>
-                      </Link>
+                    {rank.category.name === "رنکینگ آقایان" &&  (
+                      <>
+                        {index < 1 && (
+                          <Link to={`/ranks/${rank._id}`}>
+                            <div className='top-rank'>
+                              <img
+                                src={rank.imagesURL ? rank.imagesURL[0] : rank.imageURL ? rank.imageURL : DefaultImage}
+                                style={{ width: '100%' }}
+                                alt={rank.title}
+                              />
+                              <h5>{rank.title}</h5>
+                              <Button variant="contained" className='primary-color-btn'>ادامه خبر</Button>
+                            </div>
+                          </Link>
+                        )}
+                      </>
                     )}
                   </>
                 ))}
@@ -85,15 +89,19 @@ const RanksHome = ({ data }) => {
               <Col md={6}>
                 {data && data.ranks.map((rank, index) => (
                   <>
-                    {index < 5 && index >= 1 && rank.category.name === "رنکینگ آقایان" &&  (
-                      <Link to={`/ranks/${rank._id}`}>
-                        <div className="ranks">
-                          <img src={rank.imagesURL ? rank.imagesURL[0] : rank.imageURL ? rank.imageURL : DefaultImage} alt={rank.title}/>
-                          <div className='ranks-info'>
-                            <p>{rank.title}</p>
-                          </div>
-                        </div>
-                      </Link>
+                    {rank.category.name === "رنکینگ آقایان" &&  (
+                      <>
+                        {index < 5 && index >= 1 && (
+                          <Link to={`/ranks/${rank._id}`}>
+                            <div className="ranks">
+                              <img src={rank.imagesURL ? rank.imagesURL[0] : rank.imageURL ? rank.imageURL : DefaultImage} alt={rank.title}/>
+                              <div className='ranks-info'>
+                                <p>{rank.title}</p>
+                              </div>
+                            </div>
+                          </Link>
+                        )}
+                      </>
                     )}
                   </>
                 ))}
@@ -107,18 +115,23 @@ const RanksHome = ({ data }) => {
               <Col md={6}>
                 {data && data.ranks.map((rank, index) => (
                   <>
-                    {index < 1 && rank.category.name === "رنکینگ بانوان" &&  (
-                      <Link to={`/ranks/${rank._id}`}>
-                        <div className='top-rank'>
-                          <img
-                            src={rank.imagesURL ? rank.imagesURL[0] : rank.imageURL ? rank.imageURL : DefaultImage}
-                            style={{ width: '100%' }}
-                            alt={rank.title}
-                          />
-                          <h5>{rank.title}</h5>
-                          <Button variant="contained" className='primary-color-btn'>ادامه خبر</Button>
-                        </div>
-                      </Link>
+                    {rank.category.name === "رنکینگ بانوان" &&  (
+                      <>
+                       {index < 1 && (
+
+                        <Link to={`/ranks/${rank._id}`}>
+                          <div className='top-rank'>
+                            <img
+                              src={rank.imagesURL ? rank.imagesURL[0] : rank.imageURL ? rank.imageURL : DefaultImage}
+                              style={{ width: '100%' }}
+                              alt={rank.title}
+                            />
+                            <h5>{rank.title}</h5>
+                            <Button variant="contained" className='primary-color-btn'>ادامه خبر</Button>
+                          </div>
+                        </Link>
+                       )}
+                      </>
                     )}
                   </>
                 ))}
@@ -126,15 +139,19 @@ const RanksHome = ({ data }) => {
               <Col md={6}>
                 {data && data.ranks.map((rank, index) => (
                   <>
-                    {index < 5 && index >= 1 && rank.category.name === "رنکینگ بانوان" &&  (
-                      <Link to={`/ranks/${rank._id}`}>
-                        <div className="ranks">
-                          <img src={rank.imagesURL ? rank.imagesURL[0] : rank.imageURL ? rank.imageURL : DefaultImage} alt={rank.title}/>
-                          <div className='ranks-info'>
-                            <p>{rank.title}</p>
-                          </div>
-                        </div>
-                      </Link>
+                    {rank.category.name === "رنکینگ بانوان" &&  (
+                      <>
+                        {index < 5 && index >= 1 && (
+                          <Link to={`/ranks/${rank._id}`}>
+                            <div className="ranks">
+                              <img src={rank.imagesURL ? rank.imagesURL[0] : rank.imageURL ? rank.imageURL : DefaultImage} alt={rank.title}/>
+                              <div className='ranks-info'>
+                                <p>{rank.title}</p>
+                              </div>
+                            </div>
+                          </Link>
+                        )}
+                      </>
                     )}
                   </>
                 ))}

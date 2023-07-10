@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import axios from 'axios';
 import { InputGroup } from 'react-bootstrap';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
@@ -26,6 +26,7 @@ const HamburgerMenu = () => {
   const [categories, setCategories] = useState([]);
 
   const hamburgerMenu = useRef();
+  const location = useLocation();
 
   const theme = useTheme();
   const isMdBreakpoint = useMediaQuery(theme.breakpoints.up('sm'));
@@ -169,15 +170,15 @@ const HamburgerMenu = () => {
                       <Link to={"/"}>
                         <ListItemButton className='border-bottom'>
                           <ListItemIcon>
-                            <HomeIcon />
+                            <HomeIcon style={(location.pathname === "/") ? { color: "#00adef"}:{}}/>
                           </ListItemIcon>
                             <ListItemText primary="خانه" />
                         </ListItemButton>
                       </Link>
                     )}
                     {category.name !== "خانه" &&  (
-                      <ListItemButton className={`${classNames(category.children.length > 0 && { expanded: expands.length > 0 && expands.some((nav) => nav.id === category._id ) })} border-bottom` } key={category.id}>
-                        <Link to={`/${paths[category.name]}`} className='w-100' onClick={closeAndOpenHamburgerMenu}>
+                      <ListItemButton style={(location.pathname === `/${paths[category.name]}`) ? { backgroundColor: "#00adef", color: "#FFF"}:{}} className={`${classNames(category.children.length > 0 && { expanded: expands.length > 0 && expands.some((nav) => nav.id === category._id ) })} border-bottom` } key={category.id}>
+                        <Link to={`/${paths[category.name]}`} className='w-100' onClick={closeAndOpenHamburgerMenu} >
                           <ListItemText primary={category.name} />
                         </Link>
                         { category.children.length > 0 && (

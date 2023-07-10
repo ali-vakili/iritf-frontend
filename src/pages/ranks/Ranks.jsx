@@ -25,7 +25,7 @@ const Ranks = () => {
       )
       .catch((err) => err.response);
 
-    if (result.statusCode === 200) setRanks(result.data.ranks)
+    if (result.statusCode === 200) setRanks(result.data.rank)
   }
 
   const getData = async () => {
