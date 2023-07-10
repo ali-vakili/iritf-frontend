@@ -136,7 +136,7 @@ const SideBar = () => {
                   </Link>
                 )}
                 {randomRank && (
-                  <Link to={`/news/${randomRank._id}`} key={randomRank._id}>
+                  <Link to={`/ranks/${randomRank._id}`} key={randomRank._id}>
                     <div className='side-bar-list'>
                       <img src={randomRank.imagesURL ? randomRank.imagesURL[0] : randomRank.imageURL ? randomRank.imageURL : DefaultImage} alt={randomRank.title}/>
                       <div className='side-bar-info'>
