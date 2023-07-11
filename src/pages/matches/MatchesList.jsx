@@ -51,7 +51,6 @@ const MatchesList = ({ currentItems }) => {
               />
             }
           </BreadcrumbsCustom>
-          <SectionTitle title="مسابقات" />
           { currentItems && currentItems.map((match) => (
             <>
               {!moment(match.createdAt, 'jYYYY/jMM/jDD').isBefore(currentDate, 'day') && (

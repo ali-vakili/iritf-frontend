@@ -34,7 +34,6 @@ const ReportsList = ({ currentItems }) => {
               />
             }
           </BreadcrumbsCustom>
-          <SectionTitle title="گزارش تصویری" />
           { currentItems && currentItems.map((report) => (
             <Link to={`/reports/${report._id}`} key={report._id}>
               <Card className="mt-3">

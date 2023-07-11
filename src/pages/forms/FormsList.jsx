@@ -48,7 +48,6 @@ const FormsList = ({ currentItems }) => {
               />
             }
           </BreadcrumbsCustom>
-          <SectionTitle title="فرم ها" />
           { currentItems && currentItems.map((form) => (
             <Link to={`/forms/${form._id}`} key={form._id}>
               <Card className="mt-3">

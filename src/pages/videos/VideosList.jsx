@@ -32,7 +32,6 @@ const VideosList = ({ currentItems }) => {
               />
             }
           </BreadcrumbsCustom>
-          <SectionTitle title="ویدیو ها" />
           { currentItems && currentItems.map((video) => (
             <Link to={`/videos/${video._id}`} key={video._id}>
               <Card className="mt-3">

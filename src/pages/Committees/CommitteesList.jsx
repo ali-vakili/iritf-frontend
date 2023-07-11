@@ -48,7 +48,6 @@ const CommitteesList = ({ currentItems }) => {
               />
             }
           </BreadcrumbsCustom>
-          <SectionTitle title="کمیته ها" />
           { currentItems && currentItems.map((committee) => (
             <Link to={`/committees/${committee._id}`} key={committee._id}>
               <Card className="mt-3">

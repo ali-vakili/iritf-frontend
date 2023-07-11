@@ -51,7 +51,6 @@ const NewsList = ({ currentItems }) => {
               />
             }
           </BreadcrumbsCustom>
-          <SectionTitle title="اخبار" />
           { currentItems && currentItems.map((news) => (
             <Link to={`/news/${news._id}`} key={news._id}>
               <Card className="mt-3">

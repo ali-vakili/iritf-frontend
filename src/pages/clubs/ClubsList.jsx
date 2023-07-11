@@ -49,7 +49,6 @@ const ClubsList = ({ currentItems }) => {
               />
             }
           </BreadcrumbsCustom>
-          <SectionTitle title="باشگاه ها" />
           { currentItems && currentItems.map((club) => (
             <Link to={`/clubs/${club._id}`} key={club._id}>
               <Card className="mt-3">

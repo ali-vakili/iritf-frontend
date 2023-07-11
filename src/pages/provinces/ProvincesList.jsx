@@ -48,7 +48,6 @@ const ProvincesList = ({ currentItems }) => {
               />
             }
           </BreadcrumbsCustom>
-          <SectionTitle title="استان ها" />
           { currentItems && currentItems.map((province) => (
             <Link to={`/provinces/${province._id}`} key={province._id}>
               <Card className="mt-3">
