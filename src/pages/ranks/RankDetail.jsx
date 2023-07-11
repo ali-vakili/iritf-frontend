@@ -99,6 +99,14 @@ const RankDetail = () => {
                             <h6 className="mt-3"><span>{rank.category.name}</span></h6>
                           </div>
                         </Row>
+                        <Row>
+                          {rank.imageURL && (
+                            <Card.Img 
+                              src={rank.imageURL}
+                              alt={rank.title}
+                            />
+                          )}
+                        </Row>
                         <Row className="flex-column align-items-center justify-content-center my-4">
                           <h6 style={{"width":"fit-content"}}>برای دانلود و مشاهده کامل رنکینگ روی لینک زیر کلیک فرمایید</h6>
                           {rank.filesURL && rank.filesURL.length > 0 && rank.filesURL.map((file) => (

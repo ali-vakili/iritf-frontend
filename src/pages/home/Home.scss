@@ -194,13 +194,34 @@ div.ranking-iritf {
   }
 }
 
+.less-reports {
+  display: flex;
+
+  a{
+    padding-left: 16px;
+  }
+}
 
 div.image-reports-slider {
   margin-top: 16px;
   margin-bottom: 32px;
 
+  a {
+    display: inline-block;
+    // width: fit-content;
+  }
+
+  .single-image{
+    object-fit: cover;
+    min-height: 140px;
+    height: 100%;
+    width: 100%;
+  }
+
   div.image-report {
     direction: rtl;
+    width: fit-content;
+
     p{
       font-size: 14px;
       padding: 12px 0;

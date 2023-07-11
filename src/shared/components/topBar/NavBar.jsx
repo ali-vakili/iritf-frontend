@@ -49,19 +49,19 @@ const NavBar = () => {
   const createChildList = (children, topPatentPath) => {
     return(
       <>
-        {children.map((child) => (
-          <ul className='sub-menu from-sub-menu menu-sub-content' key={child._id}>
-            <li className={classNames('menu-item', {
-              'menu-item-has-children': child.children.length > 0
-            })}>
-              <Link to={`/${topPatentPath}/category/${child._id}`}>
-                {child.name}
-              {child.children.length > 0 && <span><KeyboardArrowLeftIcon /></span>}
-              </Link>
-              {child.children.length > 0 && createChildList(child.children)}
-            </li>
-          </ul>
-        ))}
+        <ul className='sub-menu from-sub-menu menu-sub-content'>
+          {children.map((child) => (
+              <li className={classNames('menu-item', {
+                'menu-item-has-children': child.children.length > 0
+              })} key={child._id}>
+                <Link to={`/${topPatentPath}/category/${child._id}`}>
+                  {child.name}
+                {child.children.length > 0 && <span><KeyboardArrowLeftIcon /></span>}
+                </Link>
+                {child.children.length > 0 && createChildList(child.children)}
+              </li>
+          ))}
+        </ul>
       </>
     )
   }

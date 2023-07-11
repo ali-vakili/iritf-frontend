@@ -40,7 +40,6 @@ const RanksHome = ({ data }) => {
   const mensRank = data && data.ranks.filter((rank) => {
     return rank.category.name === "رنکینگ آقایان"
   });
-  console.log(mensRank)
   const wemenRank = data && data.ranks.filter((rank) => {
     return rank.category.name === "رنکینگ بانوان"
   });

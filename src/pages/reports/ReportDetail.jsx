@@ -97,7 +97,7 @@ const ReportDetail = () => {
                           </div>
                         </Row>
                         <Row>
-                          {report.images && report.images.map((image) => (
+                          {report.imagesURL && report.imagesURL.map((image) => (
                             <Col md={4}>
                               <img className="my-4" src={image} alt={report.title} style={{"width":"100%", "height":"100%"}}/>
                             </Col>
