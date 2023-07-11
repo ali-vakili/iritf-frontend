@@ -58,7 +58,7 @@ const NavBar = () => {
                   {child.name}
                 {child.children.length > 0 && <span><KeyboardArrowLeftIcon /></span>}
                 </Link>
-                {child.children.length > 0 && createChildList(child.children)}
+                {child.children.length > 0 && createChildList(child.children, topPatentPath)}
               </li>
           ))}
         </ul>

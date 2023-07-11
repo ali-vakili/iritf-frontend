@@ -85,7 +85,7 @@ const HamburgerMenu = () => {
             </ListItemButton>
             {child.children !== undefined && child.children.length > 0 && (
               <Collapse in={expands.some((nav) => nav.id === child._id)} unmountOnExit>
-                {createChildList(child.children)}
+                {createChildList(child.children, topParentPath)}
               </Collapse>
             )}
           </>
