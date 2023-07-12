@@ -38,23 +38,25 @@ const RanksHome = ({ data }) => {
   const [value, setValue] = useState(3);
   const mensRank =
     data &&
-    data.ranks.filter((rank) => {
-      return rank.title.match("بزرگسالان") || rank.title.match("پسران");
-    }).slice(0,5);
+    data.ranks
+      .filter((rank) => {
+        return rank.title.match("بزرگسالان") || rank.title.match("پسران");
+      })
+      .slice(0, 5);
   const wemenRank =
     data &&
     data.ranks.filter((rank) => {
-      return rank.category.name.match("بانوان");
+      return rank.title.match("بانوان") || rank.title.match("دختران");
     });
   const boysRank =
     data &&
     data.ranks.filter((rank) => {
-      return rank.category.name.match("پسران");
+      return rank.title.match("پسران");
     });
-  const girlsRank =
-    data &&
+  const girlsRank = [];
+  data &&
     data.ranks.filter((rank) => {
-      return rank.category.name.match("دختران");
+      return rank.title.match("دختران");
     });
 
   const handleChange = (event, newValue) => {
