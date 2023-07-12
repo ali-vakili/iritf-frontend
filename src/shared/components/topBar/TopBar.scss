@@ -5,14 +5,14 @@ header {
   height: 100%;
   padding: 12px 0 24px 0;
 
-  @include media("<=920px"){
-    &{
+  @include media("<=920px") {
+    & {
       padding-top: 0;
     }
   }
 
-  img.banner{
-    max-height: 280px;
+  img.banner {
+    max-height: 330px;
     vertical-align: top;
   }
 
@@ -23,8 +23,8 @@ header {
     border: 1px solid $BorderColor;
     border-radius: 4px;
     margin: 16px 0 8px 0;
-      
-    div.search{
+
+    div.search {
       width: 200px;
 
       input.search-field {
@@ -38,7 +38,7 @@ header {
         border-right: 1px solid $NinethBlack !important;
         transition: all 400ms ease-out;
 
-        &::placeholder{
+        &::placeholder {
           color: $SixthBlack;
         }
 
@@ -49,7 +49,7 @@ header {
         }
 
         &:hover {
-          &::placeholder{
+          &::placeholder {
             color: $ThirdBlack;
           }
         }
@@ -63,13 +63,13 @@ header {
         padding: 4px 8px !important;
         transition: background-color 200ms ease-in-out;
 
-        @include media(">tablet"){
-          &:hover{
+        @include media(">tablet") {
+          &:hover {
             background-color: $PrimarySecond !important;
           }
         }
 
-        &:focus{
+        &:focus {
           background-color: $PrimarySecond !important;
         }
       }
@@ -79,7 +79,7 @@ header {
   .custom-dropdown-menu {
     display: none; /* Hide the nested menu by default */
   }
-  
+
   .custom-dropdown-menu.show {
     display: block; /* Show the nested menu on hover */
   }

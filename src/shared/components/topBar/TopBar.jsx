@@ -50,7 +50,7 @@ const TopBar = () => {
           className="banner"
           src={banner}
           alt="هیئت تنیس استان آذربایجان شرقی"
-          style={{ width: "100%", height: "auto" }}
+          style={{ width: "100%" }}
         />
       </Link>
       {!isSmallScreen && <NavBar />}
