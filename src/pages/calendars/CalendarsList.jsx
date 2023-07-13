@@ -48,7 +48,6 @@ const CalendarsList = ({ currentItems }) => {
               />
             }
           </BreadcrumbsCustom>
-          <SectionTitle title="تقویم ها" />
           { currentItems && currentItems.map((calendar) => (
             <Link to={`/calendars/${calendar._id}`} key={calendar._id}>
               <Card className="mt-3">
