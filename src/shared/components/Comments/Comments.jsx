@@ -59,7 +59,7 @@ const Comments = () => {
   );
 
   return(
-    <Row className='mt-5 border rounded p-3 gx-0'>
+    <Row className='mt-5 mb-4 border rounded p-3 gx-0'>
       <SectionTitle title={"دیدگاهتان را بنویسید "} />
       <Col sx={12}>
         <div className='d-flex flex-column justify-content-start mt-3'>
