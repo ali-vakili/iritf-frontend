@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import { Row, Col } from "react-bootstrap";
 import Button from "@mui/material/Button";
 import DefaultImage from "../../shared/assets/images/default-image.jpeg";
+import { Empty } from "antd";
 
 const TabPanel = (props) => {
   const { children, value, index } = props;
@@ -96,258 +97,264 @@ const RanksHome = ({ data }) => {
             <Tab className="rank-tab" label="رنکینگ آقایان" {...a11yProps(0)} />
           </Tabs>
         </Box>
-        <TabPanel value={value} index={3}>
-          <div className="ranks-list">
-            <Row>
-              <Col md={5}>
-                {mensRank &&
-                  mensRank.map((rank, index) => (
-                    <>
-                      {index < 1 && (
-                        <Link to={`/ranks/${rank._id}`}>
-                          <div className="top-rank">
-                            <img
-                              src={
-                                rank.imagesURL
-                                  ? rank.imagesURL[0]
-                                  : rank.imageURL
-                                  ? rank.imageURL
-                                  : DefaultImage
-                              }
-                              style={{ width: "100%" }}
-                              alt={rank.title}
-                            />
-                            <h5>{rank.title}</h5>
-                            <Button
-                              variant="contained"
-                              className="primary-color-btn"
-                            >
-                              ادامه خبر
-                            </Button>
-                          </div>
-                        </Link>
-                      )}
-                    </>
-                  ))}
-              </Col>
-              <Col md={7}>
-                {mensRank &&
-                  mensRank.map((rank, index) => (
-                    <>
-                      {index < 5 && index >= 1 && (
-                        <Link to={`/ranks/${rank._id}`}>
-                          <div className="ranks">
-                            <img
-                              src={
-                                rank.imagesURL
-                                  ? rank.imagesURL[0]
-                                  : rank.imageURL
-                                  ? rank.imageURL
-                                  : DefaultImage
-                              }
-                              alt={rank.title}
-                            />
-                            <div className="ranks-info">
-                              <p>{rank.title}</p>
-                            </div>
-                          </div>
-                        </Link>
-                      )}
-                    </>
-                  ))}
-              </Col>
-            </Row>
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          <div className="ranks-list">
-            <Row>
-              <Col md={6}>
-                {wemenRank &&
-                  wemenRank.map((rank, index) => (
-                    <>
-                      {index < 1 && (
-                        <Link to={`/ranks/${rank._id}`}>
-                          <div className="top-rank">
-                            <img
-                              src={
-                                rank.imagesURL
-                                  ? rank.imagesURL[0]
-                                  : rank.imageURL
-                                  ? rank.imageURL
-                                  : DefaultImage
-                              }
-                              style={{ width: "100%" }}
-                              alt={rank.title}
-                            />
-                            <h5>{rank.title}</h5>
-                            <Button
-                              variant="contained"
-                              className="primary-color-btn"
-                            >
-                              ادامه خبر
-                            </Button>
-                          </div>
-                        </Link>
-                      )}
-                    </>
-                  ))}
-              </Col>
-              <Col md={6}>
-                {wemenRank &&
-                  wemenRank.map((rank, index) => (
-                    <>
-                      {index < 5 && index >= 1 && (
-                        <Link to={`/ranks/${rank._id}`}>
-                          <div className="ranks">
-                            <img
-                              src={
-                                rank.imagesURL
-                                  ? rank.imagesURL[0]
-                                  : rank.imageURL
-                                  ? rank.imageURL
-                                  : DefaultImage
-                              }
-                              alt={rank.title}
-                            />
-                            <div className="ranks-info">
-                              <p>{rank.title}</p>
-                            </div>
-                          </div>
-                        </Link>
-                      )}
-                    </>
-                  ))}
-              </Col>
-            </Row>
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <div className="ranks-list">
-            <Row>
-              <Col md={6}>
-                {boysRank &&
-                  boysRank.map((rank, index) => (
-                    <>
-                      {index < 1 && (
-                        <Link to={`/ranks/${rank._id}`}>
-                          <div className="top-rank">
-                            <img
-                              src={
-                                rank.imagesURL
-                                  ? rank.imagesURL[0]
-                                  : rank.imageURL
-                                  ? rank.imageURL
-                                  : DefaultImage
-                              }
-                              style={{ width: "100%" }}
-                              alt={rank.title}
-                            />
-                            <h5>{rank.title}</h5>
-                            <Button
-                              variant="contained"
-                              className="primary-color-btn"
-                            >
-                              ادامه خبر
-                            </Button>
-                          </div>
-                        </Link>
-                      )}
-                    </>
-                  ))}
-              </Col>
-              <Col md={6}>
-                {boysRank &&
-                  boysRank.map((rank, index) => (
-                    <>
-                      {index < 5 && index >= 1 && (
-                        <Link to={`/ranks/${rank._id}`}>
-                          <div className="ranks">
-                            <img
-                              src={
-                                rank.imagesURL
-                                  ? rank.imagesURL[0]
-                                  : rank.imageURL
-                                  ? rank.imageURL
-                                  : DefaultImage
-                              }
-                              alt={rank.title}
-                            />
-                            <div className="ranks-info">
-                              <p>{rank.title}</p>
-                            </div>
-                          </div>
-                        </Link>
-                      )}
-                    </>
-                  ))}
-              </Col>
-            </Row>
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={0}>
-          <div className="ranks-list">
-            <Row>
-              <Col md={6}>
-                {girlsRank &&
-                  girlsRank.map((rank, index) => (
-                    <>
-                      {index < 1 && (
-                        <Link to={`/ranks/${rank._id}`}>
-                          <div className="top-rank">
-                            <img
-                              src={
-                                rank.imagesURL
-                                  ? rank.imagesURL[0]
-                                  : rank.imageURL
-                                  ? rank.imageURL
-                                  : DefaultImage
-                              }
-                              style={{ width: "100%" }}
-                              alt={rank.title}
-                            />
-                            <h5>{rank.title}</h5>
-                            <Button
-                              variant="contained"
-                              className="primary-color-btn"
-                            >
-                              ادامه خبر
-                            </Button>
-                          </div>
-                        </Link>
-                      )}
-                    </>
-                  ))}
-              </Col>
-              <Col md={6}>
-                {girlsRank &&
-                  girlsRank.map((rank, index) => (
-                    <>
-                      {index < 5 && index >= 1 && (
-                        <Link to={`/ranks/${rank._id}`}>
-                          <div className="ranks">
-                            <img
-                              src={
-                                rank.imagesURL
-                                  ? rank.imagesURL[0]
-                                  : rank.imageURL
-                                  ? rank.imageURL
-                                  : DefaultImage
-                              }
-                              alt={rank.title}
-                            />
-                            <div className="ranks-info">
-                              <p>{rank.title}</p>
-                            </div>
-                          </div>
-                        </Link>
-                      )}
-                    </>
-                  ))}
-              </Col>
-            </Row>
-          </div>
-        </TabPanel>
+        {data && data.ranks.length > 0 ? (
+          <>
+            <TabPanel value={value} index={3}>
+              <div className="ranks-list">
+                <Row>
+                  <Col md={5}>
+                    {mensRank &&
+                      mensRank.map((rank, index) => (
+                        <>
+                          {index < 1 && (
+                            <Link to={`/ranks/${rank._id}`}>
+                              <div className="top-rank">
+                                <img
+                                  src={
+                                    rank.imagesURL
+                                      ? rank.imagesURL[0]
+                                      : rank.imageURL
+                                      ? rank.imageURL
+                                      : DefaultImage
+                                  }
+                                  style={{ width: "100%" }}
+                                  alt={rank.title}
+                                />
+                                <h5>{rank.title}</h5>
+                                <Button
+                                  variant="contained"
+                                  className="primary-color-btn"
+                                >
+                                  ادامه خبر
+                                </Button>
+                              </div>
+                            </Link>
+                          )}
+                        </>
+                      ))}
+                  </Col>
+                  <Col md={7}>
+                    {mensRank &&
+                      mensRank.map((rank, index) => (
+                        <>
+                          {index < 5 && index >= 1 && (
+                            <Link to={`/ranks/${rank._id}`}>
+                              <div className="ranks">
+                                <img
+                                  src={
+                                    rank.imagesURL
+                                      ? rank.imagesURL[0]
+                                      : rank.imageURL
+                                      ? rank.imageURL
+                                      : DefaultImage
+                                  }
+                                  alt={rank.title}
+                                />
+                                <div className="ranks-info">
+                                  <p>{rank.title}</p>
+                                </div>
+                              </div>
+                            </Link>
+                          )}
+                        </>
+                      ))}
+                  </Col>
+                </Row>
+              </div>
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+              <div className="ranks-list">
+                <Row>
+                  <Col md={6}>
+                    {wemenRank &&
+                      wemenRank.map((rank, index) => (
+                        <>
+                          {index < 1 && (
+                            <Link to={`/ranks/${rank._id}`}>
+                              <div className="top-rank">
+                                <img
+                                  src={
+                                    rank.imagesURL
+                                      ? rank.imagesURL[0]
+                                      : rank.imageURL
+                                      ? rank.imageURL
+                                      : DefaultImage
+                                  }
+                                  style={{ width: "100%" }}
+                                  alt={rank.title}
+                                />
+                                <h5>{rank.title}</h5>
+                                <Button
+                                  variant="contained"
+                                  className="primary-color-btn"
+                                >
+                                  ادامه خبر
+                                </Button>
+                              </div>
+                            </Link>
+                          )}
+                        </>
+                      ))}
+                  </Col>
+                  <Col md={6}>
+                    {wemenRank &&
+                      wemenRank.map((rank, index) => (
+                        <>
+                          {index < 5 && index >= 1 && (
+                            <Link to={`/ranks/${rank._id}`}>
+                              <div className="ranks">
+                                <img
+                                  src={
+                                    rank.imagesURL
+                                      ? rank.imagesURL[0]
+                                      : rank.imageURL
+                                      ? rank.imageURL
+                                      : DefaultImage
+                                  }
+                                  alt={rank.title}
+                                />
+                                <div className="ranks-info">
+                                  <p>{rank.title}</p>
+                                </div>
+                              </div>
+                            </Link>
+                          )}
+                        </>
+                      ))}
+                  </Col>
+                </Row>
+              </div>
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+              <div className="ranks-list">
+                <Row>
+                  <Col md={6}>
+                    {boysRank &&
+                      boysRank.map((rank, index) => (
+                        <>
+                          {index < 1 && (
+                            <Link to={`/ranks/${rank._id}`}>
+                              <div className="top-rank">
+                                <img
+                                  src={
+                                    rank.imagesURL
+                                      ? rank.imagesURL[0]
+                                      : rank.imageURL
+                                      ? rank.imageURL
+                                      : DefaultImage
+                                  }
+                                  style={{ width: "100%" }}
+                                  alt={rank.title}
+                                />
+                                <h5>{rank.title}</h5>
+                                <Button
+                                  variant="contained"
+                                  className="primary-color-btn"
+                                >
+                                  ادامه خبر
+                                </Button>
+                              </div>
+                            </Link>
+                          )}
+                        </>
+                      ))}
+                  </Col>
+                  <Col md={6}>
+                    {boysRank &&
+                      boysRank.map((rank, index) => (
+                        <>
+                          {index < 5 && index >= 1 && (
+                            <Link to={`/ranks/${rank._id}`}>
+                              <div className="ranks">
+                                <img
+                                  src={
+                                    rank.imagesURL
+                                      ? rank.imagesURL[0]
+                                      : rank.imageURL
+                                      ? rank.imageURL
+                                      : DefaultImage
+                                  }
+                                  alt={rank.title}
+                                />
+                                <div className="ranks-info">
+                                  <p>{rank.title}</p>
+                                </div>
+                              </div>
+                            </Link>
+                          )}
+                        </>
+                      ))}
+                  </Col>
+                </Row>
+              </div>
+            </TabPanel>
+            <TabPanel value={value} index={0}>
+              <div className="ranks-list">
+                <Row>
+                  <Col md={6}>
+                    {girlsRank &&
+                      girlsRank.map((rank, index) => (
+                        <>
+                          {index < 1 && (
+                            <Link to={`/ranks/${rank._id}`}>
+                              <div className="top-rank">
+                                <img
+                                  src={
+                                    rank.imagesURL
+                                      ? rank.imagesURL[0]
+                                      : rank.imageURL
+                                      ? rank.imageURL
+                                      : DefaultImage
+                                  }
+                                  style={{ width: "100%" }}
+                                  alt={rank.title}
+                                />
+                                <h5>{rank.title}</h5>
+                                <Button
+                                  variant="contained"
+                                  className="primary-color-btn"
+                                >
+                                  ادامه خبر
+                                </Button>
+                              </div>
+                            </Link>
+                          )}
+                        </>
+                      ))}
+                  </Col>
+                  <Col md={6}>
+                    {girlsRank &&
+                      girlsRank.map((rank, index) => (
+                        <>
+                          {index < 5 && index >= 1 && (
+                            <Link to={`/ranks/${rank._id}`}>
+                              <div className="ranks">
+                                <img
+                                  src={
+                                    rank.imagesURL
+                                      ? rank.imagesURL[0]
+                                      : rank.imageURL
+                                      ? rank.imageURL
+                                      : DefaultImage
+                                  }
+                                  alt={rank.title}
+                                />
+                                <div className="ranks-info">
+                                  <p>{rank.title}</p>
+                                </div>
+                              </div>
+                            </Link>
+                          )}
+                        </>
+                      ))}
+                  </Col>
+                </Row>
+              </div>
+            </TabPanel>
+          </>
+        ) : (
+          <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+        )}
       </Box>
     </div>
   );
