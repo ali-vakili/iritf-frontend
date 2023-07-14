@@ -1,7 +1,6 @@
 @use "../../shared/assets/scss/forward" as *;
 
 .videos-section {
-
   .video-container {
     display: flex !important;
     align-items: center;
@@ -18,25 +17,24 @@
     max-width: 100%;
     height: fit-content;
   }
-  
+
   .card-body {
-    
-    .row{
+    .row {
       direction: rtl;
     }
 
-    .date{
+    .date {
       width: fit-content;
-      
-      h6{
+
+      h6 {
         display: inline-block;
       }
     }
 
-    .detail-date{
+    .detail-date {
       width: fit-content;
-      
-      h6{
+
+      h6 {
         display: inline-block;
       }
     }
@@ -45,7 +43,7 @@
       max-width: 100%;
       height: fit-content;
     }
-    
+
     .card-info {
       display: flex;
       flex-direction: column;
@@ -58,13 +56,13 @@
         font-size: 14px;
       }
     }
-  
+
     h5 {
       margin-bottom: 20px;
     }
-  
+
     img {
-      height: 200px !important;
+      height: 100% !important;
       width: 100% !important;
       object-fit: cover;
     }

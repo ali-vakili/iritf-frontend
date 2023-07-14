@@ -1,16 +1,14 @@
 @use "../../shared/assets/scss/forward" as *;
 
 .clubs-section {
-
   .card-body {
-  
-    .row{
+    .row {
       direction: rtl;
     }
 
-    .date{
+    .date {
       width: fit-content;
-      
+
       h6 {
         margin-bottom: 4px;
         padding: 8px 12px;
@@ -22,10 +20,10 @@
       }
     }
 
-    .detail-date{
+    .detail-date {
       width: fit-content;
-      
-      h6{
+
+      h6 {
         display: inline-block;
       }
     }
@@ -42,13 +40,13 @@
         font-size: 14px;
       }
     }
-  
+
     h5 {
       margin-bottom: 20px;
     }
-  
+
     img {
-      height: 200px !important;
+      height: 100% !important;
       width: 100% !important;
       object-fit: cover;
     }

@@ -58,52 +58,52 @@ const ProvinceDetail = () => {
 
   return (
     <>
-      <Row className='m-0'>
+      <Row className="m-0">
         <Col lg={8} className="ps-lg-4 p-0">
           <section className="provinces-section">
             {province && (
               <Row>
                 <Col>
-                  <BreadcrumbsCustom >
-                    {id ?(
+                  <BreadcrumbsCustom>
+                    {id ? (
                       <>
                         <StyledBreadcrumb
-                          label="استان ها"
+                          label="شهرستان ها"
                           component={Link}
                           to={"/provinces"}
                         />
                         <StyledBreadcrumb
-                          label={province.category[province.category.length - 1].name}
+                          label={
+                            province.category[province.category.length - 1].name
+                          }
                           component={Link}
-                          to={`/provinces/category/${province.category[province.category.length - 1]._id}`}
+                          to={`/provinces/category/${
+                            province.category[province.category.length - 1]._id
+                          }`}
                         />
-                        <StyledBreadcrumb
-                          label={province.title}
-                        />
+                        <StyledBreadcrumb label={province.title} />
                       </>
-                    ) :
-                      <StyledBreadcrumb
-                        label="استان ها"
-                      />
-                    }
+                    ) : (
+                      <StyledBreadcrumb label="شهرستان ها" />
+                    )}
                   </BreadcrumbsCustom>
                   <Card className="mt-3">
                     <div className="carousel-container">
                       <Row>
                         <Col>
-                        {province.imagesURL && (
-                          <Carousel>
-                            {province.imagesURL.map((image) => (
-                              <Carousel.Item>
-                                <img
-                                  className="d-block w-100 carousel-image"
-                                  src={image}
-                                  alt={province.title}
-                                />
-                              </Carousel.Item>
-                            ))}
-                          </Carousel>
-                        )}
+                          {province.imagesURL && (
+                            <Carousel>
+                              {province.imagesURL.map((image) => (
+                                <Carousel.Item>
+                                  <img
+                                    className="d-block w-100 carousel-image"
+                                    src={image}
+                                    alt={province.title}
+                                  />
+                                </Carousel.Item>
+                              ))}
+                            </Carousel>
+                          )}
                         </Col>
                       </Row>
                     </div>
@@ -111,21 +111,30 @@ const ProvinceDetail = () => {
                       <Row>
                         <h5>{province.title}</h5>
                         <Row>
-                          <div style={{"color":"#767676", "fontSize":"14px"}} className="mb-2 detail-date">
-                            <h6>{moment(province.createdAt).locale('fa').format(`jD ${persianMonths[moment().jMonth()]}، jYYYY`)}</h6>
-                            <span style={{"fontWeight":"500"}}> - </span>
-                            <h6 className="mt-3"><span>{province.category.name}</span></h6>
+                          <div
+                            style={{ color: "#767676", fontSize: "14px" }}
+                            className="mb-2 detail-date"
+                          >
+                            <h6>
+                              {moment(province.createdAt)
+                                .locale("fa")
+                                .format(
+                                  `jD ${
+                                    persianMonths[moment().jMonth()]
+                                  }، jYYYY`
+                                )}
+                            </h6>
+                            <span style={{ fontWeight: "500" }}> - </span>
+                            <h6 className="mt-3">
+                              <span>{province.category.name}</span>
+                            </h6>
                           </div>
                         </Row>
-                        <Col sx={12} className='pe-md-4 card-info'>
-                          <p className='pt-3 mt-3'>
-                            {province.short_text}
-                          </p>
-                          <p className='pt-3 mt-3'>
-                            {province.text}
-                          </p>
+                        <Col sx={12} className="pe-md-4 card-info">
+                          <p className="pt-3 mt-3">{province.short_text}</p>
+                          <p className="pt-3 mt-3">{province.text}</p>
                           <div className="d-flex justify-content-start mt-3 w-100 share">
-                            <h6 style={{"color":"#FFF"}}>به اشتراک بگذارید</h6>
+                            <h6 style={{ color: "#FFF" }}>به اشتراک بگذارید</h6>
                           </div>
                         </Col>
                       </Row>
@@ -144,11 +153,11 @@ const ProvinceDetail = () => {
           </section>
         </Col>
         <Col lg={4} className="left-side-content p-0">
-          <SideBar/>
+          <SideBar />
         </Col>
       </Row>
     </>
-  )
+  );
 }
 
 export default ProvinceDetail;
