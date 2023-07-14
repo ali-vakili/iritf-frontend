@@ -42,7 +42,7 @@ const MatchesList = ({ currentItems }) => {
                   to={"/matches"}
                 />
                 <StyledBreadcrumb
-                  label={currentItems && currentItems[0].category.name}
+                  label={currentItems && currentItems[0].category[currentItems[0].category.length - 1].name}
                 />
               </>
             ) :

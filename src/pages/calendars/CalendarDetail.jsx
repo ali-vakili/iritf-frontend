@@ -45,7 +45,10 @@ const CalendarDetail = () => {
       )
       .catch((err) => err.response);
 
-    if (result.statusCode === 200) setCalendar(result.data.calendar)
+    if (result.statusCode === 200) {
+      setCalendar(result.data.calendar)
+      console.log(result)
+    }
     else setError(result.data.message)
   }
 
@@ -72,9 +75,9 @@ const CalendarDetail = () => {
                           to={"/calendars"}
                         />
                         <StyledBreadcrumb
-                          label={calendar.category.name}
+                          label={calendar.category[calendar.category.length - 1].name}
                           component={Link}
-                          to={`/calendars/category/${calendar.category._id}`}
+                          to={`/calendars/category/${calendar.category[calendar.category.length - 1]._id}`}
                         />
                         <StyledBreadcrumb
                           label={calendar.title}
@@ -99,14 +102,14 @@ const CalendarDetail = () => {
                         </Row>
                         <Row>
                           <Col sx={12} className="d-flex flex-column">
-                            {calendar.images && calendar.images.map((image) => (
+                            {calendar.imagesURL && calendar.imagesURL.map((image) => (
                               <img className="my-4" src={image} alt={calendar.title} style={{"width":"100%", "height":"100%"}}/>
                             ))}
                             <Row className="flex-column align-items-center justify-content-center my-4">
                               <h6 style={{"width":"fit-content"}}>برای دانلود و مشاهده کامل فرم ها روی لینک زیر کلیک فرمایید</h6>
                               {calendar.filesURL && calendar.filesURL.map((file, index) => (
                                 <Link to={file} style={{"fontSize":"16px", "fontWeight":"500", "width":"fit-content", "color":"#33A58D"}}>
-                                  فایل{index}
+                                  فایل{index + 1}
                                   <FileDownloadIcon fontSize="large" style={{"height":"64px", "width":"64px"}}/>
                                 </Link>
                               ))}
@@ -121,7 +124,7 @@ const CalendarDetail = () => {
                       </Row>
                     </Card.Body>
                   </Card>
-                  <DetailShared path={"forms"} />
+                  <DetailShared path={"calendars"} />
                   <Comments />
                 </Col>
               </Row>

@@ -72,9 +72,9 @@ const FormDetail = () => {
                           to={"/forms"}
                         />
                         <StyledBreadcrumb
-                          label={form.category.name}
+                          label={form.category[form.category.length - 1].name}
                           component={Link}
-                          to={`/forms/category/${form.category._id}`}
+                          to={`/forms/category/${form.category[form.category.length - 1]._id}`}
                         />
                         <StyledBreadcrumb
                           label={form.title}

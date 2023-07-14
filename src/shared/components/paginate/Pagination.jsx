@@ -69,7 +69,7 @@ const PaginatedItems = ({ itemsPerPage, data, page }) => {
           style={{ minHeight: "150px" }}
         >
           <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
-          <h2 className="text-info">اطلاعاتی یافت نشد !</h2>
+          <h2 className="text-info">اطلاعاتی یافت نشد :(</h2>
         </div>
       )
       }

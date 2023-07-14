@@ -73,9 +73,9 @@ const ProvinceDetail = () => {
                           to={"/provinces"}
                         />
                         <StyledBreadcrumb
-                          label={province.category.name}
+                          label={province.category[province.category.length - 1].name}
                           component={Link}
-                          to={`/provinces/category/${province.category._id}`}
+                          to={`/provinces/category/${province.category[province.category.length - 1]._id}`}
                         />
                         <StyledBreadcrumb
                           label={province.title}

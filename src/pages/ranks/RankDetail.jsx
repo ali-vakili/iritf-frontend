@@ -98,9 +98,9 @@ const RankDetail = () => {
                           to={"/ranks"}
                         />
                         <StyledBreadcrumb
-                          label={rank.category.name}
+                          label={rank.category[rank.category.length - 1].name}
                           component={Link}
-                          to={`/ranks/category/${rank.category._id}`}
+                          to={`/ranks/category/${rank.category[rank.category.length - 1]._id}`}
                         />
                         <StyledBreadcrumb label={rank.title} />
                       </>

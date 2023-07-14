@@ -73,9 +73,9 @@ const NewsDetail = () => {
                           to={"/news"}
                         />
                         <StyledBreadcrumb
-                          label={news.category.name}
+                          label={news.category[news.category.length - 1].name}
                           component={Link}
-                          to={`/news/category/${news.category._id}`}
+                          to={`/news/category/${news.category[news.category.length - 1]._id}`}
                         />
                         <StyledBreadcrumb label={news.title} />
                       </>

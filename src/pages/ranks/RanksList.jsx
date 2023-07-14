@@ -27,7 +27,7 @@ const RanksList = ({ currentItems }) => {
                   to={"/ranks"}
                 />
                 <StyledBreadcrumb
-                  label={currentItems && currentItems[0].category.name}
+                  label={currentItems && currentItems[0].category[currentItems[0].category.length - 1].name}
                 />
               </>
             ) : (

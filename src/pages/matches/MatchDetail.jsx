@@ -146,9 +146,9 @@ const MatchDetail = () => {
                                 to={"/matches"}
                               />
                               <StyledBreadcrumb
-                                label={match.category.name}
+                                label={match.category[match.category.length - 1].name}
                                 component={Link}
-                                to={`/matches/category/${match.category._id}`}
+                                to={`/matches/category/${match.category[match.category.length - 1]._id}`}
                               />
                               <StyledBreadcrumb
                                 label={match.title}

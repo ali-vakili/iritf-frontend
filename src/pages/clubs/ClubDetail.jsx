@@ -74,9 +74,9 @@ const ClubDetail = () => {
                           to={"/clubs"}
                         />
                         <StyledBreadcrumb
-                          label={club.category.name}
+                          label={club.category[club.category.length - 1].name}
                           component={Link}
-                          to={`/clubs/category/${club.category._id}`}
+                          to={`/clubs/category/${club.category[club.category.length - 1]._id}`}
                         />
                         <StyledBreadcrumb
                           label={club.title}
@@ -141,7 +141,7 @@ const ClubDetail = () => {
                       </Row>
                     </Card.Body>
                   </Card>
-                  <DetailShared path={"news"} />
+                  <DetailShared path={"clubs"} />
                   <Comments />
                 </Col>
               </Row>

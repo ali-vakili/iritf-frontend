@@ -91,7 +91,7 @@ const VideoDetail = () => {
                         <StyledBreadcrumb
                           label={video.category.name}
                           component={Link}
-                          to={`/videos/category/${video.category._id}`}
+                          to={`/videos/category/${video.category[video.category.length - 1]._id}`}
                         />
                         <StyledBreadcrumb
                           label={video.title}

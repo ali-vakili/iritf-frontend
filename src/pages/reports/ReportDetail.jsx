@@ -71,9 +71,9 @@ const ReportDetail = () => {
                           to={"/reports"}
                         />
                         <StyledBreadcrumb
-                          label={report.category.name}
+                          label={report.category[report.category.length - 1].name}
                           component={Link}
-                          to={`/reports/category/${report.category._id}`}
+                          to={`/reports/category/${report.category[report.category.length - 1]._id}`}
                         />
                         <StyledBreadcrumb
                           label={report.title}
