@@ -62,32 +62,30 @@ const DetailShared = ({path}) => {
   return(
     <div className='mt-4'>
       <SectionTitle title={"شاید این مطالب برایتان مفید باشد"}/>
-      <Row className='mt-3'>
-        <Col className='d-flex'>
-          {data && data.map((eachData)=> (
-            <Col md={4} className="image">
-              <Link to={`/${path}/${eachData._id}`} key={eachData._id}>
-                {path !== "videos" ? (
-                  <div key={eachData._id}>
-                    <img
-                      src={eachData.imagesURL ? eachData.imagesURL[0] : eachData.imageURL ? eachData.imageURL : DefaultImage}
-                      style={{ width: '100%' }}
-                      alt={eachData.title}
-                    />
-                    <p>{eachData.title}</p>
-                    <p>{moment(eachData.createdAt).locale('fa').format(`jD ${persianMonths[moment().jMonth()]}، jYYYY`)}</p>
-                  </div>
-                ) : (
-                  <div key={eachData._id}>
-                    <h6>{eachData.title}</h6>
-                    <p>{moment(eachData.createdAt).locale('fa').format(`jD ${persianMonths[moment().jMonth()]}، jYYYY`)}</p>
-                  </div>
-                )
-                }
-              </Link>
-            </Col>
-          ))}
-        </Col>
+      <Row className='mt-3 gx-0'>
+        {data && data.map((eachData)=> (
+          <Col md={4} className="image">
+            <Link to={`/${path}/${eachData._id}`} key={eachData._id}>
+              {path !== "videos" ? (
+                <div key={eachData._id}>
+                  <img
+                    src={eachData.imagesURL ? eachData.imagesURL[0] : eachData.imageURL ? eachData.imageURL : DefaultImage}
+                    style={{ width: '100%' }}
+                    alt={eachData.title}
+                  />
+                  <p>{eachData.title}</p>
+                  <p>{moment(eachData.createdAt).locale('fa').format(`jD ${persianMonths[moment().jMonth()]}، jYYYY`)}</p>
+                </div>
+              ) : (
+                <div key={eachData._id}>
+                  <h6>{eachData.title}</h6>
+                  <p>{moment(eachData.createdAt).locale('fa').format(`jD ${persianMonths[moment().jMonth()]}، jYYYY`)}</p>
+                </div>
+              )
+              }
+            </Link>
+          </Col>
+        ))}
       </Row>
     </div>
   )
