@@ -100,7 +100,9 @@ const RankDetail = () => {
                         <StyledBreadcrumb
                           label={rank.category[rank.category.length - 1].name}
                           component={Link}
-                          to={`/ranks/category/${rank.category[rank.category.length - 1]._id}`}
+                          to={`/ranks/category/${
+                            rank.category[rank.category.length - 1]._id
+                          }`}
                         />
                         <StyledBreadcrumb label={rank.title} />
                       </>
@@ -140,6 +142,12 @@ const RankDetail = () => {
                               alt={rank.title}
                             />
                           )}
+                        </Row>
+                        <Row>
+                          <Col xs={12}>
+                            <h6>توضیحات : </h6>
+                            <p className="fs-7">{rank?.text || ""}</p>
+                          </Col>
                         </Row>
                         <Row className="flex-column align-items-center justify-content-center my-4">
                           <h6 style={{ width: "fit-content" }}>

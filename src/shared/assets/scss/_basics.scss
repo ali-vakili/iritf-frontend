@@ -42,48 +42,46 @@
 @font-face {
   font-family: "IRANSans";
   font-weight: 400;
-  src: url("../fonts/IranSans_WEB-eot/IRANSansWeb.eot")
-      format("eot"),
-    url("../fonts/IranSans_WEB-ttf/IRANSansWeb.ttf")
-      format("truetypefont"),
-    url("../fonts/IranSans_WEB-woff/IRANSansWeb.woff")
-      format("woff"),
-    url("../fonts/IranSans_WEB-woff2/IRANSansWeb.woff2")
-      format("woff2");
+  src: url("../fonts/IranSans_WEB-eot/IRANSansWeb.eot") format("eot"),
+    url("../fonts/IranSans_WEB-ttf/IRANSansWeb.ttf") format("truetypefont"),
+    url("../fonts/IranSans_WEB-woff/IRANSansWeb.woff") format("woff"),
+    url("../fonts/IranSans_WEB-woff2/IRANSansWeb.woff2") format("woff2");
 }
 
-*, *::before, *::after{
+*,
+*::before,
+*::after {
   font-family: var(--font_family) !important;
   box-sizing: border-box !important;
   margin: 0;
   padding: 0;
 }
-  
-html{
+
+html {
   scroll-behavior: smooth;
 }
 
-body{
+body {
   position: relative;
   font-family: var(--font_family) !important;
   min-height: 100vh;
   scroll-behavior: smooth;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 
-  &.hamburger-menu-opened{
+  &.hamburger-menu-opened {
     overflow: hidden;
     width: 100%;
   }
 }
 
-a{
-  font-family:"IRANSans";
+a {
+  font-family: "IRANSans";
   text-decoration: none !important;
   color: $FirstBlack;
   user-select: none;
 }
 
-input{
+input {
   border: none !important;
   outline: none !important;
 }
@@ -107,24 +105,28 @@ ul {
   border: 0;
 }
 
-::-moz-selection{
+::-moz-selection {
   color: $NinethBlack;
   background-color: $PrimarySecond;
 }
 
-::selection{
+::selection {
   color: $NinethBlack;
   background-color: $PrimarySecond;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 8px;
 }
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-track {
   background-color: $NinethBlack;
   border-radius: 2px;
 }
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   background-color: $PrimarySecond;
   border-radius: 2px;
+}
+
+.fs-7 {
+  font-size: 14px;
 }

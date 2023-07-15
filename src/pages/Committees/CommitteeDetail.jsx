@@ -130,8 +130,7 @@ const CommitteeDetail = () => {
                           </div>
                         </Row>
                         <Col sx={12} className="pe-md-4 card-info">
-                          <p className="pt-3 mt-3">{committee.short_text}</p>
-                          <p className="pt-3 mt-3">{committee.text}</p>
+                          <p className="pt-3 mt-3 fs-7">{committee.text}</p>
                           <Row className="flex-column align-items-center justify-content-center my-4">
                             <Col>
                               <h6 style={{ width: "fit-content" }}>

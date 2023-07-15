@@ -122,6 +122,12 @@ const CalendarDetail = () => {
                                   alt={calendar.title}
                                 />
                               ))}
+                            <Row>
+                              <Col xs={12}>
+                                <h6>توضیحات : </h6>
+                                <p className="fs-7">{calendar?.text || ""}</p>
+                              </Col>
+                            </Row>
                             <Row className="flex-column align-items-center justify-content-center my-4">
                               <h6 style={{ width: "fit-content" }}>
                                 برای دانلود و مشاهده کامل فرم ها روی لینک زیر

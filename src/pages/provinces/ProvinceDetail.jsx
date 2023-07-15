@@ -50,7 +50,7 @@ const ProvinceDetail = () => {
     else setError(result.data.message)
   }
 
-  {province ? setPageTittle(province.title) : setPageTittle("استان یافت نشد");}
+  {province ? setPageTittle(province.title) : setPageTittle("شهرستان یافت نشد");}
 
   useEffect(() => {
     getData();
