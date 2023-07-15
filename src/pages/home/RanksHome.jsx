@@ -54,8 +54,8 @@ const RanksHome = ({ data }) => {
     data.ranks.filter((rank) => {
       return rank?.title?.match("پسران");
     });
-  const girlsRank = [];
-  data &&
+  const girlsRank =
+    data &&
     data.ranks.filter((rank) => {
       return rank?.title?.match("دختران");
     });
